@@ -1,5 +1,5 @@
-" Canonical version of this file and of the .vim directory is in svn at 
-" https://svn.sorryrobot.com/vim.
+" Canonical version of this file and of the .vim directory is in git
+" at git@github.com:sleeplessgeek/dotfiles.git
 " 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
