@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# make sure we're in vim/ checkout, even if we're called from elsewhere
+cd $(dirname $0) 
+
+cp .vimrc ~/.vimrc
+rm -rf ~/.vim
+cp -R .vim ~/.vim
+# Delete the .svn directories that we just copied
+find ~/.vim -name .svn | xargs rm -rf
+
+while [ "$name" != "nathan" -a "$name" != "michael" ]; do 
+    echo -n "Are you nathan or michael? "
+    read name; 
+done
+sed -i "s/set this to nathan or michael/$name/" ~/.vimrc
+
+echo "Latest .vimrc and .vim/ directory deployed."
