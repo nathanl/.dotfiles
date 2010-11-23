@@ -4,6 +4,7 @@
 cd $(dirname $0) 
 
 cp .vimrc ~/.vimrc
+cp .gvimrc ~/.gvimrc
 rm -rf ~/.vim
 cp -R .vim ~/.vim
 # Delete the .svn directories that we just copied
