@@ -186,10 +186,10 @@ if whoami == "nathan"
 	" Always show line numbers
 	set number
 
-    " Let the + register be the system clipboard (at least in Ubuntu?)
-    set clipboard+=unnamed
+	" Let the + register be the system clipboard (at least in Ubuntu?)
+	set clipboard+=unnamed
 
-  " Move lines up and down
+	" Move lines up and down
   map <C-J> :m +1 <CR>
   map <C-K> :m -2 <CR>
 
@@ -211,14 +211,6 @@ if whoami == "nathan"
 	" Inserts the path of the currently edited file into a command
 	" Command mode: Ctrl+P
 	cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-	" Opens a tab edit command with the path of the currently edited file filled in
-	" Normal mode: <Leader>t
-	map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
 
 elseif whoami == "michael"
     " ************** Tabs ***********************
