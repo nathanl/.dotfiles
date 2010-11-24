@@ -9,4 +9,4 @@ set guifont=DejaVu\ Sans\ Mono:h13
 :highlight Search guibg=yellow guifg=black
 
 " Better highlighting of matching braces
-hi MatchParen guibg=white guifg=black
+hi MatchParen guibg=blue guifg=black

@@ -39,7 +39,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   " Matching braces get the same background and foreground color, making
   " for a very bad UI, unless we change the default colors.
-  hi MatchParen ctermbg=white
+  hi MatchParen ctermbg=blue
 endif
 
 " When highlighting search terms, make sure text is contrasting color
@@ -216,7 +216,7 @@ elseif whoami == "michael"
     " ************** Tabs ***********************
     set expandtab " spaces instead of tab characters
     " ************** Taglist ************
-    " In order to use this, you must first dowload the latest .tar.gz from
+    " In order to use this, you must first download the latest .tar.gz from
     " http://ctags.sourceforge.net/, then run
     "   tar xzvf ctags*.tar.gz
     "   cd ctags*
