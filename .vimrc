@@ -179,6 +179,9 @@ set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
+" ************** Tabs ***********************
+set expandtab " spaces instead of tab characters
+
 " Nathan- and Michael-specific sections to keep peace among the nations
 let whoami = "nathan"
 if whoami == "nathan"
@@ -186,8 +189,8 @@ if whoami == "nathan"
 	" Always show line numbers
 	set number
 
-	" Let the + register be the system clipboard (at least in Ubuntu?)
-	set clipboard+=unnamed
+  " Let the + register be the system clipboard (at least in Ubuntu?)
+  set clipboard+=unnamed
 
 	" Move lines up and down
   map <C-J> :m +1 <CR>
@@ -203,7 +206,7 @@ if whoami == "nathan"
   " Automatically load .vimrc source when saved
   autocmd BufWritePost .vimrc source $MYVIMRC
 
-	" Override Michael's tab settings to be 2 spaces
+  " Override Michael's tab settings to be 2 spaces
   set tabstop=2
   set softtabstop=2
   set shiftwidth=2
@@ -213,8 +216,6 @@ if whoami == "nathan"
 	cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 elseif whoami == "michael"
-    " ************** Tabs ***********************
-    set expandtab " spaces instead of tab characters
     " ************** Taglist ************
     " In order to use this, you must first download the latest .tar.gz from
     " http://ctags.sourceforge.net/, then run
