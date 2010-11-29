@@ -182,6 +182,7 @@ highlight SpecialKey guifg=#4a4a59
 " ************** Tabs ***********************
 set expandtab " spaces instead of tab characters
 
+
 " Nathan- and Michael-specific sections to keep peace among the nations
 let whoami = "nathan"
 if whoami == "nathan"
@@ -215,59 +216,68 @@ if whoami == "nathan"
 	" Command mode: Ctrl+P
 	cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
+  " get jslint from http://javascriptlint.com/
+  " autocmd BufWritePost *.js !test -f ~/jslint/jsl && ~/jslint/jsl -conf ~/jslint/jsl.default.conf -nologo -nosummary -process <afile>
+  autocmd BufWritePost *.rb !ruby -c <afile>
+  autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
+
+
 elseif whoami == "michael"
-    " ************** Taglist ************
-    " In order to use this, you must first download the latest .tar.gz from
-    " http://ctags.sourceforge.net/, then run
-    "   tar xzvf ctags*.tar.gz
-    "   cd ctags*
-    "   ./configure && sudo make install
-    " to install Exuberant CTags.
-    "
-    " Useful commands:
-    "   q close window
-    "   <CR> open tag in current window
-    "   t open tag in new tab
-    "   p preview tag without closing taglist
-    "   x maximize or unmaximize the tag window
-    "   <space> show prototype of class/function in status line
-    "   s sort alphabetically or by order in the file
-    "   - + = * Fold/unfold some or all sections
-    "   u update the taglist [except updates happens upon opening of the
-    "     taglist and since we use Tlist_Close_On_Select it's not that big a
-    "     deal]
-    " F9 opens/focuses the taglist
-    nnoremap <silent> <F9> :TlistOpen<CR>
-    " F12 jumps to the taglist entry for the word under my cursor.  I can then
-    "     hit enter to go to its definition.  The ^Rs (typed as Ctrl-V Ctrl-R
-    "     s) means to recall the text in register s, which we grabbed at the
-    "     start via "s.  The \C means to not ignore case, even if we have
-    "     set ignorecase.  The '+' expands the fold in case it was in a
-    "     different file (since we have Tlist_File_Fold_Auto_Close set to 1.)
-    map <F12> "syiw:TlistOpen<CR>/ s\>\C<CR>+
-    imap <F12> <esc>l<F12>
-    " <CR> or t will close the list -- my screen isn't wide enough for the
-    " taglist as well as 2 80-character buffers, so I can't leave taglist
-    " open all the time.
-    let Tlist_Close_On_Select = 1
-    " Even if the taglist is closed, read the tags for the files I edit,
-    " so that when I open the taglist, all my files are there instead of just
-    " the one I'm currently in.
-    let Tlist_Process_File_Always = 1
-    " When I open the taglist, fold all but the active window's tags.  I can
-    " always hit * to open them all up if I'm looking for something in another
-    " file.
-    let Tlist_File_Fold_Auto_Close = 1
+  " Any line over 79 chars should be highlighted
+  autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+  autocmd FileType python match OverLength /\%>79v.\+/
+  
+  " Uncomment this if you like - should lint check python files upon save - N
+  "autocmd BufWritePost *.py !python -c "compile(open('<afile>').read(), '<afile>', 'exec')"
 
-    " Yes, I want Taglist to work, yes I've installed Exuberant CTags; undo
-    " the damage we did earlier in the .vimrc so Taglist will actually load
-    unlet loaded_taglist
+  " ************** Taglist ************
+  " In order to use this, you must first download the latest .tar.gz from
+  " http://ctags.sourceforge.net/, then run
+  "   tar xzvf ctags*.tar.gz
+  "   cd ctags*
+  "   ./configure && sudo make install
+  " to install Exuberant CTags.
+  "
+  " Useful commands:
+  "   q close window
+  "   <CR> open tag in current window
+  "   t open tag in new tab
+  "   p preview tag without closing taglist
+  "   x maximize or unmaximize the tag window
+  "   <space> show prototype of class/function in status line
+  "   s sort alphabetically or by order in the file
+  "   - + = * Fold/unfold some or all sections
+  "   u update the taglist [except updates happens upon opening of the
+  "     taglist and since we use Tlist_Close_On_Select it's not that big a
+  "     deal]
+  " F9 opens/focuses the taglist
+  nnoremap <silent> <F9> :TlistOpen<CR>
+  " F12 jumps to the taglist entry for the word under my cursor.  I can then
+  "     hit enter to go to its definition.  The ^Rs (typed as Ctrl-V Ctrl-R
+  "     s) means to recall the text in register s, which we grabbed at the
+  "     start via "s.  The \C means to not ignore case, even if we have
+  "     set ignorecase.  The '+' expands the fold in case it was in a
+  "     different file (since we have Tlist_File_Fold_Auto_Close set to 1.)
+  map <F12> "syiw:TlistOpen<CR>/ s\>\C<CR>+
+  imap <F12> <esc>l<F12>
+  " <CR> or t will close the list -- my screen isn't wide enough for the
+  " taglist as well as 2 80-character buffers, so I can't leave taglist
+  " open all the time.
+  let Tlist_Close_On_Select = 1
+  " Even if the taglist is closed, read the tags for the files I edit,
+  " so that when I open the taglist, all my files are there instead of just
+  " the one I'm currently in.
+  let Tlist_Process_File_Always = 1
+  " When I open the taglist, fold all but the active window's tags.  I can
+  " always hit * to open them all up if I'm looking for something in another
+  " file.
+  let Tlist_File_Fold_Auto_Close = 1
 
-    " Any line over 79 chars should be highlighted
-    autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-    autocmd FileType python match OverLength /\%>79v.\+/
+  " Yes, I want Taglist to work, yes I've installed Exuberant CTags; undo
+  " the damage we did earlier in the .vimrc so Taglist will actually load
+  unlet loaded_taglist
 else
-    " Next line is invalid config syntax, as a hacky way of notifying the user.
+  " Next line is invalid config syntax, as a hacky way of notifying the user.
     You have to set the "whoami" variable in .vimrc, to turn on nathan- or michael-specific config.  You will see this error message each time you start vim, until you do so.
 endif
 
