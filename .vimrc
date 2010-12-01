@@ -12,12 +12,12 @@ autocmd!
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=50	" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
+set history=50  " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
 
 " ****************** Searching ********************
-set incsearch	" do incremental searching
+set incsearch   " do incremental searching
 set ignorecase  " do case-insensitive searches
 set smartcase   " ... unless the search contains upper-case characters
 set hlsearch    " highlight all matched terms
@@ -184,16 +184,16 @@ set expandtab " spaces instead of tab characters
 
 
 " Nathan- and Michael-specific sections to keep peace among the nations
-let whoami = "nathan"
+let whoami = "Set this to 'nathan' or 'michael'"
 if whoami == "nathan"
 
-	" Always show line numbers
-	set number
+  " Always show line numbers
+  set number
 
   " Let the + register be the system clipboard (at least in Ubuntu?)
   set clipboard+=unnamed
 
-	" Move lines up and down
+  " Move lines up and down
   map <C-J> :m +1 <CR>
   map <C-K> :m -2 <CR>
 
@@ -212,22 +212,34 @@ if whoami == "nathan"
   set softtabstop=2
   set shiftwidth=2
 
-	" Inserts the path of the currently edited file into a command
-	" Command mode: Ctrl+P
-	cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+  " Inserts the path of the currently edited file into a command
+  " Command mode: Ctrl+P
+  cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
   " get jslint from http://javascriptlint.com/
   " autocmd BufWritePost *.js !test -f ~/jslint/jsl && ~/jslint/jsl -conf ~/jslint/jsl.default.conf -nologo -nosummary -process <afile>
+  " What does this do? (in case i want to steal it) - M
   autocmd BufWritePost *.rb !ruby -c <afile>
   autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
 
 
 elseif whoami == "michael"
-  " Any line over 79 chars should be highlighted
+  " Any Python line over 79 chars should be highlighted
   autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
   autocmd FileType python match OverLength /\%>79v.\+/
-  
+
+  " On save of a Python file, strip trailing whitespaces.
+  fun! <SID>StripTrailingWhitespaces()
+      let l = line(".")
+      let c = col(".")
+      %s/\s\+$//e
+      call cursor(l, c)
+  endfun
+  autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
+
   " Uncomment this if you like - should lint check python files upon save - N
+  " (not uncommenting because I have something that checks every time I exit
+  " insert mode, installed in .vim/ftplugins/python/pyflakes .) - M
   "autocmd BufWritePost *.py !python -c "compile(open('<afile>').read(), '<afile>', 'exec')"
 
   " ************** Taglist ************
