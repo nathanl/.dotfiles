@@ -184,7 +184,7 @@ set expandtab " spaces instead of tab characters
 
 
 " Nathan- and Michael-specific sections to keep peace among the nations
-let whoami = "Set this to 'nathan' or 'michael'"
+let whoami = "set this to nathan or michael"
 if whoami == "nathan"
 
   " Always show line numbers
