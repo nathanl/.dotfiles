@@ -228,6 +228,11 @@ elseif whoami == "michael"
   autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
   autocmd FileType python match OverLength /\%>79v.\+/
 
+  " Pyflakes plugin colors errors as 'SpellBad' which is the same color as
+  " strings by default, making them invisible.  Change the color to be
+  " readable.
+  hi SpellBad ctermbg=3
+
   " On save of a Python file, strip trailing whitespaces.
   fun! <SID>StripTrailingWhitespaces()
       let l = line(".")
