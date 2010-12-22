@@ -183,8 +183,12 @@ highlight SpecialKey guifg=#4a4a59
 set expandtab " spaces instead of tab characters
 
 
-" Nathan- and Michael-specific sections to keep peace among the nations
-let whoami = "set this to nathan or michael"
+" ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
+" Make sure the variable at least exists, so if the external file isn't
+" loaded, we get a useful error
+let whoami = ""
+" Pull the value from an external file
+source ~/.currentVimUser.vim
 if whoami == "nathan"
 
   " Always show line numbers
@@ -295,6 +299,8 @@ elseif whoami == "michael"
   unlet loaded_taglist
 else
   " Next line is invalid config syntax, as a hacky way of notifying the user.
-    You have to set the "whoami" variable in .vimrc, to turn on nathan- or michael-specific config.  You will see this error message each time you start vim, until you do so.
+    You have to set the "whoami" so we can load user-specific section(s).  Create ~/currentVimUser.vim. Its contents should be something like 'let whoami = "nathan"'. You will see this error message each time you start vim, until you do so. (You'll also have to reload .vimrc.)
+
+
 endif
 
