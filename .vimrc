@@ -182,6 +182,9 @@ highlight SpecialKey guifg=#4a4a59
 " ************** Tabs ***********************
 set expandtab " spaces instead of tab characters
 
+" When indenting in visual mode, return to visual mode
+vmap > >gv
+vmap < <gv
 
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
