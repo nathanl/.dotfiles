@@ -306,7 +306,7 @@ elseif whoami == "michael"
   unlet loaded_taglist
 else
   " Next line is invalid config syntax, as a hacky way of notifying the user.
-    You have to set the "whoami" so we can load user-specific section(s).  Create ~/currentVimUser.vim. Its contents should be something like 'let whoami = "nathan"'. You will see this error message each time you start vim, until you do so. (You'll also have to reload .vimrc.)
+    You have to set the "whoami" so we can load user-specific section(s).  Create ~/.currentVimUser.vim. Its contents should be something like 'let whoami="nathan"'. You will see this error message each time you start vim, until you do so. (You'll also have to reload .vimrc.)
 
 
 endif
