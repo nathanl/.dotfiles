@@ -198,6 +198,8 @@ let whoami = ""
 source ~/.currentVimUser.vim
 if whoami == "nathan"
 
+  imap <C-h> <Space>=>
+
   " Always show line numbers
   set number
 
