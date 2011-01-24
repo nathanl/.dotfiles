@@ -198,7 +198,7 @@ let whoami = ""
 source ~/.currentVimUser.vim
 if whoami == "nathan"
 
-  imap <C-h> <Space>=>
+  imap <C-h> <Space>=><Space>
 
   " Always show line numbers
   set number
