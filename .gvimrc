@@ -3,6 +3,8 @@ set lines=68 columns=128
 
 colorscheme railscasts
 
+highlight LineNr ctermfg=grey ctermbg=black guibg=black guifg=grey
+
 set guifont=DejaVu\ Sans\ Mono:h13
 
 " When highlighting search terms, make sure text is contrasting colors
