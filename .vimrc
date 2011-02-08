@@ -231,9 +231,10 @@ if whoami == "nathan"
 
   " get jslint from http://javascriptlint.com/
   " autocmd BufWritePost *.js !test -f ~/jslint/jsl && ~/jslint/jsl -conf ~/jslint/jsl.default.conf -nologo -nosummary -process <afile>
-  " What does this do? (in case i want to steal it) - M
-  autocmd BufWritePost *.rb !ruby -c <afile>
-  autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
+  " When writing one of these file types, run this lint check command
+  " autocmd BufWritePost *.rb silent! !ruby -c <afile> > /dev/null
+  " autocmd BufWritePost *.rb !ruby -c <afile>
+  " autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
 
 
 elseif whoami == "michael"
