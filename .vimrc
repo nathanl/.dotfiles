@@ -231,10 +231,9 @@ if whoami == "nathan"
 
   " get jslint from http://javascriptlint.com/
   " autocmd BufWritePost *.js !test -f ~/jslint/jsl && ~/jslint/jsl -conf ~/jslint/jsl.default.conf -nologo -nosummary -process <afile>
-  " When writing one of these file types, run this lint check command
-  " autocmd BufWritePost *.rb silent! !ruby -c <afile> > /dev/null
-  " autocmd BufWritePost *.rb !ruby -c <afile>
-  " autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
+  " When writing a file, if there are errors, have Syntastic plugin mark them
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=1
 
 
 elseif whoami == "michael"
