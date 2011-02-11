@@ -198,6 +198,10 @@ let whoami = ""
 source ~/.currentVimUser.vim
 if whoami == "nathan"
 
+  " words should not include underscores, so that
+  " cw can change just foo in foo_bar_method
+  set iskeyword-=_
+
   imap <C-h> <Space>=><Space>
 
   " Always show line numbers
