@@ -236,6 +236,9 @@ if whoami == "nathan"
   " get jslint from http://javascriptlint.com/
   " autocmd BufWritePost *.js !test -f ~/jslint/jsl && ~/jslint/jsl -conf ~/jslint/jsl.default.conf -nologo -nosummary -process <afile>
   " When writing a file, if there are errors, have Syntastic plugin mark them
+  " In order to check Javascript files, you must have the `jsl` executable from here
+  " in your path:
+  " http://www.javascriptlint.com/download.htm
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
 
