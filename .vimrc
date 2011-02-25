@@ -198,6 +198,8 @@ let whoami = ""
 source ~/.currentVimUser.vim
 if whoami == "nathan"
 
+  source ~/.vim/abbreviations
+
   " words should not include underscores, so that
   " cw can change just foo in foo_bar_method
   set iskeyword-=_
