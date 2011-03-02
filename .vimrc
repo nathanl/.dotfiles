@@ -209,8 +209,8 @@ if whoami == "nathan"
   set clipboard+=unnamed
 
   " Move lines up and down
-  map <C-J> :m +1 <CR>
-  map <C-K> :m -2 <CR>
+  nmap <C-J> :m +1 <CR>
+  nmap <C-K> :m -2 <CR>
 
   " Duplicate a selection
   " Visual mode: D
