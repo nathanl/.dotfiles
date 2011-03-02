@@ -12,3 +12,7 @@ set guifont=DejaVu\ Sans\ Mono:h13
 
 " Better highlighting of matching braces
 hi MatchParen guibg=blue guifg=black
+
+" Invisible character colors - see http://vimcasts.org/episodes/show-invisibles/
+:highlight NonText guifg=#4a4a59
+:highlight SpecialKey guifg=#4a4a59
