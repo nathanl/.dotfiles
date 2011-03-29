@@ -152,14 +152,18 @@ autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<
 "use Ruby syntax highlighting on erb files
 au BufReadPost *.erb set syntax=eruby 
 
+" Set the leader key to comma (is normally \) for easy access to plugins
+let mapleader = ","
+
 " ***************** Tasklist settings *************
 " (Shows each TODO in your file.  'q' quits, '<CR>' jumps to line.
 " mnemonic: "Todo"
-map T :TaskList<CR>
+
+map <unique> <silent> <Leader>t <Plug>TaskList
 
 " ***************** NERDTree settings *************
 " mnemonic: "Files"
-map F :NERDTreeToggle<CR>
+map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
 " Close the NERDTree after opening a file.  Because we open it with
 " :NERDTreeToggle rather than :NERDTree, it will be in the same place
 " the next time we need it.
@@ -215,9 +219,6 @@ if whoami == "nathan"
   " Duplicate a selection
   " Visual mode: D
   vmap D y'>p
-
-  " Set the leader key to comma (is normally \) for easy access to PeepOpen
-  let mapleader = ","
 
   " Automatically load .vimrc source when saved
   autocmd BufWritePost .vimrc source $MYVIMRC
