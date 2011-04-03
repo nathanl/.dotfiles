@@ -95,7 +95,7 @@ autocmd FileType xhtml,html,javascript set softtabstop=2
 " whether we have +ruby support, so let's just turn off omnifunc support
 " in ruby -- you still get keyword completion.
 let g:omni_support=1
-autocmd FileType ruby let g:omni_support=0
+" autocmd FileType ruby let g:omni_support=0
 
 " TODO: I would like to do completeopt+=longest which has the effect of only
 " completing as many characters as are unambiguous; but I can't figure out
