@@ -199,8 +199,24 @@ let whoami = ""
 source ~/.currentVimUser.vim
 if whoami == "nathan"
 
+  " <F5> Should toggle Solarized colors dark/light
+  function! ToggleBackground()
+      if (g:solarized_style=="dark")
+      let g:solarized_style="light"
+      colorscheme solarized
+  else
+      let g:solarized_style="dark"
+      colorscheme solarized
+  endif
+  endfunction
+  command! Togbg call ToggleBackground()
+  nnoremap <F5> :call ToggleBackground()<CR>
+  inoremap <F5> <ESC>:call ToggleBackground()<CR>a
+  vnoremap <F5> <ESC>:call ToggleBackground()<CR>gv
+  " Use abbreviations defined here
   source ~/.vim/abbreviations
 
+  " Control+h produces a hashrocket
   imap <C-h> <Space>=><Space>
 
   " Always show line numbers
