@@ -39,13 +39,8 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   " Matching braces get the same background and foreground color, making
   " for a very bad UI, unless we change the default colors.
-  hi MatchParen ctermbg=blue
+  " hi MatchParen ctermbg=blue
 endif
-
-" When highlighting search terms, make sure text is contrasting color
-:highlight Search ctermbg=yellow ctermfg=black
-" Do the same for gvim
-:highlight Search guibg=yellow guifg=black
 
 " Do proper indenting per language.  There is a directory full of indenting
 " rules that gets installed with vim, like python.vim and ruby.vim; mine was
@@ -149,8 +144,10 @@ command! W w
 autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<cr>
 
 " **************** Ruby config *****************************
-"use Ruby syntax highlighting on erb files
+" Use Ruby syntax highlighting on erb files
 au BufReadPost *.erb set syntax=eruby 
+" Same for Gemfiles
+au BufReadPost Gemfile* set syntax=eruby 
 
 " Set the leader key to comma (is normally \) for easy access to plugins
 let mapleader = ","
@@ -178,11 +175,9 @@ let loaded_taglist = 'manually aborted'
 " Beautify display of hidden characters (tabs and line breaks)
 " (:set list! to show)
 set listchars=tab:▸\ ,eol:¬
-" Invisible character colors - NOT working - should look like here:
-" http://vimcasts.org/episodes/show-invisibles/
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
 
+set background=dark
+colorscheme solarized
 " ************** Tabs ***********************
 set expandtab " spaces instead of tab characters
 
@@ -193,6 +188,8 @@ vmap <Tab> >gv
 " Outdent with < or Shift-Tab
 vmap < <gv
 vmap <S-Tab> <gv
+" Shift-tab will also outdent in insert mode
+imap <S-Tab> <C-d>
 
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
@@ -208,9 +205,6 @@ if whoami == "nathan"
 
   " Always show line numbers
   set number
-
-  " Let the + register be the system clipboard (at least in Ubuntu?)
-  set clipboard+=unnamed
 
   " Move lines up and down
   nmap <C-J> :m +1 <CR>
@@ -233,7 +227,6 @@ if whoami == "nathan"
   cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
   " get jslint from http://javascriptlint.com/
-  " autocmd BufWritePost *.js !test -f ~/jslint/jsl && ~/jslint/jsl -conf ~/jslint/jsl.default.conf -nologo -nosummary -process <afile>
   " When writing a file, if there are errors, have Syntastic plugin mark them
   " In order to check Javascript files, you must have the `jsl` executable from here
   " in your path:
