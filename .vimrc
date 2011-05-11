@@ -50,10 +50,6 @@ filetype plugin indent on
 " Wrap text at column 78, in text files.
 autocmd FileType text setlocal textwidth=78
 
-" Wrap text at column 78 in text files.  
-" In code files this will only apply to comments.
-set textwidth=78
-
 " Always show tab line even when only one tab is open.
 set showtabline=2
 
@@ -85,9 +81,9 @@ autocmd FileType text set noexpandtab
 
 " HTML and Javascript are better off with 2-space tabs, not 4-space, so we
 " override the settings above.
-autocmd FileType xhtml,html,javascript set shiftwidth=2
-autocmd FileType xhtml,html,javascript set tabstop=2
-autocmd FileType xhtml,html,javascript set softtabstop=2
+autocmd FileType xhtml,html,php,javascript set shiftwidth=2
+autocmd FileType xhtml,html,php,javascript set tabstop=2
+autocmd FileType xhtml,html,php,javascript set softtabstop=2
 
 " *************** Tab completion ****************
 " If you don't have +ruby compiled into vim, ruby files will barf when
@@ -176,20 +172,8 @@ let loaded_taglist = 'manually aborted'
 " (:set list! to show)
 set listchars=tab:▸\ ,eol:¬
 
-set background=dark
-colorscheme solarized
 " ************** Tabs ***********************
 set expandtab " spaces instead of tab characters
-
-"** When indenting in visual mode, return to visual mode **
-" Indent with > or Tab
-vmap > >gv
-vmap <Tab> >gv
-" Outdent with < or Shift-Tab
-vmap < <gv
-vmap <S-Tab> <gv
-" Shift-tab will also outdent in insert mode
-imap <S-Tab> <C-d>
 
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
@@ -198,6 +182,22 @@ let whoami = ""
 " Pull the value from an external file
 source ~/.currentVimUser.vim
 if whoami == "nathan"
+  " Wrap text at column 78 in text files.  
+  " In code files this will only apply to comments.
+  set textwidth=78
+
+  set background=dark
+  colorscheme solarized
+
+  "** When indenting in visual mode, return to visual mode **
+  " indent with > or tab
+  vmap > >gv
+  vmap <tab> >gv
+  " outdent with < or shift-tab
+  vmap < <gv
+  vmap <S-Tab> <gv
+  " Shift-tab will also outdent in insert mode
+  imap <S-Tab> <C-d>
 
   " <F5> Should toggle Solarized colors dark/light
   function! ToggleBackground()
@@ -252,6 +252,8 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
+  colorscheme peachpuff
+
   " Any Python line over 79 chars should be highlighted
   autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
   autocmd FileType python match OverLength /\%>79v.\+/
