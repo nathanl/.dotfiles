@@ -15,5 +15,4 @@ output of `ls -lah | grep .dot` in my home directory)
 .zsh@ -> .dotfiles/.zsh
 .zshrc@ -> .dotfiles/.zsh/zshrc
 
-You can create these symlinks like, for example, `ln -s .dotfiles/.vimrc
-.vimrc`
+You can create these symlinks like, for example, `ln -s .dotfiles/.vimrc .vimrc`
