@@ -42,6 +42,25 @@ if &t_Co > 2 || has("gui_running")
   " hi MatchParen ctermbg=blue
 endif
 
+" Set to Solarized colorscheme which works on lots of platforms and looks nice
+set background=dark
+colorscheme solarized
+
+" <F5> Should toggle Solarized colors dark/light
+function! ToggleBackground()
+  if (g:solarized_style=="dark")
+  let g:solarized_style="light"
+  colorscheme solarized
+else
+  let g:solarized_style="dark"
+  colorscheme solarized
+endif
+endfunction
+command! Togbg call ToggleBackground()
+nnoremap <F5> :call ToggleBackground()<CR>
+inoremap <F5> <ESC>:call ToggleBackground()<CR>a
+vnoremap <F5> <ESC>:call ToggleBackground()<CR>gv
+
 " Do proper indenting per language.  There is a directory full of indenting
 " rules that gets installed with vim, like python.vim and ruby.vim; mine was
 " /usr/share/vim/vim72/ftplugin/.
@@ -186,9 +205,6 @@ if whoami == "nathan"
   " In code files this will only apply to comments.
   set textwidth=78
 
-  set background=dark
-  colorscheme solarized
-
   "** When indenting in visual mode, return to visual mode **
   " indent with > or tab
   vmap > >gv
@@ -199,20 +215,6 @@ if whoami == "nathan"
   " Shift-tab will also outdent in insert mode
   imap <S-Tab> <C-d>
 
-  " <F5> Should toggle Solarized colors dark/light
-  function! ToggleBackground()
-      if (g:solarized_style=="dark")
-      let g:solarized_style="light"
-      colorscheme solarized
-  else
-      let g:solarized_style="dark"
-      colorscheme solarized
-  endif
-  endfunction
-  command! Togbg call ToggleBackground()
-  nnoremap <F5> :call ToggleBackground()<CR>
-  inoremap <F5> <ESC>:call ToggleBackground()<CR>a
-  vnoremap <F5> <ESC>:call ToggleBackground()<CR>gv
   " Use abbreviations defined here
   source ~/.vim/abbreviations
 
@@ -252,8 +254,6 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
-  colorscheme peachpuff
-
   " Any Python line over 79 chars should be highlighted
   autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
   autocmd FileType python match OverLength /\%>79v.\+/
