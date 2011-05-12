@@ -254,9 +254,6 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
-  " Any Python line over 79 chars should be highlighted
-  autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-  autocmd FileType python match OverLength /\%>79v.\+/
 
   " Pyflakes plugin colors errors as 'SpellBad' which is the same color as
   " strings by default, making them invisible.  Change the color to be
