@@ -203,6 +203,9 @@ if whoami == "nathan"
   " In code files this will only apply to comments.
   set textwidth=78
 
+  " For text files, use soft wrapping (don't insert line breaks)
+  autocmd BufReadPost,BufNewFile *.txt set wrap textwidth=0 linebreak
+
   "** When indenting in visual mode, return to visual mode **
   " indent with > or tab
   vmap > >gv
