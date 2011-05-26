@@ -159,10 +159,8 @@ command! W w
 autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<cr>
 
 " **************** Ruby config *****************************
-" Use Ruby syntax highlighting on erb files
-au BufReadPost *.erb set syntax=eruby 
-" Same for Gemfiles
-au BufReadPost Gemfile* set syntax=eruby 
+" Use Ruby syntax highlighting on these files
+au BufReadPost *.erb,Gemfile* set syntax=eruby 
 
 " Set the leader key to comma (is normally \) for easy access to plugins
 let mapleader = ","
@@ -204,6 +202,9 @@ if whoami == "nathan"
   " Wrap text at column 78 in text files.  
   " In code files this will only apply to comments.
   set textwidth=78
+
+  " For text and markdown files, use soft wrapping (don't insert line breaks)
+  autocmd BufReadPost,BufNewFile *.txt,*.md,*.mk,*.markdown set wrap textwidth=0 linebreak
 
   "** When indenting in visual mode, return to visual mode **
   " indent with > or tab
