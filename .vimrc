@@ -104,6 +104,13 @@ autocmd FileType xhtml,html,php,javascript set shiftwidth=2
 autocmd FileType xhtml,html,php,javascript set tabstop=2
 autocmd FileType xhtml,html,php,javascript set softtabstop=2
 
+" You know what sucks?  Vim's attempt at indenting PHP files.  Stuff outside
+" the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
+" line every time you hit enter.  Horrible!  HTML indenting works much better.
+" Retain HTML indenting while using php syntax coloring.
+autocmd FileType php set filetype=html
+autocmd FileType php set syntax=php
+
 " *************** Tab completion ****************
 " If you don't have +ruby compiled into vim, ruby files will barf when
 " we tab-complete and try to run omnifunc.  I don't know how to check
