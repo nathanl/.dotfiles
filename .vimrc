@@ -233,6 +233,9 @@ if whoami == "nathan"
   " Visual mode: D
   vmap D y'>p
 
+  " Visually select the text that was last edited/pasted
+  nmap gV `[v`]
+
   " Automatically load .vimrc source when saved
   autocmd BufWritePost .vimrc source $MYVIMRC
 
