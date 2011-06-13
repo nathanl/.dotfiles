@@ -204,7 +204,7 @@ if whoami == "nathan"
   set textwidth=78
 
   " For text and markdown files, use soft wrapping (don't insert line breaks)
-  autocmd BufReadPost,BufNewFile *.txt,*.md,*.mk,*.markdown set wrap textwidth=0 linebreak
+  autocmd BufReadPost,BufNewFile *.txt,*.md,*.mk,*.mkd,*.markdown set wrap textwidth=0 linebreak spell
 
   "** When indenting in visual mode, return to visual mode **
   " indent with > or tab
