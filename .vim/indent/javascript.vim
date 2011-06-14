@@ -19,7 +19,11 @@ if !exists("g:js_indent_log")
 endif
 
 setlocal indentexpr=GetJsIndent(v:lnum)
-setlocal indentkeys=0{,0},o,O,e,!<Tab>,*<Return>
+
+" This stupid line made <TAB> in insert mode mean 'autoindent this line',
+" thereby removing my ability to fix incorrect autoindents.
+" If I want to autoindent, I'll do it with = from Normal mode, fool! :)
+" setlocal indentkeys=0{,0},o,O,e,!<Tab>,*<Return>
 
 " 1. Variables
 " ============
