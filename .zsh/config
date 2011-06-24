@@ -1,4 +1,4 @@
-if [[ -s /Users/nathanlong/.rvm/scripts/rvm ]] ; then source /Users/nathanlong/.rvm/scripts/rvm ; fi
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
 if [[ -n $SSH_CONNECTION ]]; then
   export PS1='%m:%3~$(git_info_for_prompt)%# '
