@@ -43,23 +43,12 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
+syntax enable
 set background=dark
+" Necessary in mintty for background to be blue, not black, in vim, even
+" after setting mintty's terminal colors to solarized's via a script
+let g:solarized_termtrans=1
 colorscheme solarized
-
-" <F5> Should toggle Solarized colors dark/light
-function! ToggleBackground()
-  if (g:solarized_style=="dark")
-  let g:solarized_style="light"
-  colorscheme solarized
-else
-  let g:solarized_style="dark"
-  colorscheme solarized
-endif
-endfunction
-command! Togbg call ToggleBackground()
-nnoremap <F5> :call ToggleBackground()<CR>
-inoremap <F5> <ESC>:call ToggleBackground()<CR>a
-vnoremap <F5> <ESC>:call ToggleBackground()<CR>gv
 
 " Do proper indenting per language.  There is a directory full of indenting
 " rules that gets installed with vim, like python.vim and ruby.vim; mine was
