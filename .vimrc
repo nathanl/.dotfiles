@@ -200,7 +200,7 @@ if whoami == "nathan"
   set textwidth=78
 
   " For text and markdown files, use soft wrapping (don't insert line breaks)
-  autocmd BufReadPost,BufNewFile *.txt,*.md,*.mk,*.markdown set wrap textwidth=0 linebreak
+  autocmd BufReadPost,BufNewFile *.txt,*.md,*.mk,*.mkd,*.markdown set wrap textwidth=0 linebreak spell
 
   "** When indenting in visual mode, return to visual mode **
   " indent with > or tab
@@ -228,6 +228,9 @@ if whoami == "nathan"
   " Duplicate a selection
   " Visual mode: D
   vmap D y'>p
+
+  " Visually select the text that was last edited/pasted
+  nmap gV `[v`]
 
   " Automatically load .vimrc source when saved
   autocmd BufWritePost .vimrc source $MYVIMRC
