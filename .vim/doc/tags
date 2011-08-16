@@ -200,6 +200,17 @@ tcomment#OperatorLine()	tcomment.txt	/*tcomment#OperatorLine()*
 tcomment#OperatorLineAnyway()	tcomment.txt	/*tcomment#OperatorLineAnyway()*
 tcomment-maps	tcomment.txt	/*tcomment-maps*
 tcomment.txt	tcomment.txt	/*tcomment.txt*
+tog-bg	togglebg.txt	/*tog-bg*
+togbg	togglebg.txt	/*togbg*
+toggle-background	togglebg.txt	/*toggle-background*
+toggle-bg	togglebg.txt	/*toggle-bg*
+togglebackground	togglebg.txt	/*togglebackground*
+togglebg	togglebg.txt	/*togglebg*
+togglebg-default	togglebg.txt	/*togglebg-default*
+togglebg-issues	togglebg.txt	/*togglebg-issues*
+togglebg-newmap	togglebg.txt	/*togglebg-newmap*
+togglebg-usage	togglebg.txt	/*togglebg-usage*
+togglebg.vim	togglebg.txt	/*togglebg.vim*
 vS	surround.txt	/*vS*
 v_[%	matchit.txt	/*v_[%*
 v_]%	matchit.txt	/*v_]%*
