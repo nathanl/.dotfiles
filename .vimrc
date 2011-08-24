@@ -188,6 +188,13 @@ set listchars=tab:▸\ ,eol:¬
 " ************** Tabs ***********************
 set expandtab " spaces instead of tab characters
 
+" If there are any machine-specific tweaks for Vim, load them from the following file.
+try 
+  source .vimrc_machine_specific
+catch
+  " No such file? No problem; just ignore it.
+endtry 
+
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
 " loaded, we get a useful error
