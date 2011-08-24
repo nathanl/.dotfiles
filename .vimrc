@@ -155,8 +155,8 @@ command! W w
 autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<cr>
 
 " **************** Ruby config *****************************
-" Use Ruby syntax highlighting on these files
-au BufReadPost *.erb,Gemfile* set syntax=eruby 
+" Treat the following files as Ruby
+au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Set the leader key to comma (is normally \) for easy access to plugins
 let mapleader = ","
