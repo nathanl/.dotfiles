@@ -76,22 +76,17 @@ autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
 set smarttab  " backspace over a tab will remove a tab's worth of space
 
-" Most times you want 4 spaces per tab, so these lines make this the default.
+" Most times you want 2 spaces per tab, so these lines make this the default.
 " There are ways to make vi do clever things with tabs in different
 " situations, like MS Word can, but I *always* want tab to behave the same way
 " -- so I set all three of these tab-related values the same.
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+" (To overrride these per file type, put commands in .vim/ftplugin/)
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " text files should put real tabs in, not spaces.
 autocmd FileType text set noexpandtab
-
-" HTML and Javascript are better off with 2-space tabs, not 4-space, so we
-" override the settings above.
-autocmd FileType xhtml,html,php,javascript set shiftwidth=2
-autocmd FileType xhtml,html,php,javascript set tabstop=2
-autocmd FileType xhtml,html,php,javascript set softtabstop=2
 
 " You know what sucks?  Vim's attempt at indenting PHP files.  Stuff outside
 " the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
@@ -241,11 +236,6 @@ if whoami == "nathan"
 
   " Automatically load .vimrc source when saved
   autocmd BufWritePost .vimrc source $MYVIMRC
-
-  " Override Michael's tab settings to be 2 spaces
-  set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
 
   " Inserts the path of the currently edited file into a command
   " Command mode: Ctrl+P
