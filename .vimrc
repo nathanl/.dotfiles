@@ -92,8 +92,14 @@ autocmd FileType text set noexpandtab
 " the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
 " line every time you hit enter.  Horrible!  HTML indenting works much better.
 " Retain HTML indenting while using php syntax coloring.
-autocmd FileType php set filetype=html
-autocmd FileType php set syntax=php
+"
+" Michael-- Setting PHP's filetype to HTML causes problems for my syntax checker.
+" I've commented this out and added .vim/indent/php.vim which is
+" supposed to indent mixed PHP/HTML correctly. It seems to work for me. Would
+" you try it?
+"
+" autocmd FileType php set filetype=html
+" autocmd FileType php set syntax=php
 
 " *************** Tab completion ****************
 " If you don't have +ruby compiled into vim, ruby files will barf when
