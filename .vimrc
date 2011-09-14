@@ -236,9 +236,6 @@ if whoami == "nathan"
   " Visually select the text that was last edited/pasted
   nmap gV `[v`]
 
-  " Automatically load .vimrc source when saved
-  autocmd BufWritePost .vimrc source $MYVIMRC
-
   " Inserts the path of the currently edited file into a command
   " Command mode: Ctrl+P
   cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
