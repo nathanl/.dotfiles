@@ -1,6 +1,7 @@
 " Canonical version of this file and of the .vim directory is in git
 " at git@github.com:sleeplessgeek/dotfiles.git
 " 
+" **************** BASIC SETTINGS ******************  
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -17,24 +18,6 @@ set ruler         " show the cursor position all the time
 set showtabline=2 " Always show tab line even when only one tab is open.
 set showcmd       " display incomplete commands
 
-" ****************** Searching ********************
-set incsearch     " do incremental searching
-set ignorecase    " do case-insensitive searches
-set smartcase     " ... unless the search contains upper-case characters
-set hlsearch      " highlight all matched terms
-" Pressing return clears highlighted search
-:nnoremap <CR> :nohlsearch<CR>/<BS>
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! %!sudo tee > /dev/null %
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-set mouse=a
-
-" ctrl+w ctrl+w in insert mode should do the same thing as in normal mode
-" (change windows)
-imap <C-w><C-w> <esc><C-w><C-w>
-
 " Turn on syntax highlighting, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -50,7 +33,6 @@ endif
 " /usr/share/vim/vim72/ftplugin/.
 filetype plugin indent on 
 
-
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -62,11 +44,34 @@ autocmd BufReadPost *
 " When creating new files, use a template if we have one in templates/
 autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
-" ************** Tabs **************
+" ****************** SEARCHING *********************  
+set incsearch     " do incremental searching
+set ignorecase    " do case-insensitive searches
+set smartcase     " ... unless the search contains upper-case characters
+set hlsearch      " highlight all matched terms
+" Pressing return clears highlighted search
+:nnoremap <CR> :nohlsearch<CR>/<BS>
 
-set smarttab  " backspace over a tab will remove a tab's worth of space
+" In many terminal emulators the mouse works just fine, thus enable it.
+set mouse=a
 
-" Most times you want 2 spaces per tab, so these lines make this the default.
+" **************** CONVENIENCE MAPPINGS ************  
+" Ctrl-L recolors the screen when it gets confused.
+noremap <c-l> <c-l>:syntax sync fromstart<CR>
+inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
+
+" If you type :W<cr>, save anyway.
+command! W w
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! %!sudo tee > /dev/null %
+
+" ctrl+w ctrl+w in insert mode should do the same thing as in normal mode
+" (change windows)
+imap <C-w><C-w> <esc><C-w><C-w>
+
+" ***************** TABS ***************************  
+" Usually, you want 2 spaces per tab, so these lines make this the default.
 " There are ways to make vi do clever things with tabs in different
 " situations, like MS Word can, but I *always* want tab to behave the same way
 " -- so I set all three of these tab-related values the same.
@@ -74,6 +79,14 @@ set smarttab  " backspace over a tab will remove a tab's worth of space
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
+set expandtab " insert spaces instead of tab characters
+set smarttab  " backspace over a tab will remove a tab's worth of space
+
+" *********** DISPLAYING HIDDEN CHARACTERS *********  
+" Beautify display of hidden characters (tabs and line breaks)
+" (:set list! to show)
+set listchars=tab:▸\ ,eol:¬
 
 " You know what sucks?  Vim's attempt at indenting PHP files.  Stuff outside
 " the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
@@ -131,58 +144,25 @@ inoremap <silent><TAB> <C-R>=CleverTab('omni')<CR><C-R>=CleverTab('keyword')<CR>
 " around when you hit escape, such that when you later hit 'a' you are in the
 " wrong position.  Hopefully there exists a variable like g:autoclosepreview ?
 
-" **************** Ctrl-L recolors the screen when it gets confused. ******
-noremap <c-l> <c-l>:syntax sync fromstart<CR>
-inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
 
-" *************** If you type :W<cr>, save anyway. ***************
-command! W w
+" **************** PLUGINS *************************  
+" Get Pathogen plugin to recursively load other plugins in .vim/bundle/active
+call pathogen#infect('bundle/active')
 
-" **************** Python config **************
-" NOTE: This is in ftplugin/python.vim now. If that's OK, delete it from here.
-" 
-" Extract method.  <leader> defaults to \
-" autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<cr>
-
-" Set the leader key to comma (is normally \) for easy access to plugins
+" Set the leader key to comma (normally, it's "\") for easy access to plugins
 let mapleader = ","
 
-" ***************** Tasklist settings *************
-" (Shows each TODO in your file.  'q' quits, '<CR>' jumps to line.
-" mnemonic: "Todo"
-
-map <unique> <silent> <Leader>t <Plug>TaskList
-
-" ***************** NERDTree settings *************
-" mnemonic: "Files"
+" Leader f opens NERDTree. Mnemonic: f for "Files"
 map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
-" Close the NERDTree after opening a file.  Because we open it with
-" :NERDTreeToggle rather than :NERDTree, it will be in the same place
-" the next time we need it.
-let NERDTreeQuitOnOpen=1
+
+" Leader t opens TaskList. Mnemonic: t for "TODO"
+" '<CR>' jumps to highlighted TODO; 'q' quits
+map <unique> <silent> <Leader>t <Plug>TaskList
 
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
 " comment out this line if you have Exuberant CTags installed.
 let loaded_taglist = 'manually aborted'
-
-" ************ Hidden characters ********
-" Beautify display of hidden characters (tabs and line breaks)
-" (:set list! to show)
-set listchars=tab:▸\ ,eol:¬
-
-" ************** Tabs ***********************
-set expandtab " spaces instead of tab characters
-
-" If there are any machine-specific tweaks for Vim, load them from the following file.
-try 
-  source .vimrc_machine_specific
-catch
-  " No such file? No problem; just ignore it.
-endtry 
-
-" Get Pathogen plugin to recursively load other plugins in .vim/bundle/
-call pathogen#infect()
 
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
 syntax enable
@@ -315,6 +295,11 @@ else
   " Next line is invalid config syntax, as a hacky way of notifying the user.
     You have to set the "whoami" so we can load user-specific section(s).  Create ~/.currentVimUser.vim. Its contents should be something like 'let whoami="nathan"'. You will see this error message each time you start vim, until you do so. (You'll also have to reload .vimrc.)
 
-
 endif
 
+" If there are any machine-specific tweaks for Vim, load them from the following file.
+try 
+  source .vimrc_machine_specific
+catch
+  " No such file? No problem; just ignore it.
+endtry 
