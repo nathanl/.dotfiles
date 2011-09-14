@@ -265,11 +265,6 @@ elseif whoami == "michael"
   endfun
   autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
 
-  " Uncomment this if you like - should lint check python files upon save - N
-  " (not uncommenting because I have something that checks every time I exit
-  " insert mode, installed in .vim/ftplugins/python/pyflakes .) - M
-  "autocmd BufWritePost *.py !python -c "compile(open('<afile>').read(), '<afile>', 'exec')"
-
   " ************** Taglist ************
   " In order to use this, you must first download the latest .tar.gz from
   " http://ctags.sourceforge.net/, then run
