@@ -146,8 +146,9 @@ inoremap <silent><TAB> <C-R>=CleverTab('omni')<CR><C-R>=CleverTab('keyword')<CR>
 
 
 " **************** PLUGINS *************************  
-" Get Pathogen plugin to recursively load other plugins in .vim/bundle/active
-call pathogen#infect('bundle/active')
+" Get Pathogen plugin to load other plugins - all files, recursively, from
+" the path specified
+call pathogen#infect('~/.vim/bundle/active')
 
 " Set the leader key to comma (normally, it's "\") for easy access to plugins
 let mapleader = ","
