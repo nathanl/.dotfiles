@@ -55,9 +55,6 @@ colorscheme solarized
 " /usr/share/vim/vim72/ftplugin/.
 filetype plugin indent on 
 
-" Wrap text at column 78, in text files.
-autocmd FileType text setlocal textwidth=78
-
 " Always show tab line even when only one tab is open.
 set showtabline=2
 
@@ -69,7 +66,7 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-" Attempt to load a template for the file type we're loading.
+" When creating new files, use a template if we have one in templates/
 autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
 " ************** Tabs **************
@@ -85,15 +82,12 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-" text files should put real tabs in, not spaces.
-autocmd FileType text set noexpandtab
-
 " You know what sucks?  Vim's attempt at indenting PHP files.  Stuff outside
 " the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
 " line every time you hit enter.  Horrible!  HTML indenting works much better.
 " Retain HTML indenting while using php syntax coloring.
 "
-" Michael-- Setting PHP's filetype to HTML causes problems for my syntax checker.
+" NOTE: Michael -- setting PHP's filetype to HTML causes problems for my syntax checker.
 " I've commented this out and added .vim/indent/php.vim which is
 " supposed to indent mixed PHP/HTML correctly. It seems to work for me. Would
 " you try it?
@@ -152,12 +146,10 @@ inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
 command! W w
 
 " **************** Python config **************
+" NOTE: This is in ftplugin/python.vim now. If that's OK, delete it from here.
+" 
 " Extract method.  <leader> defaults to \
-autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<cr>
-
-" **************** Ruby config *****************************
-" Treat the following files as Ruby
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+" autocmd FileType python map <leader>rm :let g:bike_exceptions=1<cr>:BikeExtract<cr>
 
 " Set the leader key to comma (is normally \) for easy access to plugins
 let mapleader = ","
@@ -209,9 +201,6 @@ if whoami == "nathan"
   " Wrap text at column 78 in text files.  
   " In code files this will only apply to comments.
   set textwidth=78
-
-  " For text and markdown files, use soft wrapping (don't insert line breaks)
-  autocmd BufReadPost,BufNewFile *.txt,*.md,*.mk,*.mkd,*.markdown set wrap textwidth=0 linebreak spell
 
   "** When indenting in visual mode, return to visual mode **
   " indent with > or tab
