@@ -12,15 +12,16 @@ autocmd!
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=50  " keep 50 lines of command line history
-set ruler       " show the cursor position all the time
-set showcmd     " display incomplete commands
+set history=50    " keep 50 lines of command line history
+set ruler         " show the cursor position all the time
+set showtabline=2 " Always show tab line even when only one tab is open.
+set showcmd       " display incomplete commands
 
 " ****************** Searching ********************
-set incsearch   " do incremental searching
-set ignorecase  " do case-insensitive searches
-set smartcase   " ... unless the search contains upper-case characters
-set hlsearch    " highlight all matched terms
+set incsearch     " do incremental searching
+set ignorecase    " do case-insensitive searches
+set smartcase     " ... unless the search contains upper-case characters
+set hlsearch      " highlight all matched terms
 " Pressing return clears highlighted search
 :nnoremap <CR> :nohlsearch<CR>/<BS>
 
@@ -30,7 +31,8 @@ cmap w!! %!sudo tee > /dev/null %
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
-" C-wC-w should move windows, always.
+" ctrl+w ctrl+w in insert mode should do the same thing as in normal mode
+" (change windows)
 imap <C-w><C-w> <esc><C-w><C-w>
 
 " Turn on syntax highlighting, when the terminal has colors
@@ -42,21 +44,12 @@ if &t_Co > 2 || has("gui_running")
   " hi MatchParen ctermbg=blue
 endif
 
-" Set to Solarized colorscheme which works on lots of platforms and looks nice
-syntax enable
-set background=dark
-" Necessary in mintty for background to be blue, not black, in vim, even
-" after setting mintty's terminal colors to solarized's via a script
-let g:solarized_termtrans=1
-colorscheme solarized
 
 " Do proper indenting per language.  There is a directory full of indenting
 " rules that gets installed with vim, like python.vim and ruby.vim; mine was
 " /usr/share/vim/vim72/ftplugin/.
 filetype plugin indent on 
 
-" Always show tab line even when only one tab is open.
-set showtabline=2
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -190,6 +183,17 @@ endtry
 
 " Get Pathogen plugin to recursively load other plugins in .vim/bundle/
 call pathogen#infect()
+
+" Set to Solarized colorscheme which works on lots of platforms and looks nice
+syntax enable
+set background=dark
+" Necessary in mintty for background to be blue, not black, in vim, even
+" after setting mintty's terminal colors to solarized's via a script
+let g:solarized_termtrans=1
+colorscheme solarized
+
+" Let F5 trigger changing Solarized themes
+call togglebg#map("<F5>")
 
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
