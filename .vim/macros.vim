@@ -2,4 +2,4 @@ function UseUnixLineBreaks()
   :%s//\r/g
 endfunction
 
-map <Leader>l :call useUnixLineBreaks()<CR>  
+map <Leader>linebreak :call UseUnixLineBreaks()<CR>  
