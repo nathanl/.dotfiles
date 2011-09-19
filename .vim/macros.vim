@@ -1,7 +1,5 @@
-function! FOO()
-  " Silly example function - change the current word
-  " to whatever is in register a
-  normal ciwa
+function UseUnixLineBreaks()
+  :%s//\r/g
 endfunction
 
-map <Leader>ss :call FOO()<cr>
+map <Leader>l :call useUnixLineBreaks()<CR>  
