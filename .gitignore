@@ -1,5 +1,5 @@
 *.swp
-.vim/.netrwhist
+.netrwhist
 .DS_Store
 .vimrc_machine_specific
 .gvimrc_machine_specific
