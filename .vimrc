@@ -306,3 +306,14 @@ try
 catch
   " No such file? No problem; just ignore it.
 endtry 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fuzzy finder
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>o :FufFile **/<CR>
+map <leader>r :FufRenewCache<CR>
+" map <silent> <leader>fd :FufFileWithCurrentBufferDir **/<cr>
+
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|png|jpg|gif|psd)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
+
