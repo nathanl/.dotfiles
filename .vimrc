@@ -300,9 +300,21 @@ else
 
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fuzzy finder
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>o :FufFile **/<CR>
+map <leader>r :FufRenewCache<CR>
+" map <silent> <leader>fd :FufFileWithCurrentBufferDir **/<cr>
+
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|png|jpg|gif|psd)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
+
+
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
-  source .vimrc_machine_specific
+  source ~/.vimrc_machine_specific
 catch
   " No such file? No problem; just ignore it.
 endtry 
+
