@@ -22,11 +22,7 @@ set showcmd       " display incomplete commands
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  " Matching braces get the same background and foreground color, making
-  " for a very bad UI, unless we change the default colors.
-  " hi MatchParen ctermbg=blue
 endif
-
 
 " Do proper indenting per language.  There is a directory full of indenting
 " rules that gets installed with vim, like python.vim and ruby.vim; mine was
