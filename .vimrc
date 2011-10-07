@@ -84,62 +84,29 @@ set smarttab  " backspace over a tab will remove a tab's worth of space
 " (:set list! to show)
 set listchars=tab:▸\ ,eol:¬
 
-" You know what sucks?  Vim's attempt at indenting PHP files.  Stuff outside
-" the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
-" line every time you hit enter.  Horrible!  HTML indenting works much better.
-" Retain HTML indenting while using php syntax coloring.
-"
-" NOTE: Michael -- setting PHP's filetype to HTML causes problems for my syntax checker.
-" I've commented this out and added .vim/indent/php.vim which is
-" supposed to indent mixed PHP/HTML correctly. It seems to work for me. Would
-" you try it?
-"
-" autocmd FileType php set filetype=html
-" autocmd FileType php set syntax=php
-
 " *************** Tab completion ****************
-" If you don't have +ruby compiled into vim, ruby files will barf when
-" we tab-complete and try to run omnifunc.  I don't know how to check
-" whether we have +ruby support, so let's just turn off omnifunc support
-" in ruby -- you still get keyword completion.
+" src: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 let g:omni_support=1
-" autocmd FileType ruby let g:omni_support=0
 
-" TODO: I would like to do completeopt+=longest which has the effect of only
-" completing as many characters as are unambiguous; but I can't figure out
-" how to make the CleverTab function work when I do that.
-
-" It first tries to omnicomplete (aka complete with words it knows about
-" the language), and if there is no match or if we're not in a code file, it
-" tries to complete with words found in the file.
-let g:stop_autocomplete=0
-function! CleverTab(type)
-    if a:type=='omni' && g:omni_support==1
-        if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-            let g:stop_autocomplete=1
-            return "\<TAB>"
-        elseif !pumvisible() && !&omnifunc && &omnifunc != ""
-            return "\<C-X>\<C-O>\<C-P>"
-        endif
-    elseif a:type=='keyword' && !pumvisible() && !g:stop_autocomplete
-        return "\<C-X>\<C-N>\<C-P>"
-    elseif a:type=='next'
-        if g:stop_autocomplete
-            let g:stop_autocomplete=0
-        else
-            return "\<C-N>"
-        endif
-    endif
-    return ''
+function! Smart_TabComplete()
+  let line = getline('.')                         " curline
+  let substr = strpart(line, -1, col('.')+1)      " from start to cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
 endfunction
-inoremap <silent><TAB> <C-R>=CleverTab('omni')<CR><C-R>=CleverTab('keyword')<CR><C-R>=CleverTab('next')<CR>
 
-" TODO: I want to close the preview window opened by omnicomplete, but
-" imapping e.g. <CR> to <esc>:pc<CR>a<CR> doesn't work when inside a code
-" comment block: somehow the comment block autoformatting slides your cursor
-" around when you hit escape, such that when you later hit 'a' you are in the
-" wrong position.  Hopefully there exists a variable like g:autoclosepreview ?
-
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " **************** PLUGINS *************************  
 " Get Pathogen plugin to load other plugins - all files, recursively, from
