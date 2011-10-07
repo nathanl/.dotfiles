@@ -109,25 +109,37 @@ endfunction
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " **************** PLUGINS *************************  
+" Set the leader key to comma (normally, it's "\") for easy access to plugins
+let mapleader = ","
+"
+" ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
 " the path specified
 call pathogen#infect('~/.vim/bundle/active')
 
-" Set the leader key to comma (normally, it's "\") for easy access to plugins
-let mapleader = ","
-
+" ************ NERDTree ****************
 " Leader f opens NERDTree. Mnemonic: f for "Files"
 map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
 
+" ************ TaskList ****************
 " Leader t opens TaskList. Mnemonic: t for "TODO"
 " '<CR>' jumps to highlighted TODO; 'q' quits
 map <unique> <silent> <Leader>t <Plug>TaskList
+
+" ************ FuzzyFinder ****************
+map <leader>o :FufFile **/<CR>
+map <leader>r :FufRenewCache<CR>
+
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|png|jpg|gif|psd)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
 
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
 " comment out this line if you have Exuberant CTags installed.
 let loaded_taglist = 'manually aborted'
 
+
+" ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
 syntax enable
 set background=dark
@@ -140,6 +152,9 @@ colorscheme solarized
 
 " Let F5 trigger changing Solarized themes
 call togglebg#map("<F5>")
+
+
+" ************** USER-SPECIFIC SECTIONS ************
 
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
@@ -263,21 +278,9 @@ else
 
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fuzzy finder
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>o :FufFile **/<CR>
-map <leader>r :FufRenewCache<CR>
-" map <silent> <leader>fd :FufFileWithCurrentBufferDir **/<cr>
-
-let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|png|jpg|gif|psd)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
-let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
-
-
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
   source ~/.vimrc_machine_specific
 catch
   " No such file? No problem; just ignore it.
 endtry 
-
