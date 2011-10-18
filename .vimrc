@@ -1,5 +1,5 @@
 " Canonical version of this file and of the .vim directory is in git
-" at git@github.com:sleeplessgeek/dotfiles.git
+" at git@github.com:nathanl/dotfiles.git
 " 
 " **************** BASIC SETTINGS ******************  
 " Use Vim settings, rather then Vi settings (much better!).
