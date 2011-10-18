@@ -90,7 +90,7 @@ let g:omni_support=1
 
 function! Smart_TabComplete()
   let line = getline('.')                         " curline
-  let substr = strpart(line, -1, col('.')+1)      " from start to cursor
+  let substr = strpart(line, -1, col('.'))      " from start to cursor
   let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
   if (strlen(substr)==0)                          " nothing to match on empty string
     return "\<tab>"
@@ -174,8 +174,8 @@ if whoami == "nathan"
   " outdent with < or shift-tab
   vmap < <gv
   vmap <S-Tab> <gv
-  " Shift-tab will also outdent in insert mode
-  imap <S-Tab> <C-d>
+  " Shift-tab in insert mode is a backspace (unindent)
+  imap <S-Tab> <BS>
 
   " Use abbreviations defined here
   source ~/.vim/abbreviations
