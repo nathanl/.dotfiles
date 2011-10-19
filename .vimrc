@@ -194,8 +194,9 @@ if whoami == "nathan"
   " Visual mode: D
   vmap D y'>p
 
-  " Visually select the text that was last edited/pasted
-  nmap gV `[v`]
+  " Visually select the text that was last edited/pasted with 'gV'
+  " (This is based on the standard 'gv', which repeats the last selection)
+  nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 
   " Inserts the path of the currently edited file into a command
   " Command mode: Ctrl+P
