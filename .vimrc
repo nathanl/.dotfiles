@@ -1,5 +1,5 @@
 " Canonical version of this file and of the .vim directory is in git
-" at git@github.com:sleeplessgeek/dotfiles.git
+" at git@github.com:nathanl/dotfiles.git
 " 
 " **************** BASIC SETTINGS ******************  
 " Use Vim settings, rather then Vi settings (much better!).
@@ -22,11 +22,7 @@ set showcmd       " display incomplete commands
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  " Matching braces get the same background and foreground color, making
-  " for a very bad UI, unless we change the default colors.
-  " hi MatchParen ctermbg=blue
 endif
-
 
 " Do proper indenting per language.  There is a directory full of indenting
 " rules that gets installed with vim, like python.vim and ruby.vim; mine was
@@ -88,93 +84,77 @@ set smarttab  " backspace over a tab will remove a tab's worth of space
 " (:set list! to show)
 set listchars=tab:▸\ ,eol:¬
 
-" You know what sucks?  Vim's attempt at indenting PHP files.  Stuff outside
-" the PHP itself (e.g. HTML, CSS) is often dedented to the beginning of the
-" line every time you hit enter.  Horrible!  HTML indenting works much better.
-" Retain HTML indenting while using php syntax coloring.
-"
-" NOTE: Michael -- setting PHP's filetype to HTML causes problems for my syntax checker.
-" I've commented this out and added .vim/indent/php.vim which is
-" supposed to indent mixed PHP/HTML correctly. It seems to work for me. Would
-" you try it?
-"
-" autocmd FileType php set filetype=html
-" autocmd FileType php set syntax=php
-
 " *************** Tab completion ****************
-" If you don't have +ruby compiled into vim, ruby files will barf when
-" we tab-complete and try to run omnifunc.  I don't know how to check
-" whether we have +ruby support, so let's just turn off omnifunc support
-" in ruby -- you still get keyword completion.
+" src: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 let g:omni_support=1
-" autocmd FileType ruby let g:omni_support=0
 
-" TODO: I would like to do completeopt+=longest which has the effect of only
-" completing as many characters as are unambiguous; but I can't figure out
-" how to make the CleverTab function work when I do that.
-
-" It first tries to omnicomplete (aka complete with words it knows about
-" the language), and if there is no match or if we're not in a code file, it
-" tries to complete with words found in the file.
-let g:stop_autocomplete=0
-function! CleverTab(type)
-    if a:type=='omni' && g:omni_support==1
-        if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-            let g:stop_autocomplete=1
-            return "\<TAB>"
-        elseif !pumvisible() && !&omnifunc && &omnifunc != ""
-            return "\<C-X>\<C-O>\<C-P>"
-        endif
-    elseif a:type=='keyword' && !pumvisible() && !g:stop_autocomplete
-        return "\<C-X>\<C-N>\<C-P>"
-    elseif a:type=='next'
-        if g:stop_autocomplete
-            let g:stop_autocomplete=0
-        else
-            return "\<C-N>"
-        endif
-    endif
-    return ''
+function! Smart_TabComplete()
+  let line = getline('.')                         " curline
+  let substr = strpart(line, -1, col('.'))      " from start to cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
 endfunction
-inoremap <silent><TAB> <C-R>=CleverTab('omni')<CR><C-R>=CleverTab('keyword')<CR><C-R>=CleverTab('next')<CR>
 
-" TODO: I want to close the preview window opened by omnicomplete, but
-" imapping e.g. <CR> to <esc>:pc<CR>a<CR> doesn't work when inside a code
-" comment block: somehow the comment block autoformatting slides your cursor
-" around when you hit escape, such that when you later hit 'a' you are in the
-" wrong position.  Hopefully there exists a variable like g:autoclosepreview ?
-
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " **************** PLUGINS *************************  
+" Set the leader key to comma (normally, it's "\") for easy access to plugins
+let mapleader = ","
+"
+" ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
 " the path specified
 call pathogen#infect('~/.vim/bundle/active')
 
-" Set the leader key to comma (normally, it's "\") for easy access to plugins
-let mapleader = ","
-
+" ************ NERDTree ****************
 " Leader f opens NERDTree. Mnemonic: f for "Files"
 map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
 
+" ************ TaskList ****************
 " Leader t opens TaskList. Mnemonic: t for "TODO"
 " '<CR>' jumps to highlighted TODO; 'q' quits
 map <unique> <silent> <Leader>t <Plug>TaskList
+
+" ************ FuzzyFinder ****************
+map <leader>o :FufFile **/<CR>
+map <leader>r :FufRenewCache<CR>
+
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|png|jpg|gif|psd)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
 
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
 " comment out this line if you have Exuberant CTags installed.
 let loaded_taglist = 'manually aborted'
 
+
+" ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
 syntax enable
 set background=dark
 " Necessary in mintty for background to be blue, not black, in vim, even
 " after setting mintty's terminal colors to solarized's via a script
 let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+set background=dark
 colorscheme solarized
 
 " Let F5 trigger changing Solarized themes
 call togglebg#map("<F5>")
+
+
+" ************** USER-SPECIFIC SECTIONS ************
 
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
@@ -194,8 +174,8 @@ if whoami == "nathan"
   " outdent with < or shift-tab
   vmap < <gv
   vmap <S-Tab> <gv
-  " Shift-tab will also outdent in insert mode
-  imap <S-Tab> <C-d>
+  " Shift-tab in insert mode is a backspace (unindent)
+  imap <S-Tab> <BS>
 
   " Use abbreviations defined here
   source ~/.vim/abbreviations
@@ -214,8 +194,9 @@ if whoami == "nathan"
   " Visual mode: D
   vmap D y'>p
 
-  " Visually select the text that was last edited/pasted
-  nmap gV `[v`]
+  " Visually select the text that was last edited/pasted with 'gV'
+  " (This is based on the standard 'gv', which repeats the last selection)
+  nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 
   " Inserts the path of the currently edited file into a command
   " Command mode: Ctrl+P
@@ -300,7 +281,7 @@ endif
 
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
-  source .vimrc_machine_specific
+  source ~/.vimrc_machine_specific
 catch
   " No such file? No problem; just ignore it.
 endtry 
