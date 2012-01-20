@@ -40,6 +40,12 @@ autocmd BufReadPost *
 " When creating new files, use a template if we have one in templates/
 autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
+" ****************** SCROLLING *********************  
+
+set scrolloff=8      " Number of lines from vertical edge to start scrolling
+set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
+set sidescroll=1     " Number of cols to scroll at a time
+
 " ****************** SEARCHING *********************  
 set incsearch     " do incremental searching
 set ignorecase    " do case-insensitive searches
