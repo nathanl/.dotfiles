@@ -92,6 +92,8 @@ set listchars=tab:▸\ ,eol:¬
 
 " *************** Tab completion ****************
 " src: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
+" A different approach to completion is here: 
+" https://github.com/skwp/dotfiles/blob/master/vimrc
 let g:omni_support=1
 
 function! Smart_TabComplete()
