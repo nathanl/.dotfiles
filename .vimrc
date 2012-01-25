@@ -220,6 +220,9 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
+  " termcolors=256 above breaks colors in mintty.
+  unlet g:solarized_termcolors
+  colorscheme solarized
 
   " Pyflakes plugin colors errors as 'SpellBad' which is the same color as
   " strings by default, making them invisible.  Change the color to be
