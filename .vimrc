@@ -220,6 +220,8 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
+  set nospell " screw that noise
+
   " termcolors=256 above breaks colors in mintty.
   unlet g:solarized_termcolors
   colorscheme solarized
