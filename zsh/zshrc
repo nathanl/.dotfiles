@@ -1,0 +1,11 @@
+# Put together all these files
+. ~/.dotfiles/zsh/misc
+. ~/.dotfiles/zsh/aliases
+. ~/.dotfiles/zsh/colors
+. ~/.dotfiles/zsh/completion
+. ~/.dotfiles/zsh/history
+. ~/.dotfiles/zsh/bindings
+. ~/.dotfiles/zsh/prompt
+
+# use .zshrc_machine_specific for settings specific to one machine
+[[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
