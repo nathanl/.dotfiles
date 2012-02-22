@@ -27,11 +27,11 @@
   default = current
 [user]
   # Name and email used for commits
-  name = Your Name
-  email = your_email@your_domain.com
+  # name = Your Name
+  # email = your_email@your_domain.com
 [github]
   # Some tools connect to GitHub without SSH. To use these tools properly you
   # need to set these.
   # On the GitHub site Click “Account Settings” > Click “Account Admin.”
-  user = your_user_name
-  token = your_token
+  # user = your_user_name
+  # token = your_token
