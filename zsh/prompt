@@ -2,4 +2,4 @@
 
 PROMPT='%~: '
 
-RPROMPT='%{$fg[white]%}$(~/.rvm/bin/rvm-prompt)$(~/.dotfiles/git-cwd-info.sh)%{$reset_color%}'
+RPROMPT='%{$fg[white]%}$(~/.rvm/bin/rvm-prompt)$(~/.dotfiles/git-cwd-info.rb)%{$reset_color%}'
