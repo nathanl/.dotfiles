@@ -154,7 +154,6 @@ set background=dark
 " Necessary in mintty for background to be blue, not black, in vim, even
 " after setting mintty's terminal colors to solarized's via a script
 let g:solarized_termtrans=1
-let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
