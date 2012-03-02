@@ -86,9 +86,9 @@ set expandtab " insert spaces instead of tab characters
 set smarttab  " backspace over a tab will remove a tab's worth of space
 
 " *********** DISPLAYING HIDDEN CHARACTERS *********  
-" Beautify display of hidden characters (tabs and line breaks)
-" (:set list! to show)
-set listchars=tab:▸\ ,eol:¬
+" Beautify display of hidden characters (tabs, line breaks, etc).
+" (`:set list!` to toggle display; `:help listchars` for info )
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 
 " *************** Tab completion ****************
 " src: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
