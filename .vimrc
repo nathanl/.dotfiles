@@ -222,10 +222,6 @@ elseif whoami == "michael"
   set scrolloff=1
   set sidescrolloff=1 
 
-  " termcolors=256 above breaks colors in mintty.
-  unlet g:solarized_termcolors
-  colorscheme solarized
-
   " On save of a Python file, strip trailing whitespaces.
   fun! <SID>StripTrailingWhitespaces()
       let l = line(".")
