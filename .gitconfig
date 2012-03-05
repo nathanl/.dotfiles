@@ -1,0 +1,37 @@
+[core]
+  # This ignore file should be used for all repos
+  excludesfile = /Users/nathanlong/.gitignore
+  #editor = vi -c \"startinsert\"
+  autocrlf = input
+[alias]
+  prettylog = log --graph --decorate --pretty=oneline --abbrev-commit
+  unstaged = diff
+  staged = dif --cached
+[color]
+  # Color for all commands IF output is going to console 
+  # (doesn't screw up piping, for example)
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[help]
+  autocorrect = 1
+[status]
+  submodule = 1
+[apply]
+ whitespace = nowarn
+[format]
+  pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
+[push]
+  # Only push branches that have been set up to track a remote branch.
+  default = current
+[user]
+  # Name and email used for commits
+  # name = Your Name
+  # email = your_email@your_domain.com
+[github]
+  # Some tools connect to GitHub without SSH. To use these tools properly you
+  # need to set these.
+  # On the GitHub site Click “Account Settings” > Click “Account Admin.”
+  # user = your_user_name
+  # token = your_token

@@ -1,0 +1,5 @@
+# Load zsh’s color variables. 
+# Can now use readable values like $fg[black] instead of cryptic ones like \e[0m.
+autoload -U colors
+colors
+setopt prompt_subst

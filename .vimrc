@@ -86,9 +86,9 @@ set expandtab " insert spaces instead of tab characters
 set smarttab  " backspace over a tab will remove a tab's worth of space
 
 " *********** DISPLAYING HIDDEN CHARACTERS *********  
-" Beautify display of hidden characters (tabs and line breaks)
-" (:set list! to show)
-set listchars=tab:▸\ ,eol:¬
+" Beautify display of hidden characters (tabs, line breaks, etc).
+" (`:set list!` to toggle display; `:help listchars` for info )
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 
 " *************** Tab completion ****************
 " src: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
@@ -98,7 +98,7 @@ let g:omni_support=1
 
 function! Smart_TabComplete()
   let line = getline('.')                         " curline
-  let substr = strpart(line, -1, col('.'))      " from start to cursor
+  let substr = strpart(line, -1, col('.'))        " from start to cursor
   let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
   if (strlen(substr)==0)                          " nothing to match on empty string
     return "\<tab>"
@@ -154,7 +154,6 @@ set background=dark
 " Necessary in mintty for background to be blue, not black, in vim, even
 " after setting mintty's terminal colors to solarized's via a script
 let g:solarized_termtrans=1
-let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
