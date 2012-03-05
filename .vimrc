@@ -220,6 +220,8 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
+  set scrolloff=1
+  set sidescrolloff=1 
 
   " termcolors=256 above breaks colors in mintty.
   unlet g:solarized_termcolors
