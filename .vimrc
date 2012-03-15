@@ -219,10 +219,9 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
-
-  " termcolors=256 above breaks colors in mintty.
-  unlet g:solarized_termcolors
-  colorscheme solarized
+  set showtabline=0
+  set scrolloff=1
+  set sidescrolloff=1 
 
   " On save of a Python file, strip trailing whitespaces.
   fun! <SID>StripTrailingWhitespaces()
