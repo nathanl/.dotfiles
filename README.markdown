@@ -25,7 +25,7 @@ You can create these symlinks like, for example, `ln -s .dotfiles/.vimrc .vimrc`
 
 The .vimrc in this repo was originally a collaboration between Nathan and Michael. There are a few settings that they differed on, so there are specific sections that apply to only one or the other. To decide which to use, the .vimrc looks for a file called .currentVimUser.vim in the home directory. Create one like this:
 
-`echo "let whoami='nathan'" > ~/.currentVimUser.vim` (or substitute 'michael' for 'nathan'
+`echo "let whoami='nathan'" > ~/.currentVimUser.vim` (or replace 'nathan' with 'Michael')
 
 
 
