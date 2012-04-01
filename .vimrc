@@ -219,6 +219,7 @@ if whoami == "nathan"
 
 
 elseif whoami == "michael"
+  set showtabline=0
   set scrolloff=1
   set sidescrolloff=1 
 
