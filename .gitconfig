@@ -1,7 +1,11 @@
 [core]
   # This ignore file should be used for all repos
   excludesfile = /Users/nathanlong/.gitignore
-  #editor = vi -c \"startinsert\"
+
+  # If I run 'git commit', open vim. Don't use any config, because
+  # something in the config causes vim to exit with code 1, which
+  # aborts the message.
+  editor = vi -u "NONE"
   autocrlf = input
 [alias]
   prettylog = log --graph --decorate --pretty=oneline --abbrev-commit
