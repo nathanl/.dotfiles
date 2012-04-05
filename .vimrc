@@ -99,7 +99,7 @@ let g:omni_support=1
 function! Smart_TabComplete()
   let line = getline('.')                         " curline
   let substr = strpart(line, -1, col('.'))        " from start to cursor
-  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  let substr = matchstr(substr, "[^ \t.]*$")       " word till cursor
   if (strlen(substr)==0)                          " nothing to match on empty string
     return "\<tab>"
   endif
