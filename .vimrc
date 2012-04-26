@@ -1,6 +1,12 @@
 " Canonical version of this file and of the .vim directory is in git
 " at git@github.com:nathanl/dotfiles.git
 " 
+
+" Change Vim's behavior depending on who you are.
+let whoami = ""
+" Pull the value from an external file
+source ~/.currentVimUser.vim
+
 " **************** BASIC SETTINGS ******************  
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -123,7 +129,13 @@ let mapleader = ","
 " ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
 " the path specified
-call pathogen#infect('~/.vim/bundle/active')
+if whoami == "nathan"
+  call pathogen#infect('~/.vim/bundle/nathan')
+elseif whoami == "michael"
+  call pathogen#infect('~/.vim/bundle/michael')
+endif
+call pathogen#infect('~/.vim/bundle/common')
+
 
 " ************ NERDTree ****************
 " Leader f opens NERDTree. Mnemonic: f for "Files"
@@ -166,9 +178,6 @@ call togglebg#map("<F5>")
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
 " loaded, we get a useful error
-let whoami = ""
-" Pull the value from an external file
-source ~/.currentVimUser.vim
 if whoami == "nathan"
   " Wrap text at column 78 in text files.  
   " In code files this will only apply to comments.
