@@ -71,6 +71,11 @@ inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
 " If you type :W<cr>, save anyway.
 command! W w
 
+" If you type q: you really meant to type :q .
+" q: originally opens a command history window, which you can get to by typing
+" :<Ctrl-F> instead.
+map q: :q
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
 
