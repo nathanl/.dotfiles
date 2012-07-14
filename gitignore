@@ -1,6 +1,6 @@
 .DS_Store
 .svn
 *~
-.*.swp
-.*.swo
-.*.swn
+*.swp
+*.swo
+*.swn
