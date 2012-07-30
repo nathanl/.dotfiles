@@ -173,7 +173,7 @@ command! -bang -bar -nargs=0 FakeclipDefaultKeyMappings
 function! s:cmd_FakeclipDefaultKeyMappings(banged_p)
   let modifier = a:banged_p ? '' : '<unique>'
   " Clipboard
-  if 1 " !has('clipboard')
+  if !has('clipboard')
     for _ in ['+', '*']
       execute 'silent! nmap '.modifier.' "'._.'y  <Plug>(fakeclip-y)'
       execute 'silent! nmap '.modifier.' "'._.'Y  <Plug>(fakeclip-Y)'
