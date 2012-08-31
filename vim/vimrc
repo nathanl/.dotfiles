@@ -166,19 +166,28 @@ let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
 " comment out this line if you have Exuberant CTags installed.
 let loaded_taglist = 'manually aborted'
 
-
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
 syntax enable
 set background=dark
 " Necessary in mintty for background to be blue, not black, in vim, even
 " after setting mintty's terminal colors to solarized's via a script
+
 let g:solarized_termtrans=1
+if $TERM_PROGRAM == "Apple_Terminal"
+  " for awesome people using vim in apple terminal 
+  " (with black background and transparency)
+  unlet g:solarized_termtrans
+  let g:solarized_termtrans=0
+  let g:solarized_termcolors=256
+  let g:solarized_visibility="high"
+  let g:solarized_contrast="high"
+end
 set background=dark
-colorscheme solarized
 
 " Let F5 trigger changing Solarized themes
 call togglebg#map("<F5>")
+colorscheme solarized
 
 
 " ************** USER-SPECIFIC SECTIONS ************

@@ -1,0 +1,13 @@
+# Set Apple Terminal.app resume directory (OS X Lion feature)
+if [[ $TERM_PROGRAM == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]] {
+  # function must be named chpwd so when new tab is opened it will go to the
+  # current working directory
+  function chpwd {
+    local SEARCH=' '
+    local REPLACE='%20'
+    local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+    printf '\e]7;%s\a' "$PWD_URL"
+  }
+
+  chpwd
+}
