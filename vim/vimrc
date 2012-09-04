@@ -3,14 +3,25 @@
 " 
 
 " Change Vim's behavior depending on who you are.
-let whoami = ""
-" Pull the value from an external file
-source ~/.currentVimUser.vim
+try
+  " Pull the value from an external file
+  source ~/.currentVimUser.vim
+catch
+  " Couldn't find the file
+  let whoami = ""
+endtry
 
 " **************** BASIC SETTINGS ******************  
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" Put swapfiles in a central place instead of the current directory.
+" Vim will use the first directory that exists.
+set directory=~/.vim_swap,~/tmp,/var/tmp,$HOME/Local\ Settings/Temp 
+
+" Same thing for backup files (see `:help backup`)
+set backupdir=~/.vim_backup,~/tmp,/var/tmp,$HOME/Local\ Settings/Temp 
 
 " Remove all autocommands, in case we are sourced twice.  That's what vim's
 " help says to do if you use autocommands, so I'm doing it.
@@ -134,13 +145,12 @@ let mapleader = ","
 " ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
 " the path specified
-if whoami == "nathan"
-  call pathogen#infect('~/.vim/bundle/nathan')
-elseif whoami == "michael"
-  call pathogen#infect('~/.vim/bundle/michael')
-endif
 call pathogen#infect('~/.vim/bundle/common')
-
+if whoami == "michael"
+  call pathogen#infect('~/.vim/bundle/michael')
+else
+  call pathogen#infect('~/.vim/bundle/nathan')
+endif
 
 " ************ NERDTree ****************
 " Leader f opens NERDTree. Mnemonic: f for "Files"
@@ -163,19 +173,28 @@ let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr)($|[/\\])|tmp'
 " comment out this line if you have Exuberant CTags installed.
 let loaded_taglist = 'manually aborted'
 
-
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
 syntax enable
 set background=dark
 " Necessary in mintty for background to be blue, not black, in vim, even
 " after setting mintty's terminal colors to solarized's via a script
+
 let g:solarized_termtrans=1
+if $TERM_PROGRAM == "Apple_Terminal"
+  " for awesome people using vim in apple terminal 
+  " (with black background and transparency)
+  unlet g:solarized_termtrans
+  let g:solarized_termtrans=0
+  let g:solarized_termcolors=256
+  let g:solarized_visibility="high"
+  let g:solarized_contrast="high"
+end
 set background=dark
-colorscheme solarized
 
 " Let F5 trigger changing Solarized themes
 call togglebg#map("<F5>")
+colorscheme solarized
 
 
 " ************** USER-SPECIFIC SECTIONS ************
@@ -183,56 +202,7 @@ call togglebg#map("<F5>")
 " ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
 " Make sure the variable at least exists, so if the external file isn't
 " loaded, we get a useful error
-if whoami == "nathan"
-  " Wrap text at column 78 in text files.  
-  " In code files this will only apply to comments.
-  set textwidth=78
-
-  "** When indenting in visual mode, return to visual mode **
-  " indent with > or tab
-  vmap > >gv
-  vmap <tab> >gv
-  " outdent with < or shift-tab
-  vmap < <gv
-  vmap <S-Tab> <gv
-  " Shift-tab in insert mode is a backspace (unindent)
-  imap <S-Tab> <BS>
-
-  " Use abbreviations defined here
-  source ~/.vim/abbreviations
-
-  " Control+h produces a hashrocket
-  imap <C-h> <Space>=><Space>
-
-  " Always show line numbers
-  set number
-
-  " Move lines up and down
-  nmap <C-J> :m +1 <CR>
-  nmap <C-K> :m -2 <CR>
-
-  " Duplicate a selection
-  " Visual mode: D
-  vmap D y'>p
-
-  " Visually select the text that was last edited/pasted with 'gV'
-  " (This is based on the standard 'gv', which repeats the last selection)
-  nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-  " Inserts the path of the currently edited file into a command
-  " Command mode: Ctrl+P
-  cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-  " get jslint from http://javascriptlint.com/
-  " When writing a file, if there are errors, have Syntastic plugin mark them
-  " In order to check Javascript files, you must have the `jsl` executable from here
-  " in your path:
-  " http://www.javascriptlint.com/download.htm
-  let g:syntastic_enable_signs=1
-  let g:syntastic_auto_loc_list=1
-
-
-elseif whoami == "michael"
+if whoami == "michael"
   set showtabline=1
   set scrolloff=1
   set sidescrolloff=1 
@@ -293,9 +263,52 @@ elseif whoami == "michael"
   " the damage we did earlier in the .vimrc so Taglist will actually load
   unlet loaded_taglist
 else
-  " Next line is invalid config syntax, as a hacky way of notifying the user.
-    You have to set the "whoami" so we can load user-specific section(s).  Create ~/.currentVimUser.vim. Its contents should be something like 'let whoami="nathan"'. You will see this error message each time you start vim, until you do so. (You'll also have to reload .vimrc.)
+  " Wrap text at column 78 in text files.  
+  " In code files this will only apply to comments.
+  set textwidth=78
 
+  "** When indenting in visual mode, return to visual mode **
+  " indent with > or tab
+  vmap > >gv
+  vmap <tab> >gv
+  " outdent with < or shift-tab
+  vmap < <gv
+  vmap <S-Tab> <gv
+  " Shift-tab in insert mode is a backspace (unindent)
+  imap <S-Tab> <BS>
+
+  " Use abbreviations defined here
+  source ~/.vim/abbreviations
+
+  " Control+h produces a hashrocket
+  imap <C-h> <Space>=><Space>
+
+  " Always show line numbers
+  set number
+
+  " Move lines up and down
+  nmap <C-J> :m +1 <CR>
+  nmap <C-K> :m -2 <CR>
+
+  " Duplicate a selection
+  " Visual mode: D
+  vmap D y'>p
+
+  " Visually select the text that was last edited/pasted with 'gV'
+  " (This is based on the standard 'gv', which repeats the last selection)
+  nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+  " Inserts the path of the currently edited file into a command
+  " Command mode: Ctrl+P
+  cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+  " get jslint from http://javascriptlint.com/
+  " When writing a file, if there are errors, have Syntastic plugin mark them
+  " In order to check Javascript files, you must have the `jsl` executable from here
+  " in your path:
+  " http://www.javascriptlint.com/download.htm
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=1
 endif
 
 " If there are any machine-specific tweaks for Vim, load them from the following file.
