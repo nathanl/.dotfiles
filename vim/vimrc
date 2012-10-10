@@ -16,6 +16,9 @@ endtry
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Make Y behave like other capitals - to end of line
+map Y y$
+
 " Put swapfiles in a central place instead of the current directory.
 " Vim will use the first directory that exists.
 set directory=~/.vim_swap,~/tmp,/var/tmp,$HOME/Local\ Settings/Temp 
