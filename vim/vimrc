@@ -97,6 +97,9 @@ cmap w!! %!sudo tee > /dev/null %
 " (change windows)
 imap <C-w><C-w> <esc><C-w><C-w>
 
+" Swap order of two comma-separated arguments (mnemonic: 'swap')
+map <leader>s t,Bdt,wea, pBBdF,
+
 " ***************** TABS ***************************  
 " Usually, you want 2 spaces per tab, so these lines make this the default.
 " There are ways to make vi do clever things with tabs in different
