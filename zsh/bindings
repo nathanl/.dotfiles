@@ -1,8 +1,8 @@
 # Control+R will search history backwards, like in emacs mode
 bindkey "^R" history-incremental-search-backward
 
-# Use emacs as your editor - commented out, so Vim will be used instead
-# bindkey -e
+# Use emacs keyboard shortcuts (Vim mode is infuriatingly imperfect)
+bindkey -e
 
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
