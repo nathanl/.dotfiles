@@ -105,6 +105,7 @@ cmap w!! %!sudo tee > /dev/null %
 imap <C-w><C-w> <esc><C-w><C-w>
 
 " Swap order of two comma-separated arguments (mnemonic: 'swap')
+" TODO: this really doesn't work well. Maybe try writing it in Ruby?
 map <leader>s t,Bdt,wea, pBBdF,
 
 " ***************** TABS ***************************  
