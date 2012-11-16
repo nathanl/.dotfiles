@@ -82,6 +82,9 @@ set hlsearch      " highlight all matched terms
 set mouse=a
 
 " **************** CONVENIENCE MAPPINGS ************  
+" Set the leader key to comma (normally, it's "\")
+let mapleader = ","
+"
 " Ctrl-L recolors the screen when it gets confused.
 noremap <c-l> <c-l>:syntax sync fromstart<CR>
 inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
@@ -149,9 +152,6 @@ endfunction
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " **************** PLUGINS *************************  
-" Set the leader key to comma (normally, it's "\") for easy access to plugins
-let mapleader = ","
-"
 " ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
 " the path specified
