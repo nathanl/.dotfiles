@@ -77,6 +77,8 @@ set smartcase     " ... unless the search contains upper-case characters
 set hlsearch      " highlight all matched terms
 " Pressing return clears highlighted search
 :nnoremap <CR> :nohlsearch<CR>/<BS>
+" Pressing control + return also clears (for use in NERDTree)
+:nnoremap <c-CR> :nohlsearch<CR>/<BS>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
