@@ -220,6 +220,10 @@ if whoami == "michael"
   set scrolloff=1
   set sidescrolloff=1 
 
+  " ctrl+w ctrl+w in insert mode should do the same thing as in normal mode
+  " (change windows)
+  imap <C-w><C-w> <esc><C-w><C-w>
+
   " On save of a Python file, strip trailing whitespaces.
   fun! <SID>StripTrailingWhitespaces()
       let l = line(".")
