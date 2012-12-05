@@ -7,6 +7,7 @@ Custom configuration files. Contains config for zsh and other files, but most of
 1. Clone this repo to ~/.vim
 2.  The following files (or whatever subset you like) should be symlinked from your home directory (taken from the output of `ls -lah | grep .dot` in my home directory)
 
+```bash
 .bash@ -> .dotfiles/bash
 .bash_profile@ -> .dotfiles/bash/bash_profile
 .gitignore@ -> .dotfiles/gitignore
@@ -16,6 +17,7 @@ Custom configuration files. Contains config for zsh and other files, but most of
 .vimrc@ -> .dotfiles/.vimrc
 .zsh@ -> .dotfiles/.zsh
 .zshrc@ -> .dotfiles/.zsh/zshrc
+```
 
 You can create these symlinks like, for example, `ln -s .dotfiles/.vimrc .vimrc`
 
@@ -23,9 +25,4 @@ You can create these symlinks like, for example, `ln -s .dotfiles/.vimrc .vimrc`
 
 ## The One Quirk
 
-The .vimrc in this repo was originally a collaboration between Nathan and Michael. There are a few settings that they differed on, so there are specific sections that apply to only one or the other. To decide which to use, the .vimrc looks for a file called .currentVimUser.vim in the home directory. Create one like this:
-
-`echo "let whoami='nathan'" > ~/.currentVimUser.vim` (or replace 'nathan' with 'Michael')
-
-
-
+The .vimrc in this repo was originally a collaboration between Nathan and Michael. You get Nathan's settings by default. To get Michaels's settings, create `~/.currentVimUser.vim` containing `let whoami='michael'`.
