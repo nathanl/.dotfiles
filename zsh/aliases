@@ -11,3 +11,6 @@ alias ll="ls -lAh"
 
 # commands starting with % for pasting from web
 alias %=' '
+
+# For readable rspec test output
+alias docspec='rspec --format doc --order default'
