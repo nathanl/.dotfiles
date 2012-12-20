@@ -14,3 +14,6 @@ alias %=' '
 
 # For readable rspec test output
 alias docspec='rspec --format doc --order default'
+
+# Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
+alias rake='noglob rake'
