@@ -10,3 +10,7 @@
 
 # use .zshrc_machine_specific for settings specific to one machine
 [[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
+
+export PATH="$PATH:$HOME/.dotfiles/zsh/scripts"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

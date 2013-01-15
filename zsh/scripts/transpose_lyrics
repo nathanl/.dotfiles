@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby 
+# Rearrange song lyrics so it's easier to put guitar chords over them: put the
+# first lines of each verse, which share the same chords, into the first
+# paragraph. Second lines go into the second paragraph, etc.
+#
+# Meant to be used with Unix piping: `cat somefile.txt | ./this_script > output.txt
+
+lyrics           = STDIN.read
+paragraphs       = lyrics.split("\n\n")
+lines            = paragraphs.map { |paragraph| paragraph.split("\n") }
+transposed_lines = lines.transpose # Yay for Ruby!
+new_paragraphs   = transposed_lines.map { |paragraph| paragraph.join("\n") }
+new_lyrics       = new_paragraphs.join("\n\n")
+puts new_lyrics
