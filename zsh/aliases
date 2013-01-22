@@ -11,3 +11,12 @@ alias ll="ls -lAh"
 
 # commands starting with % for pasting from web
 alias %=' '
+
+# For readable rspec test output
+alias docspec='rspec --format doc --order default'
+
+# Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
+alias rake='noglob rake'
+
+# List of files in git repo by number of commits in which they've changed
+alias gitchurn='git log --pretty=format: --name-only | sort | uniq -c | sort -rg'

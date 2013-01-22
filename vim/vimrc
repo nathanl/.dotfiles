@@ -216,6 +216,9 @@ colorscheme solarized
 " Make sure the variable at least exists, so if the external file isn't
 " loaded, we get a useful error
 if whoami == "michael"
+  " <cr> should not only clear highlighted search, but flash the current
+  " cursor location.
+  :nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
   set showtabline=1
   set scrolloff=1
   set sidescrolloff=1 
