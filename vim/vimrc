@@ -185,6 +185,9 @@ let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': ['<c-t>'], 'AcceptSelecti
 let g:ctrlp_open_new_file = 't'
 " Open multiple files in new tabs and jump to the first one
 let g:ctrlp_open_multiple_files = 'tj'
+" Also let ,p and ,o open it to appease our muscle memory from previous plugins
+map <leader>p :CtrlP<CR>
+map <leader>o :CtrlP<CR>
 
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
