@@ -177,7 +177,7 @@ map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
 " ************ CtrlP (File Finder) ****************
 " Pressing <control + p> starts it.
 " Fuzzy matches files. Arrows move between matches. Enter opens.
-" ctrl+f changes modes. MRU means "most recently used". <ctrl + r> uses regex mode
+" ctrl+f changes modes. MRU means "most recently used". <ctrl + r> toggles regexp/fuzzy search
 "
 " Open a single file in a new tab by default
 let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': ['<c-t>'], 'AcceptSelection("t")': ['<cr>', '2-LeftMouse'], }
@@ -185,6 +185,10 @@ let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': ['<c-t>'], 'AcceptSelecti
 let g:ctrlp_open_new_file = 't'
 " Open multiple files in new tabs and jump to the first one
 let g:ctrlp_open_multiple_files = 'tj'
+
+" Use regexp mode by default
+let g:ctrlp_regexp = 1
+
 " Also let ,p and ,o open it to appease our muscle memory from previous plugins
 map <leader>p :CtrlP<CR>
 map <leader>o :CtrlP<CR>
