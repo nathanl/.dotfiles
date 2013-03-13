@@ -189,10 +189,6 @@ let g:ctrlp_open_multiple_files = 'tj'
 " Use regexp mode by default
 let g:ctrlp_regexp = 1
 
-" Also let ,p and ,o open it to appease our muscle memory from previous plugins
-map <leader>p :CtrlP<CR>
-map <leader>o :CtrlP<CR>
-
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
 " comment out this line if you have Exuberant CTags installed.
