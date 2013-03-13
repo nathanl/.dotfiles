@@ -1,9 +1,15 @@
 " :source (this file) to make these macros available
 
+function Beleted()
+  :!git rm %
+  :q!
+endfunction
+" type :Beleted to use this
+command Beleted call Beleted()
+
 function UseUnixLineBreaks()
   :%s//\r/g
 endfunction
-
 " Type :Linebreak to use this
 command Linebreak call UseUnixLineBreaks()
 
