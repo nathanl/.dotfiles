@@ -175,9 +175,11 @@ map <unique> <silent> <Leader>t <Plug>TaskList
 map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
 
 " ************ CtrlP (File Finder) ****************
-" Pressing <control + p> starts it.
-" Fuzzy matches files. Arrows move between matches. Enter opens.
-" ctrl+f changes modes. MRU means "most recently used". <ctrl + r> toggles regexp/fuzzy search
+" - Pressing <control + p> starts it.
+" - <ctrl + j/k> moves between matches. 
+" - Enter opens. <ctrl + t> opens in same tab (with config below).
+" - ctrl+f changes modes. MRU means 'Most Recently Used'. 
+" - <ctrl + r> toggles regexp/fuzzy search; regexp is also nice for exact filenames
 "
 " Open a single file in a new tab by default
 let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': ['<c-t>'], 'AcceptSelection("t")': ['<cr>', '2-LeftMouse'], }
@@ -185,9 +187,6 @@ let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': ['<c-t>'], 'AcceptSelecti
 let g:ctrlp_open_new_file = 't'
 " Open multiple files in new tabs and jump to the first one
 let g:ctrlp_open_multiple_files = 'tj'
-
-" Use regexp mode by default
-let g:ctrlp_regexp = 1
 
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
