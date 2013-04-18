@@ -70,6 +70,10 @@ set scrolloff=8      " Number of lines from vertical edge to start scrolling
 set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
 set sidescroll=1     " Number of cols to scroll at a time
 
+" ****************** SPLITTING *********************  
+set splitright " vsplit makes new pane to the right (not left)
+set splitbelow " split  makes new pane below (not above)
+
 " ****************** SEARCHING *********************  
 set incsearch     " do incremental searching
 set ignorecase    " do case-insensitive searches
