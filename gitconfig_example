@@ -12,11 +12,7 @@
   unstaged = diff
   staged = dif --cached
 [color]
-  # Color for all commands IF output is going to console 
-  # (doesn't screw up piping, for example)
-  diff = auto
-  status = auto
-  branch = auto
+  # Color for all commands unless piping
   ui = true
 [help]
   autocorrect = 1
