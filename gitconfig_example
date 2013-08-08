@@ -24,6 +24,7 @@
   submodule = 1
 [apply]
  whitespace = nowarn
+# Display log output on one line by default with specified colors
 [format]
   pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
 [push]
