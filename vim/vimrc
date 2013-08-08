@@ -28,7 +28,11 @@ set backupdir=~/.vim_backup,~/tmp,/var/tmp,$HOME/Local\ Settings/Temp
 
 " Discard undo history when reloading a file (like `:e!`). For instance,
 " I may want to reload after committing and only be able to undo to that point.
-set undoreload=0
+try
+  set undoreload=0
+catch
+  " Pre vim7.3
+endtry
 
 " Remove all autocommands, in case we are sourced twice.  That's what vim's
 " help says to do if you use autocommands, so I'm doing it.
