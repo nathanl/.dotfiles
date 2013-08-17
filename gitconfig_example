@@ -8,7 +8,7 @@
   editor = vi -u "NONE"
   autocrlf = input
 [alias]
-  prettylog = log --graph --decorate --pretty=oneline --abbrev-commit
+  graphlog = log --graph --decorate --pretty=oneline --abbrev-commit
   unstaged = diff
   staged = dif --cached
 [color]
