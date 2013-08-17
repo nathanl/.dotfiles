@@ -22,7 +22,8 @@
  whitespace = nowarn
 # Display log output on one line by default with specified colors
 [format]
-  pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
+ ; see https://www.kernel.org/pub/software/scm/git/docs/git-log.html
+ pretty = %C(yellow)%h %m %an %m %Creset %s %C(red)(%cr)%Creset
 [push]
   # Only push branches that have been set up to track a remote branch.
   default = current
