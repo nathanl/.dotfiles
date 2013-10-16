@@ -196,6 +196,14 @@ let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': ['<c-t>'], 'AcceptSelecti
 let g:ctrlp_open_new_file = 't'
 " Open multiple files in new tabs and jump to the first one
 let g:ctrlp_open_multiple_files = 'tj'
+" Search files returned by one of these commands, depending on whether you
+" find .git in the directory or not.
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 
 " ************** Taglist ************
 " Disable it by default because it requires Exuberant CTags.  Delete or
