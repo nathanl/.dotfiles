@@ -27,6 +27,9 @@
 [push]
   # `git push origin` does current branch only
 	default = simple
+[merge]
+  # In conflicts, show both changes AND their common ancestor
+	conflictstyle = diff3
 [user]
   # Name and email used for commits
   # name = Your Name
