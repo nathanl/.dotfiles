@@ -20,7 +20,6 @@
   submodule = 1
 [apply]
  whitespace = nowarn
-# Display log output on one line by default with specified colors
 [format]
  ; see https://www.kernel.org/pub/software/scm/git/docs/git-log.html
  pretty = %C(yellow)%h %m %an %m %Creset %s %C(red)(%cr)%Creset
@@ -32,8 +31,8 @@
 	conflictstyle = diff3
 [user]
   # Name and email used for commits
-  # name = Your Name
-  # email = your_email@your_domain.com
+  name = Nathan Long
+  email = nathanmlong@gmail.com
 [github]
   # Some tools connect to GitHub without SSH. To use these tools properly you
   # need to set these.
