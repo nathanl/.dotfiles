@@ -8,9 +8,11 @@
   editor = vi -u "~/.vimrc_barebones"
   autocrlf = input
 [alias]
-  graphlog = log --graph --decorate --pretty=oneline --abbrev-commit
+  graphlog = log --graph --decorate --pretty = oneline --abbrev-commit
   unstaged = diff
-  staged = dif --cached
+  staged   = diff --cached
+  c        = commit
+  co       = checkout
 [color]
   # Color for all commands unless piping
   ui = true
