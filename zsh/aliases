@@ -18,9 +18,23 @@ alias docspec='rspec --format doc --order default'
 # Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
 alias rake='noglob rake'
 
-# List of files in git repo by number of commits in which they've changed
-alias gitchurn='git log --pretty=format: --name-only | sort | uniq -c | sort -rg'
 
 # Ways to use Vim with minimal or no config
 alias simplevim="vi -u ~/.vimrc_simple"
 alias plainvim="vi -u NONE"
+
+# Git shortcuts
+alias gs='git status'
+alias gl='git log'
+alias ga='git add'
+alias gc='git commit'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gm='git merge'
+alias gp='git push'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gb='git branch'
+alias gba='git branch -a'
+# List of files in git repo by number of commits in which they've changed
+alias gchurn='git log --pretty=format: --name-only | sort | uniq -c | sort -rg'

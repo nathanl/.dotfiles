@@ -9,10 +9,6 @@
   autocrlf = input
 [alias]
   graphlog = log --graph --decorate --pretty = oneline --abbrev-commit
-  unstaged = diff
-  staged   = diff --cached
-  c        = commit
-  co       = checkout
 [color]
   # Color for all commands unless piping
   ui = true
