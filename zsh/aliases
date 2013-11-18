@@ -20,3 +20,7 @@ alias rake='noglob rake'
 
 # List of files in git repo by number of commits in which they've changed
 alias gitchurn='git log --pretty=format: --name-only | sort | uniq -c | sort -rg'
+
+# Ways to use Vim with minimal or no config
+alias simplevim="vi -u ~/.vimrc_simple"
+alias plainvim="vi -u NONE"

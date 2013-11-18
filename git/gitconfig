@@ -5,7 +5,7 @@
   # If I run 'git commit', open vim. Don't use any config, because
   # something in the config causes vim to exit with code 1, which
   # aborts the message.
-  editor = vi -u "~/.vimrc_barebones"
+  editor = vi -u "~/.vimrc_simple"
   autocrlf = input
 [alias]
   graphlog = log --graph --decorate --pretty = oneline --abbrev-commit

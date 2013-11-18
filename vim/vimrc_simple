@@ -1,0 +1,4 @@
+" Most mimimal usable config.
+" Used when launching editor to
+" write commit messages.
+set nocompatible
