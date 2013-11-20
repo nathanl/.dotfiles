@@ -167,12 +167,7 @@ inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 " ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
 " the path specified
-call pathogen#infect('~/.vim/bundle/common')
-if whoami == "michael"
-  call pathogen#infect('~/.vim/bundle/michael')
-else
-  call pathogen#infect('~/.vim/bundle/nathan')
-endif
+call pathogen#infect('~/.vim/bundle')
 
 " ************ TaskList ****************
 " Leader t opens TaskList. Mnemonic: t for "TODO"
@@ -233,129 +228,100 @@ set background=dark
 call togglebg#map("<F5>")
 colorscheme solarized
 
+" <cr> should not only clear highlighted search, but flash the current
+" cursor location.
+:nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
-" ************** USER-SPECIFIC SECTIONS ************
+" ************** Taglist ************
+" In order to use this, you must have Exuberant CTags.
+"
+" Useful commands:
+"   q close window
+"   <CR> open tag in current window
+"   t open tag in new tab
+"   p preview tag without closing taglist
+"   x maximize or unmaximize the tag window
+"   <space> show prototype of class/function in status line
+"   s sort alphabetically or by order in the file
+"   - + = * Fold/unfold some or all sections
+"   u update the taglist [except updates happens upon opening of the
+"     taglist and since we use Tlist_Close_On_Select it's not that big a
+"     deal]
+" F9 opens/focuses the taglist
+nnoremap <silent> <F9> :TlistOpen<CR>
+" F12 jumps to the taglist entry for the word under my cursor.  I can then
+"     hit enter to go to its definition.  The ^Rs (typed as Ctrl-V Ctrl-R
+"     s) means to recall the text in register s, which we grabbed at the
+"     start via "s.  The \C means to not ignore case, even if we have
+"     set ignorecase.  The '+' expands the fold in case it was in a
+"     different file (since we have Tlist_File_Fold_Auto_Close set to 1.)
+map <F12> "syiw:TlistOpen<CR>/ s\>\C<CR>+
+imap <F12> <esc>l<F12>
+" <CR> or t will close the list -- my screen isn't wide enough for the
+" taglist as well as 2 80-character buffers, so I can't leave taglist
+" open all the time.
+let Tlist_Close_On_Select = 1
+" Even if the taglist is closed, read the tags for the files I edit,
+" so that when I open the taglist, all my files are there instead of just
+" the one I'm currently in.
+let Tlist_Process_File_Always = 1
+" When I open the taglist, fold all but the active window's tags.  I can
+" always hit * to open them all up if I'm looking for something in another
+" file.
+let Tlist_File_Fold_Auto_Close = 1
 
-" ** User-specific sections to keep peace among the nations. (Nathonia has nukes!) **
-" Make sure the variable at least exists, so if the external file isn't
-" loaded, we get a useful error
-if whoami == "michael"
-  " <cr> should not only clear highlighted search, but flash the current
-  " cursor location.
-  :nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
-  set showtabline=1
-  set scrolloff=1
-  set sidescrolloff=1 
+" Yes, I want Taglist to work, yes I've installed Exuberant CTags; undo
+" the damage we did earlier in the .vimrc so Taglist will actually load
+unlet loaded_taglist
+"
+" Wrap text at column 78 in text files.  
+" In code files this will only apply to comments.
+set textwidth=78
 
-  " ctrl+w ctrl+w in insert mode should do the same thing as in normal mode
-  " (change windows)
-  imap <C-w><C-w> <esc><C-w><C-w>
+"** When indenting in visual mode, return to visual mode **
+" indent with > or tab
+vmap > >gv
+vmap <tab> >gv
+" outdent with < or shift-tab
+vmap < <gv
+vmap <S-Tab> <gv
+" Shift-tab in insert mode is a backspace (unindent)
+imap <S-Tab> <BS>
 
-  " On save of a Python file, strip trailing whitespaces.
-  fun! <SID>StripTrailingWhitespaces()
-      let l = line(".")
-      let c = col(".")
-      %s/\s\+$//e
-      call cursor(l, c)
-  endfun
-  autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
+" Use abbreviations defined here
+source ~/.vim/abbreviations
 
-  " ************** Taglist ************
-  " In order to use this, you must first download the latest .tar.gz from
-  " http://ctags.sourceforge.net/, then run
-  "   tar xzvf ctags*.tar.gz
-  "   cd ctags*
-  "   ./configure && sudo make install
-  " to install Exuberant CTags.
-  "
-  " Useful commands:
-  "   q close window
-  "   <CR> open tag in current window
-  "   t open tag in new tab
-  "   p preview tag without closing taglist
-  "   x maximize or unmaximize the tag window
-  "   <space> show prototype of class/function in status line
-  "   s sort alphabetically or by order in the file
-  "   - + = * Fold/unfold some or all sections
-  "   u update the taglist [except updates happens upon opening of the
-  "     taglist and since we use Tlist_Close_On_Select it's not that big a
-  "     deal]
-  " F9 opens/focuses the taglist
-  nnoremap <silent> <F9> :TlistOpen<CR>
-  " F12 jumps to the taglist entry for the word under my cursor.  I can then
-  "     hit enter to go to its definition.  The ^Rs (typed as Ctrl-V Ctrl-R
-  "     s) means to recall the text in register s, which we grabbed at the
-  "     start via "s.  The \C means to not ignore case, even if we have
-  "     set ignorecase.  The '+' expands the fold in case it was in a
-  "     different file (since we have Tlist_File_Fold_Auto_Close set to 1.)
-  map <F12> "syiw:TlistOpen<CR>/ s\>\C<CR>+
-  imap <F12> <esc>l<F12>
-  " <CR> or t will close the list -- my screen isn't wide enough for the
-  " taglist as well as 2 80-character buffers, so I can't leave taglist
-  " open all the time.
-  let Tlist_Close_On_Select = 1
-  " Even if the taglist is closed, read the tags for the files I edit,
-  " so that when I open the taglist, all my files are there instead of just
-  " the one I'm currently in.
-  let Tlist_Process_File_Always = 1
-  " When I open the taglist, fold all but the active window's tags.  I can
-  " always hit * to open them all up if I'm looking for something in another
-  " file.
-  let Tlist_File_Fold_Auto_Close = 1
+" Control+h produces a hashrocket
+imap <C-h> <Space>=><Space>
 
-  " Yes, I want Taglist to work, yes I've installed Exuberant CTags; undo
-  " the damage we did earlier in the .vimrc so Taglist will actually load
-  unlet loaded_taglist
-else
-  " Wrap text at column 78 in text files.  
-  " In code files this will only apply to comments.
-  set textwidth=78
+" Always show line numbers
+set number
 
-  "** When indenting in visual mode, return to visual mode **
-  " indent with > or tab
-  vmap > >gv
-  vmap <tab> >gv
-  " outdent with < or shift-tab
-  vmap < <gv
-  vmap <S-Tab> <gv
-  " Shift-tab in insert mode is a backspace (unindent)
-  imap <S-Tab> <BS>
+" Move lines up and down
+nmap <C-J> :m +1 <CR>
+nmap <C-K> :m -2 <CR>
 
-  " Use abbreviations defined here
-  source ~/.vim/abbreviations
+" Duplicate a selection
+" Visual mode: D
+vmap D y'>p
 
-  " Control+h produces a hashrocket
-  imap <C-h> <Space>=><Space>
+" Visually select the text that was last edited/pasted with 'gV'
+" (This is based on the standard 'gv', which repeats the last selection)
+nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-  " Always show line numbers
-  set number
+" Inserts the path of the currently edited file into a command
+" Command mode: Ctrl+P
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-  " Move lines up and down
-  nmap <C-J> :m +1 <CR>
-  nmap <C-K> :m -2 <CR>
-
-  " Duplicate a selection
-  " Visual mode: D
-  vmap D y'>p
-
-  " Visually select the text that was last edited/pasted with 'gV'
-  " (This is based on the standard 'gv', which repeats the last selection)
-  nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-  " Inserts the path of the currently edited file into a command
-  " Command mode: Ctrl+P
-  cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-  " get jslint from http://javascriptlint.com/
-  " When writing a file, if there are errors, have Syntastic plugin mark them
-  " In order to check Javascript files, you must have the `jsl` executable from here
-  " in your path:
-  " http://www.javascriptlint.com/download.htm
-  let g:syntastic_enable_signs=1
-  let g:syntastic_auto_loc_list=1
-  let g:syntastic_javascript_checkers=['jsl']
-  let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/nathan/syntastic/syntax_checkers/javascript/jsl.conf -process" " filename will be inserted next
-endif
+" get jslint from http://javascriptlint.com/
+" When writing a file, if there are errors, have Syntastic plugin mark them
+" In order to check Javascript files, you must have the `jsl` executable from here
+" in your path:
+" http://www.javascriptlint.com/download.htm
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_javascript_checkers=['jsl']
+let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/nathan/syntastic/syntax_checkers/javascript/jsl.conf -process" " filename will be inserted next
 
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
