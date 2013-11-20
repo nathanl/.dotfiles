@@ -200,11 +200,6 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'find %s -type f'
   \ }
 
-" ************** Taglist ************
-" Disable it by default because it requires Exuberant CTags.  Delete or
-" comment out this line if you have Exuberant CTags installed.
-let loaded_taglist = 'manually aborted'
-
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
 syntax enable
@@ -232,48 +227,6 @@ colorscheme solarized
 " cursor location.
 :nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
-" ************** Taglist ************
-" In order to use this, you must have Exuberant CTags.
-"
-" Useful commands:
-"   q close window
-"   <CR> open tag in current window
-"   t open tag in new tab
-"   p preview tag without closing taglist
-"   x maximize or unmaximize the tag window
-"   <space> show prototype of class/function in status line
-"   s sort alphabetically or by order in the file
-"   - + = * Fold/unfold some or all sections
-"   u update the taglist [except updates happens upon opening of the
-"     taglist and since we use Tlist_Close_On_Select it's not that big a
-"     deal]
-" F9 opens/focuses the taglist
-nnoremap <silent> <F9> :TlistOpen<CR>
-" F12 jumps to the taglist entry for the word under my cursor.  I can then
-"     hit enter to go to its definition.  The ^Rs (typed as Ctrl-V Ctrl-R
-"     s) means to recall the text in register s, which we grabbed at the
-"     start via "s.  The \C means to not ignore case, even if we have
-"     set ignorecase.  The '+' expands the fold in case it was in a
-"     different file (since we have Tlist_File_Fold_Auto_Close set to 1.)
-map <F12> "syiw:TlistOpen<CR>/ s\>\C<CR>+
-imap <F12> <esc>l<F12>
-" <CR> or t will close the list -- my screen isn't wide enough for the
-" taglist as well as 2 80-character buffers, so I can't leave taglist
-" open all the time.
-let Tlist_Close_On_Select = 1
-" Even if the taglist is closed, read the tags for the files I edit,
-" so that when I open the taglist, all my files are there instead of just
-" the one I'm currently in.
-let Tlist_Process_File_Always = 1
-" When I open the taglist, fold all but the active window's tags.  I can
-" always hit * to open them all up if I'm looking for something in another
-" file.
-let Tlist_File_Fold_Auto_Close = 1
-
-" Yes, I want Taglist to work, yes I've installed Exuberant CTags; undo
-" the damage we did earlier in the .vimrc so Taglist will actually load
-unlet loaded_taglist
-"
 " Wrap text at column 78 in text files.  
 " In code files this will only apply to comments.
 set textwidth=78
