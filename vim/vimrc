@@ -276,6 +276,9 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_javascript_checkers=['jsl']
 let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/nathan/syntastic/syntax_checkers/javascript/jsl.conf -process" " filename will be inserted next
 
+" Open the current Markdown file as HTML for printing
+map <leader>md :!markdown % > /tmp/md_output.html && open /tmp/md_output.html <cr></cr></leader>
+
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
   source ~/.vimrc_machine_specific
