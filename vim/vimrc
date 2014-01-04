@@ -38,6 +38,10 @@ endtry
 " help says to do if you use autocommands, so I'm doing it.
 autocmd!
 
+" Automatically re-read files that have been changed by another program
+" (unless there are unsaved changes). Handy when changing branches.
+set autoread
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
