@@ -16,15 +16,24 @@
   churn = ! git log --pretty=format: --name-only | sort | uniq -c | sort -rg
   b = branch
   ba = branch -a
+  bm = branch --merge
+  bn = branch --no-merge
+  bl = blame
   a = add
   d = diff
   dc = diff --cached
-  c = commit
+  c = commit -v
   co = checkout
   f = fetch
   m = merge
   pd = pull
   pu = push
+  ss = stash save
+  sl = stash list
+  sa = stash apply
+  sd = stash drop
+  sp = stash pop
+  cl = clone
 [color]
   # Color for all commands unless piping
   ui = true
