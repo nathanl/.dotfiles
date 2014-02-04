@@ -12,4 +12,8 @@
 # use .zshrc_machine_specific for settings specific to one machine
 [[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
 
+# So that that shelling out from Vim with `zsh -i` will load .zshrc
+# (see `man zsh` and search for ZDOTDIR)
+export ZDOTDIR=$HOME
+
 export PATH="$HOME/.dotfiles/zsh/scripts:$PATH"
