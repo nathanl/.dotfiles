@@ -26,14 +26,15 @@
   co = checkout
   f = fetch
   m = merge
-  pd = pull
-  pu = push
+  pl = pull
+  ps = push
   ss = stash save
   sl = stash list
   sa = stash apply
   sd = stash drop
   sp = stash pop
   cl = clone
+  v = ! gitx || gitg # visual
 [color]
   # Color for all commands unless piping
   ui = true
