@@ -1,6 +1,8 @@
 # Make zsh behave like bash for this command
 alias history="history 0"
 
+alias g='git'
+
 # cd
 alias ..='cd ..'
 
