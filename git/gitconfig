@@ -21,6 +21,7 @@
   bl = blame
   a = add
   d = diff
+  wd = diff --word-diff
   dc = diff --cached
   c = commit -v
   co = checkout
@@ -63,3 +64,6 @@
   # On the GitHub site Click “Account Settings” > Click “Account Admin.”
   # user = your_user_name
   # token = your_token
+[pull]
+  # Use --rebase when pulling
+  rebase = true
