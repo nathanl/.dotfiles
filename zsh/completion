@@ -1,3 +1,5 @@
+# Autocompletion that is specific to zsh:
+# http://zsh.sourceforge.net/Doc/Release/Completion-System.html
 autoload -U compinit
 compinit
 

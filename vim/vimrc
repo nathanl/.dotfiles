@@ -273,9 +273,6 @@ let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/nathan/syntastic/syntax
 " Open the current Markdown file as HTML for printing
 map <leader>md :w !markdown > /tmp/md_output.html && open /tmp/md_output.html<cr>
 
-" Load shell in interactive mode. For zshell, this means .zshrc will be used (see `man zsh`)
-" My purpose in doing this is to make shell aliases available when shelling out from vim
-set shellcmdflag+=i
 
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 

@@ -1,0 +1,6 @@
+# Unlike .zshrc, this file is used for interactive AND non-interactive shells (eg, `:!git add %` in Vim)
+#
+# Enable aliases
+. ~/.dotfiles/zsh/aliases
+# TODO - see if it's possible to get this to work in vim
+. ~/.dotfiles/zsh/completion
