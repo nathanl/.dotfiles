@@ -19,6 +19,9 @@ alias be='bundle exec'
 # For readable rspec test output
 alias docspec='rspec --format doc --order default'
 
+# 'rspec test' - run all tests and give audible results
+alias rt='be rspec spec && yay || boom'
+
 # Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
 alias rake='noglob rake'
 
