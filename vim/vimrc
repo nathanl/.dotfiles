@@ -105,6 +105,12 @@ map q: :q
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
 
+" ss in normal mode saves file. (Pause or other char after the s becomes an insert)
+nmap ss :w <CR>
+
+" kk exits insert mode. (Pause or other char after the k means 'just type this')
+inoremap kk <Esc>
+
 " ctrl+backspace in insert mode deletes the prior Word (as control+w does the prior word)
 " (For discussion, see http://superuser.com/questions/514615)
 imap <C-BS> <C-o>vBd
