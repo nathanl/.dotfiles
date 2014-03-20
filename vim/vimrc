@@ -273,6 +273,8 @@ let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/nathan/syntastic/syntax
 " Open the current Markdown file as HTML for printing
 map <leader>md :w !markdown > /tmp/md_output.html && open /tmp/md_output.html<cr>
 
+" Copy/paste to system clipboard by default
+set clipboard=unnamed
 
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
