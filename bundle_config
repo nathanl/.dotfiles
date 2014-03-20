@@ -1,0 +1,7 @@
+---
+# Place in ~/.bundle/config
+#
+# Install (number of cores - 1) gems in parallel 
+# On Mac, `sysctl -n hw.ncpu` gives number of cores
+# http://robots.thoughtbot.com/parallel-gem-installing-using-bundler
+BUNDLE_JOBS: '3'
