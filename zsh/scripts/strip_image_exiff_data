@@ -1,0 +1,3 @@
+#!/bin/bash
+# Depends on mogrify tool that comes with imagemagick
+mogrify -strip $1
