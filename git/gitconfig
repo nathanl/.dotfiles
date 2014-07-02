@@ -25,7 +25,7 @@
   dc = diff --cached
   c = commit -v
   co = checkout
-  f = fetch
+  f = fetch --prune
   m = merge
   pl = pull
   ps = push
@@ -36,6 +36,8 @@
   sp = stash pop
   cl = clone
   v = ! gitx || gitg # visual
+  # Find all occurrences in project history
+  research = "!f(){ git grep $1 $(git rev-list --all); }; f"
 [color]
   # Color for all commands unless piping
   ui = true
