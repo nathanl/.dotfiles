@@ -34,3 +34,6 @@ alias plainvim="vi -u NONE"
 
 # See what is listening on a given port: `whoport 80`
 function whoport(){ lsof -i :$1 } # may need sudo
+
+# Recursively grep in files
+function grepfiles(){ grep -Ri $1 *}
