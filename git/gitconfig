@@ -62,8 +62,10 @@
   # Some tools connect to GitHub without SSH. To use these tools properly you
   # need to set these.
   # On the GitHub site Click “Account Settings” > Click “Account Admin.”
-  # user = your_user_name
-  # token = your_token
+  # user = some_user
+  # token = some_token
 [pull]
   # Use --rebase when pulling
   rebase = true
+[hub]
+	host = gh.fromatob.com
