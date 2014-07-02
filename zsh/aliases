@@ -25,6 +25,9 @@ alias rt='be rspec spec && yay || boom'
 # Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
 alias rake='noglob rake'
 
+# Install command-line rdocs for all gems
+alias gemdocs='gem rdoc --all --ri --no-rdoc'
+
 # Ways to use Vim with minimal or no config
 alias simplevim="vi -u ~/.vimrc_simple"
 alias plainvim="vi -u NONE"
