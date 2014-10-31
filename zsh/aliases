@@ -35,6 +35,10 @@ alias plainvim="vi -u NONE"
 # See what is listening on a given port: `whoport 80`
 function whoport(){ lsof -i :$1 } # may need sudo
 
+# Grep processes and show headers.
+# See http://unix.stackexchange.com/a/47923/8514
+function psgrep(){ ps -ef | sed -e '1p' -e "/$1/!d" }
+
 # Define a word
 function define() { curl dict://dict.org/d:$1 }
 
