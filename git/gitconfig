@@ -11,7 +11,7 @@
   s = status
   l = log
   gl = log --graph --decorate --pretty=oneline --abbrev-commit
-  g = grep -n
+  g = grep -i -n
   # List of files in git repo by number of commits in which they've changed
   churn = ! git log --pretty=format: --name-only | sort | uniq -c | sort -rg
   b = branch
@@ -38,6 +38,7 @@
   v = ! gitx || gitg # visual
   # Find all occurrences in project history
   research = "!f(){ git grep $1 $(git rev-list --all); }; f"
+  commits = log --left-right --graph --cherry-pick --oneline
 [color]
   # Color for all commands unless piping
   ui = true
