@@ -39,6 +39,7 @@
   # Find all occurrences in project history
   research = "!f(){ git grep $1 $(git rev-list --all); }; f"
   commits = log --left-right --graph --cherry-pick --oneline
+  praise = blame # for high fives!
 [color]
   # Color for all commands unless piping
   ui = true
