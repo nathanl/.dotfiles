@@ -15,6 +15,7 @@ alias ll="ls -lAh"
 alias %=' '
 
 alias be='bundle exec'
+alias berk='bundle exec rake'
 
 # For readable rspec test output
 alias docspec='rspec --format doc --order default'
@@ -27,6 +28,10 @@ alias rake='noglob rake'
 
 # Install command-line rdocs for all gems
 alias gemdocs='gem rdoc --all --ri --no-rdoc'
+
+# Postgres convenience commands
+alias dbstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log start'
+alias dbstop='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log stop'
 
 # Ways to use Vim with minimal or no config
 alias simplevim="vi -u ~/.vimrc_simple"
