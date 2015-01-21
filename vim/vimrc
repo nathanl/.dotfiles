@@ -121,6 +121,9 @@ imap <C-BS> <C-o>vBd
 " TODO: this really doesn't work well. Maybe try writing it in Ruby?
 map <leader>s t,Bdt,wea, pBBdF,
 
+" Change single quoted string to double quotes, keep position using t register
+map <leader>" mtcs'"`t
+
 " ***************** TABS ***************************  
 " Usually, you want 2 spaces per tab, so these lines make this the default.
 " There are ways to make vi do clever things with tabs in different
