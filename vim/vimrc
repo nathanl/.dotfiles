@@ -5,6 +5,8 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+" Captial Q does nothing (instead of entering Ex mode)
+nnoremap Q <nop>
 
 " Make Y behave like other capitals - to end of line
 map Y y$
