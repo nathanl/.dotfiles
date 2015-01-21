@@ -3,4 +3,35 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # Enable auto-switching of Rubies specified by .ruby-version files
 # in current or parent directory
-source /usr/local/opt/chruby/share/chruby/auto.sh
+# Taken from https://raw.githubusercontent.com/postmodern/chruby/c260570c49fedb77b30b9948b798ac0e5046b63d/share/chruby/auto.sh
+unset RUBY_AUTO_VERSION
+
+function chruby_auto() {
+	local dir="$PWD/" version
+
+	until [[ -z "$dir" ]]; do
+		dir="${dir%/*}"
+
+		if { read -r version <"$dir/.ruby-version"; } 2>/dev/null || [[ -n "$version" ]]; then
+			if [[ "$version" == "$RUBY_AUTO_VERSION" ]]; then return
+			else
+				RUBY_AUTO_VERSION="$version"
+				chruby "$version"
+				return $?
+			fi
+		fi
+	done
+
+	if [[ -n "$RUBY_AUTO_VERSION" ]]; then
+		chruby_reset
+		unset RUBY_AUTO_VERSION
+	fi
+}
+
+# Auto-detect whenever we change directories. 
+# It was too hard to contribute
+# this back because bash just can't do it.
+chpwd_functions+=("chruby_auto")
+
+# Run once as the shell starts up
+chruby_auto
