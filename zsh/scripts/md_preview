@@ -1,0 +1,6 @@
+#!/bin/bash
+# Convert a file from markdown to html and open in a browser
+
+FILE=$1;
+cat $FILE | markdown > /tmp/markdown_output.html;
+open /tmp/markdown_output.html;
