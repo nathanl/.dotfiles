@@ -31,7 +31,7 @@ alias gemdocs='gem rdoc --all --ri --no-rdoc'
 
 # Postgres convenience commands
 alias dbstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log start'
-alias dbstop='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log stop'
+alias dbstop='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log stop -m fast'
 
 # Ways to use Vim with minimal or no config
 alias simplevim="vi -u ~/.vimrc_simple"
