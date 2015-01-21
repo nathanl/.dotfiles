@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby 
+
+# Format a hash/array so that it's readable
+# Meant to be used with Unix piping or from Vim
+
+hash_string = STDIN.read
+
+# newlines for hash borders
+hash_string.gsub!("{", "{\n")
+hash_string.gsub!("}", "\n}")
+
+# same for array borders
+hash_string.gsub!("[", "[\n")
+hash_string.gsub!("]", "\n]")
+
+# and commas
+hash_string.gsub!(",", ",\n")
+
+# whitespace improvements
+hash_string.gsub!("=>", " => ")
+hash_string.gsub!(/^\n/, "")
+
+STDOUT.puts hash_string
