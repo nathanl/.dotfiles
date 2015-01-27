@@ -65,6 +65,9 @@ autocmd BufReadPost *
 " When creating new files, use a template if we have one in templates/
 autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
+" put custom scripts on the path
+let $PATH = expand("~/.dotfiles/scripts") . ":" . $PATH
+
 " ****************** SCROLLING *********************  
 
 set scrolloff=8      " Number of lines from vertical edge to start scrolling
