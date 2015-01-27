@@ -1,1 +1,1 @@
-date +"%m/%d/%Y"
+date +"%Y-%m-%d"
