@@ -16,4 +16,4 @@
 # (see `man zsh` and search for ZDOTDIR)
 export ZDOTDIR=$HOME
 
-export PATH="$HOME/.dotfiles/zsh/scripts:$PATH"
+export PATH="$HOME/.dotfiles/scripts:$PATH"
