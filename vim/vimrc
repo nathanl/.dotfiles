@@ -271,6 +271,11 @@ nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
+" Toggle automatic syntax checking.
+command! AutoCheck SyntasticToggleMode
+" Trigger it manually. `:lclose` closes the location list
+command! Check SyntasticCheck
+
 " get jslint from http://javascriptlint.com/
 " When writing a file, if there are errors, have Syntastic plugin mark them
 " In order to check Javascript files, you must have the `jsl` executable from here
