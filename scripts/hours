@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+args = ARGV.empty? ? ["--current", "week"] : ARGV
+puts %x{INPUT=~/code/from_a_to_b/hours/billable_hours.csv ~/code/from_a_to_b/hours/hours.rb #{args.join(" ")}}
