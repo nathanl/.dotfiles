@@ -3,4 +3,4 @@
 
 FILE=$1;
 cat $FILE | markdown > /tmp/markdown_output.html;
-open /tmp/markdown_output.html;
+open /tmp/markdown_output.html &
