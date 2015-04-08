@@ -37,6 +37,7 @@
   sa = stash apply
   sd = stash drop
   sp = stash pop
+  sh = show --pretty=medium
   cl = clone
   v = ! gitx || gitg # visual
   # Find all occurrences in project history
