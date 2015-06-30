@@ -24,3 +24,8 @@ end
 def paste
   `pbpaste`
 end
+
+def avg(*arr)
+  arr = arr.flatten
+  arr.reduce(&:+) / Float(arr.length)
+end
