@@ -40,6 +40,8 @@
   sh = show --pretty=medium
   cl = clone
   v = ! gitx || gitg # visual
+  # List branches by how recently they've been worked on
+  recent = for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads
   # Find all occurrences in project history
   research = "!f(){ git grep $1 $(git rev-list --all); }; f"
   commits = log --left-right --graph --cherry-pick --oneline
