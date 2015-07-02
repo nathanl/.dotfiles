@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Takes stdin and outputs to stdout. Suitable for usage on vim buffers or highlights.
+# http://stackoverflow.com/a/16090892/4376
+
+xmllint --format -
