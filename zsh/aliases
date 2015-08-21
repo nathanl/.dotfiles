@@ -20,8 +20,8 @@ alias berk='bundle exec rake'
 # For readable rspec test output
 alias docspec='rspec --format doc --order default'
 
-# 'rspec test' - run all tests and give audible results
-alias rt='be rspec spec && yay || boom'
+# 'rake test' - run all tests and give audible results
+alias rt='berk && yay || boom'
 
 # Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
 alias rake='noglob rake'
@@ -37,12 +37,17 @@ alias dbstop='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log s
 alias simplevim="vi -u ~/.vimrc_simple"
 alias plainvim="vi -u NONE"
 
+alias gs='echo "if you really want ghostscript, \"where gs\" to find it"'
+
 # See what is listening on a given port: `whoport 80`
 function whoport(){ lsof -i :$1 } # may need sudo
 
 # Grep processes and show headers.
 # See http://unix.stackexchange.com/a/47923/8514
 function psgrep(){ ps -ef | sed -e '1p' -e "/$1/!d" }
+
+# See system calls of the process with a given PID
+function diagnose() { sudo dtruss -cade -p "$1" 2>&1 | tee /tmp/ruby_diagnosis }
 
 # Define a word
 function define() { curl dict://dict.org/d:$1 }
