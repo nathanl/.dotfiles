@@ -94,7 +94,10 @@ set mouse=a
 " **************** CONVENIENCE MAPPINGS ************  
 " Set the leader key to comma (normally, it's "\")
 let mapleader = ","
-"
+
+" reload .vimrc
+map <leader>rv :source ~/.vimrc<cr>
+
 " Ctrl-L recolors the screen when it gets confused.
 noremap <c-l> <c-l>:syntax sync fromstart<CR>
 inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
@@ -110,8 +113,8 @@ map q: :q
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
 
-" ss in normal mode saves file. (Pause or other char after the s becomes an insert)
-nmap ss :w <CR>
+" leader win normal mode saves file. (Pause or other char after the s becomes an insert)
+nmap <leader>w :w <CR>
 
 " kk exits insert mode. (Pause or other char after the k means 'just type this')
 inoremap kk <Esc>
@@ -144,6 +147,7 @@ set smarttab  " backspace over a tab will remove a tab's worth of space
 " Beautify display of hidden characters (tabs, line breaks, etc).
 " (`:set list!` to toggle display; `:help listchars` for info )
 set listchars=nbsp:☠,trail:⋅,tab:▸\ ,eol:¬,extends:❯,precedes:❮
+map <leader>l :set list!<CR>
 
 " *************** Tab completion ****************
 " src: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
@@ -207,6 +211,8 @@ let g:ctrlp_user_command = {
     \ },
   \ 'fallback': 'find %s -type f'
   \ }
+
+nmap <Leader>p <C-p>
 
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
@@ -285,9 +291,13 @@ command! Check SyntasticCheck
 " in your path:
 " http://www.javascriptlint.com/download.htm
 let g:syntastic_enable_signs=1
+let g:syntastic_ruby_exec = '~/.rubies/default/bin/ruby'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_javascript_checkers=['jsl']
-let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/nathan/syntastic/syntax_checkers/javascript/jsl.conf -process" " filename will be inserted next
+" let g:syntastic_javascript_checkers = ['jslint']
+" TODO: eeeeh?? This conf file doesn't exist?
+" let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/syntastic/syntax_checkers/javascript/jsl.conf -process" " filename will be inserted next
+" let g:syntastic_javascript_jsl_args=" " filename will be inserted next
 
 " Elixir file checker executes the code. Unsafe and slow. Disable.
 let g:syntastic_enable_elixir_checker = 0
