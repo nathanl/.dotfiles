@@ -2,4 +2,4 @@
 " Used when launching editor to
 " write commit messages.
 set nocompatible
-set textwidth=50
+set textwidth=72
