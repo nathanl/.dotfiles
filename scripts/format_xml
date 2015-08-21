@@ -4,3 +4,9 @@
 # http://stackoverflow.com/a/16090892/4376
 
 xmllint --format -
+
+# TODO - should not mess up non-ascii values. Eg:
+# <attrib>
+#   <atype>dir</atype>
+#   <value>St.Pölten Hbf</value>
+# </attrib>
