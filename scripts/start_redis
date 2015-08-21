@@ -1,0 +1,5 @@
+#!/bin/bash
+# Start Redis as a background process
+cd tmp
+redis-server &
+cd -
