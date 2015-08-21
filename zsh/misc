@@ -30,3 +30,8 @@ setopt IGNORE_EOF
 zle -N newtab
 
 disable r
+
+# If a pattern for filename generation has no matches, don't print an error,
+# just leave it.
+# My use case is rake some:task[some_argument]
+unsetopt nomatch
