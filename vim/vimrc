@@ -181,11 +181,6 @@ inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 " the path specified
 call pathogen#infect('~/.vim/bundle')
 
-" ************ TaskList ****************
-" Leader t opens TaskList. Mnemonic: t for "TODO"
-" '<CR>' jumps to highlighted TODO; 'q' quits
-map <unique> <silent> <Leader>t <Plug>TaskList
-
 " ************ NERDTree ****************
 " Leader f opens NERDTree. Mnemonic: f for "Files"
 map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
