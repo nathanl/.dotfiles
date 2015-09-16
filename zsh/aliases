@@ -54,3 +54,5 @@ function define() { curl dict://dict.org/d:$1 }
 
 # Recursively grep in files
 function grepfiles(){ grep -Ri $1 *}
+
+alias work='cd ~/work; mvim -p billable_hours.csv general_todo.md poms.md sharpening.md slowness.md team_dynamics.md'
