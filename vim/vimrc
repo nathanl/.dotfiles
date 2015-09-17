@@ -183,7 +183,7 @@ call pathogen#infect('~/.vim/bundle')
 
 " ************ NERDTree ****************
 " Leader f opens NERDTree. Mnemonic: f for "Files"
-map <unique> <silent> <Leader>f :NERDTreeToggle<CR>
+map <silent> <Leader>f :NERDTreeToggle<CR>
 
 " ************ CtrlP (File Finder) ****************
 " - Pressing <control + p> starts it.
