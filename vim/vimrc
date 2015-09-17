@@ -96,7 +96,7 @@ set mouse=a
 let mapleader = ","
 
 " reload .vimrc
-map <leader>rv :source ~/.vimrc<cr>
+map <leader>rc :source ~/.vimrc<cr>
 
 " Ctrl-L recolors the screen when it gets confused.
 noremap <c-l> <c-l>:syntax sync fromstart<CR>
