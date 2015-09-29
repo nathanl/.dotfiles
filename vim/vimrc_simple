@@ -3,3 +3,6 @@
 " write commit messages.
 set nocompatible
 set textwidth=72
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
