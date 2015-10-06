@@ -1,2 +1,2 @@
 #!/bin/bash
-afplay ~/.dotfiles/other_files/sounds/yay.mp3 & # Return immediately
+afplay ~/.dotfiles/other_files/sounds/yay.mp3 -v -0.2 & # Return immediately
