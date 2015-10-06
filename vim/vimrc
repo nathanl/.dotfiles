@@ -209,7 +209,8 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'find %s -type f'
   \ }
 
-nmap <Leader>p <C-p>
+" Search in pwd, even if current file is located elsewhere
+nmap <Leader>p :CtrlP pwd<CR>
 
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
