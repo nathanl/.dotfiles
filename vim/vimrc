@@ -171,6 +171,8 @@ endfunction
 
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
+set wildmenu " menu of options for autocomplete in :e som<TAB>
+
 " **************** PLUGINS *************************  
 " ************ Pathogen ****************
 " Get Pathogen plugin to load other plugins - all files, recursively, from
