@@ -133,17 +133,12 @@ map <leader>s t,Bdt,wea, pBBdF,
 map <leader>" mtcs'"`t
 
 " ***************** TABS ***************************  
-" Usually, you want 2 spaces per tab, so these lines make this the default.
-" There are ways to make vi do clever things with tabs in different
-" situations, like MS Word can, but I *always* want tab to behave the same way
-" -- so I set all three of these tab-related values the same.
 " (To overrride these per file type, put commands in .vim/ftplugin/)
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-
-set expandtab " insert spaces instead of tab characters
-set smarttab  " backspace over a tab will remove a tab's worth of space
+set tabstop=2     " visual spaces displayed per tab character
+set expandtab     " insert spaces instead of tab characters
+set softtabstop=2 " spaces entered when tab key is pressed
+set shiftwidth=2  " spaces for auto-intent or <</>>
+set smarttab      " backspace over a tab will remove a tab's worth of space
 
 " *********** DISPLAYING HIDDEN CHARACTERS *********
 " Beautify display of hidden characters (tabs, line breaks, etc).
