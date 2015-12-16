@@ -1,0 +1,28 @@
+-- These commands are run in any new psql session
+-- see http://www.postgresql.org/docs/9.4/static/app-psql.html
+
+-- If results are too wide, use multiple lines
+\x auto
+
+-- Display a NULL as this to distinguish from empty strings
+\pset null '[NULL]'
+
+-- Autocomplete any keywords in upper case (eg sel<tab> makes SELECT)
+\set COMP_KEYWORD_CASE upper
+
+-- Fancy prompt with info
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+
+-- Helpful prompt for when psql is waiting for more input
+-- (eg, forgot to close a quote)
+\set PROMPT2 '[more] %R > '
+
+-- Verbose error reports.
+\set VERBOSITY verbose
+
+-- Use a separate history file per-database.
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- If a command is run more than once in a row, only store it once in the
+-- history.
+\set HISTCONTROL ignoredups
