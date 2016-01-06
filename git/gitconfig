@@ -66,7 +66,7 @@
 [user]
   # Name and email used for commits
   name = Nathan Long
-  email = nathanmlong@gmail.com
+  email = him@nathanmlong.com
 [github]
   # Some tools connect to GitHub without SSH. To use these tools properly you
   # need to set these.
