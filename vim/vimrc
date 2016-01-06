@@ -266,6 +266,9 @@ nmap <C-K> :m -2 <CR>
 nnoremap j gj
 nnoremap k gk
 
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
 " Duplicate a selection
 " Visual mode: D
 vmap D y'>p
