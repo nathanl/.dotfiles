@@ -262,6 +262,10 @@ set number
 nmap <C-J> :m +1 <CR>
 nmap <C-K> :m -2 <CR>
 
+" move vertically by visual line, not actual line (eg if wrapped)
+nnoremap j gj
+nnoremap k gk
+
 " Duplicate a selection
 " Visual mode: D
 vmap D y'>p
