@@ -78,3 +78,7 @@
   rebase = true
 [hub]
 	host = gh.fromatob.com
+[rebase]
+  # If I try to rebase and have uncommitted changes, stash them, rebase, and
+  # pop the stash automatically
+	autostash = true
