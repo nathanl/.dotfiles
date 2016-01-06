@@ -171,6 +171,7 @@ endfunction
 
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
+
 set wildmenu " menu of options for autocomplete in :e som<TAB>
 
 " **************** PLUGINS *************************  
@@ -204,6 +205,7 @@ let g:ctrlp_user_command = {
     \ },
   \ 'fallback': 'find %s -type f'
   \ }
+let g:ctrlp_working_path_mode = 0 " respect changes in pwd
 
 " Search in pwd, even if current file is located elsewhere
 nmap <Leader>p :CtrlP pwd<CR>
