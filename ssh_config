@@ -1,0 +1,28 @@
+# Security settings
+# This should go in /etc/ssh/ssh_config
+# See http://www.tldp.org/LDP/solrhe/Securing-Optimizing-Linux-RH-Edition-v1.3/chap15sec121.html
+# Host *
+#   ForwardAgent no
+#   ForwardX11 no
+#   RhostsAuthentication no
+#   RhostsRSAAuthentication no
+#   RSAAuthentication yes
+#   PasswordAuthentication yes
+#   FallBackToRsh no
+#   UseRsh no
+#   BatchMode no
+#   CheckHostIP yes
+#   StrictHostKeyChecking no
+#   IdentityFile ~/.ssh/identity
+#   Port 22
+#   Cipher blowfish
+#   EscapeChar ~
+#   UseRoaming no # http://undeadly.org/cgi?action=article&sid=20160114142733
+
+# Hosts for convenience
+Host someshortname
+  HostName something.something.example.com
+  User someusername
+
+Host *
+  UseRoaming no # http://undeadly.org/cgi?action=article&sid=20160114142733
