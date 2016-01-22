@@ -1,0 +1,10 @@
+#!/bin/bash
+# The VDCAssistant process opens any time an app attempts to use the process.
+# It appears the “camera not found” error message shows up when the
+# VDCAssistant does not properly close when an earlier app used the camera,
+# resulting in the camera staying in use and being blocked by other apps.
+# Accordingly, the above trick found on the Apple Forums kills that stale
+# process so that it can start fresh again with the new app.
+# http://osxdaily.com/2013/12/27/fix-there-is-no-connected-camera-error-mac/
+killall VDCAssistant
+killall AppleCameraAssistant
