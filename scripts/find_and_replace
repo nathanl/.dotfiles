@@ -1,0 +1,7 @@
+#!/bin/bash
+# TODO: write this, based on:
+# https://superuser.com/questions/428493/how-can-i-do-a-recursive-find-and-replace-from-the-command-line
+# - allow passing the directory to look in
+# - try to make it work on OSX or Linux
+# - maybe use git fanciness if available?
+echo "ze command, it does nohsing!"
