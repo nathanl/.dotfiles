@@ -46,6 +46,7 @@
   history = log -G
   commits = log --left-right --graph --cherry-pick --oneline
   praise = blame # for high fives!
+  submodules-please = submodule update --init --recursive
 [color]
   # Color for all commands unless piping
   ui = true
