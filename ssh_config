@@ -25,4 +25,5 @@ Host someshortname
   User someusername
 
 Host *
-  UseRoaming no # http://undeadly.org/cgi?action=article&sid=20160114142733
+ # http://undeadly.org/cgi?action=article&sid=20160114142733
+  UseRoaming no
