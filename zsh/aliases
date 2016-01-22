@@ -3,6 +3,10 @@ alias history="history 0"
 
 alias g='git'
 
+# OSX system vim is outdated and crashes in tmux, so use
+# macvim's command-line mode if it's available
+alias vim='mvim -v || vim'
+
 # cd
 alias ..='cd ..'
 
