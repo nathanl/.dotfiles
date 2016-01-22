@@ -75,9 +75,6 @@
   # On the GitHub site Click “Account Settings” > Click “Account Admin.”
   # user = some_user
   # token = some_token
-[pull]
-  # Use --rebase when pulling
-  rebase = true
 [hub]
 	host = gh.fromatob.com
 [rebase]
