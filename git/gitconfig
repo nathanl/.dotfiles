@@ -9,7 +9,8 @@
   autocrlf = input
 [alias]
   s = status
-  l = log
+  # See https://git-scm.com/docs/pretty-formats
+  l = log --pretty='format:%C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr)%Creset'
   # "graph log"
   gl = log --graph --decorate --pretty=oneline --abbrev-commit
   # "full log"
@@ -56,9 +57,6 @@
   submodule = 1
 [apply]
  whitespace = nowarn
-[format]
- ; see https://www.kernel.org/pub/software/scm/git/docs/git-log.html
- pretty = %C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr)%Creset
 [push]
   # `git push origin` does current branch only
 	default = simple
