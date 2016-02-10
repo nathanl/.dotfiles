@@ -1,5 +1,5 @@
 # Enable chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/share/chruby/chruby.sh
 
 # Enable auto-switching of Rubies specified by .ruby-version files
 # in current or parent directory
