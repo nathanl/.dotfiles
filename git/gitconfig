@@ -3,7 +3,7 @@
   excludesfile = /Users/nathanlong/.gitignore
 
   # If I run 'git commit', open vim with simplified config.
-  editor = vi -u "~/.vimrc_simple"
+  editor = vi -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
 [alias]
   s = status
