@@ -6,8 +6,8 @@ fi
 
 # Use Vim as my editor (Git will launch this for commits)
 export EDITOR='vim'
-# `bundle open` should use mvim
-export BUNDLER_EDITOR='mvim'
+# `bundle open` should use this editor
+export BUNDLER_EDITOR='vim'
 
 fpath=(~/.zsh/functions $fpath)
 
