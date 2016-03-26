@@ -2,7 +2,7 @@
 # Convert a file from markdown to html and open in a browser
 
 # cmark is from https://github.com/jgm/cmark
-cmark $1 > /tmp/markdown_output.html;
+cmark "$1" > /tmp/markdown_output.html;
 
 # TODO - make this conditional on an arg, and have a binding `om`
 # to do the open
