@@ -5,7 +5,10 @@
   # If I run 'git commit', open vim with simplified config.
   editor = vi -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
+  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [alias]
+  # list all aliases :)
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | less
   s = status
   # See https://git-scm.com/docs/pretty-formats
   l = log --pretty='format:%C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr)%Creset'
@@ -47,8 +50,19 @@
   praise = blame # for high fives!
   submodules-please = submodule update --init --recursive
 [color]
-  # Color for all commands unless piping
-  ui = true
+  ui = always
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  commit = green
+  meta = yellow
+  frag = cyan
+  old = red
+  new = green
+  whitespace = red reverse
 [help]
   autocorrect = 1
 [status]
