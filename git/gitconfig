@@ -43,6 +43,7 @@
   recent = for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads
   tagdates = log --tags --simplify-by-decoration --pretty='format:%ai %d'
   history = log -G
+  contributors = shortlog -s -n
   commits = log --left-right --graph --cherry-pick --oneline
   praise = blame # for high fives!
   submodules-please = submodule update --init --recursive
