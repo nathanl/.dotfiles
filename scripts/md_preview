@@ -2,10 +2,12 @@
 # Convert a file from markdown to html and open in a browser
 
 # cmark is from https://github.com/jgm/cmark
-cmark "$1" > /tmp/markdown_output.html;
+cmark "$@" > /tmp/markdown_output.html;
 
 # TODO - make this conditional on an arg, and have a binding `om`
 # to do the open
 # or maybe conditional on whether the file already exists
 # Open the html in a browser
-open /tmp/markdown_output.html &
+if [ $? -eq 0 ]; then
+  open /tmp/markdown_output.html &
+fi
