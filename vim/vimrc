@@ -212,6 +212,8 @@ nmap <Leader>p :CtrlP pwd<CR>
 
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
+set term=xterm-256color
+" let g:solarized_termcolors=256
 syntax enable
 set background=dark
 " Necessary in mintty for background to be blue, not black, in vim, even
