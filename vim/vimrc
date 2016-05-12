@@ -255,6 +255,7 @@ imap <S-Tab> <BS>
 
 " Use abbreviations defined here
 source ~/.vim/abbreviations
+source ~/.vim/formatters.vim
 
 " Control+h produces a hashrocket
 imap <C-h> <Space>=><Space>
