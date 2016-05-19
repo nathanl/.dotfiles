@@ -43,7 +43,7 @@
   cl = clone
   v = ! gitx || gitg # visual
   # List branches by how recently they've been worked on
-  recent = for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads
+  recent = for-each-ref --sort='committerdate:iso8601' --format=' %(color:green)%(committerdate:iso8601)%09%(color:white)%(refname:short)' refs/heads
   tagdates = log --tags --simplify-by-decoration --pretty='format:%ai %d'
   history = log -G
   contributors = shortlog -s -n
