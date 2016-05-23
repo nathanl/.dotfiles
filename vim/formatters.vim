@@ -1,16 +1,17 @@
 function! CleanedSentencePerLine(start, end)
-  " OnlySingleSpaces(a:start, a:end)
-  SentencePerLine(a:start, a:end)
+  call OnlySingleSpacesWithinLine(a:start, a:end)
+  call SentencePerLine(a:start, a:end)
 endfunction
 
-function! OnlySingleSpaces(start, end)
-  " TODO - figure out how to replace all duplicate spaces with single spaces
-  " EXCEPT at the start of a line (preserve indenting)
-  return 1
+" replace all duplicate spaces with single spaces
+" EXCEPT at the start of a line (preserve indentation)
+function! OnlySingleSpacesWithinLine(start, end)
+  exe a:start . ',' . a:end . 's/\S\zs\s\{2,}/ /g'
 endfunction
 
 " from http://vi.stackexchange.com/a/2848/7702
 function! SentencePerLine(start, end)
+  " TODO why doesn't this work on the last line in a selection?
   " period, dot, or question mark followed by a space.
   " (If it's followed by a newline, we don't need to mess with it.)
   let non_terminal_sentence_pattern = '\(\.\|?\|\!\)\s'
