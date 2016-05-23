@@ -11,12 +11,14 @@ endfunction
 
 " from http://vi.stackexchange.com/a/2848/7702
 function! SentencePerLine(start, end)
-  " TODO why doesn't this work on the last line in a selection?
-  " period, dot, or question mark followed by a space.
-  " (If it's followed by a newline, we don't need to mess with it.)
-  let non_terminal_sentence_pattern = '\(\.\|?\|\!\)\s'
+  " TODO
+  " This is still imperfect for highlighting and gq.
+  " It's horrible for auto formatting while typing.
+  " period, dot, or question mark followed by a space or newline or EOF.
+  let non_terminal_sentence_pattern = '\(\.\|?\|\!\)\(\s\|$\|\%$\)'
   let non_terminal_sentence_count = Count(a:start, a:end, non_terminal_sentence_pattern)
 
+  exe a:start . 'G'
   let breaks_inserted = 0
   while breaks_inserted < non_terminal_sentence_count
     exe 'normal!' "^)i\<bs>\<cr>"
