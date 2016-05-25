@@ -58,3 +58,6 @@
 [submodule "vim/bundle/vim-slim"]
 	path = vim/bundle/vim-slim
 	url = git@github.com:slim-template/vim-slim.git
+[submodule "vim/bundle/elm.vim"]
+	path = vim/bundle/elm.vim
+	url = git@github.com:lambdatoast/elm.vim.git
