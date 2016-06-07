@@ -11,9 +11,9 @@
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | less
   s = status
   # See https://git-scm.com/docs/pretty-formats
-  l = log --pretty='format:%C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr)%Creset'
-  # "graph log"
-  gl = log --graph --decorate --pretty=oneline --abbrev-commit
+  l = log --pretty='format:%C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr - %cd)%Creset'
+  # "log graph-style"
+  lg = log --graph --decorate --pretty=oneline --abbrev-commit
   # "full log"
   fl = log --pretty=full
   g = grep -i -n
@@ -92,3 +92,5 @@
   # If I try to rebase and have uncommitted changes, stash them, rebase, and
   # pop the stash automatically
 	autostash = true
+[log]
+  date = format:%Y-%m-%d
