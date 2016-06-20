@@ -94,3 +94,6 @@
 	autostash = true
 [log]
   date = format:%Y-%m-%d
+[submodule]
+  # fetch submodules in parallel
+	fetchJobs = 4
