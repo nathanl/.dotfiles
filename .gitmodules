@@ -61,3 +61,6 @@
 [submodule "vim/bundle/elm.vim"]
 	path = vim/bundle/elm.vim
 	url = git@github.com:lambdatoast/elm.vim.git
+[submodule "vim/bundle/rename.vim"]
+	path = vim/bundle/rename.vim
+	url = git@github.com:danro/rename.vim.git
