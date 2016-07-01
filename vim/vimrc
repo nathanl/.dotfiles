@@ -308,8 +308,10 @@ let g:syntastic_javascript_checkers=['jsl']
 " Elixir file checker executes the code. Unsafe and slow. Disable.
 let g:syntastic_enable_elixir_checker = 0
 
-" Open the current Markdown file as HTML for printing
+" Render the current markdown file as HTML
 map <leader>md :!md_preview %<cr>
+" Also open the HTML file
+map <leader>mo :!md_preview % open<cr>
 
 " Copy/paste to system clipboard by default
 set clipboard=unnamed
