@@ -1,11 +1,41 @@
 #!/bin/bash
-# Convert a file from markdown to html and open in a browser
+# Convert a file from markdown to html and (optionally) open in a browser.
+# The resulting html is inserted into a simple custom HTML template.
+
+template_file=~/.dotfiles/scripts/md_preview_template.html
+initial_output_file=/tmp/bare_markdown_output.html
+output_file=/tmp/markdown_output.html
 
 # cmark is from https://github.com/jgm/cmark
-cmark "$1" > /tmp/markdown_output.html;
+cmark "$1" > $initial_output_file
 
-# If that worked, and we were told to open it
-if [ $? -eq 0 ] && [ "$2" = "open" ]; then
-  # Open the html in a browser
-  open /tmp/markdown_output.html &
+# If markdown rendering worked
+if [ $? -eq 0 ]; then
+
+  insertion_point="$(
+    # Find the matching line number
+    grep -n "INSERT RENDERED MARKDOWN HERE" $template_file |
+    cut -d : -f 1 |
+    # remove whitespace so we can treat it as an integer
+    tr -d '[[:space:]]'
+    )"
+
+  # Clear the output file
+  echo '' > $output_file
+
+  line_before=$(($insertion_point - 1))
+  headopts="-$line_before $template_file"
+  head $headopts >> $output_file
+
+  cat $initial_output_file >> $output_file
+
+  line_after=$(($insertion_point + 1))
+  tailopts="-n +$line_after $template_file"
+  tail $tailopts >> $output_file
+
+  # If we were told to open the rendered file
+  if [ "$2" = "open" ]; then
+    # Open the html in a browser
+    open $output_file &
+  fi
 fi
