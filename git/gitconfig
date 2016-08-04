@@ -1,6 +1,6 @@
 [core]
   # This ignore file should be used for all repos
-  excludesfile = /Users/nathanlong/.gitignore
+  excludesfile = ~/.gitignore
 
   # If I run 'git commit', open vim with simplified config.
   editor = vi -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
