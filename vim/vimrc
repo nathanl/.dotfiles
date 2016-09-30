@@ -212,28 +212,13 @@ nmap <Leader>p :CtrlP pwd<CR>
 
 " ************** COLOR SCHEME ************
 " Set to Solarized colorscheme which works on lots of platforms and looks nice
-set term=xterm-256color
-" let g:solarized_termcolors=256
-syntax enable
+let g:solarized_termcolors=16
 set background=dark
-" Necessary in mintty for background to be blue, not black, in vim, even
-" after setting mintty's terminal colors to solarized's via a script
-
-let g:solarized_termtrans=1
-if $TERM_PROGRAM == "Apple_Terminal"
-  " for awesome people using vim in apple terminal 
-  " (with black background and transparency)
-  unlet g:solarized_termtrans
-  let g:solarized_termtrans=0
-  let g:solarized_termcolors=256
-  let g:solarized_visibility="high"
-  let g:solarized_contrast="high"
-end
-set background=dark
-
+colorscheme solarized
 " Let F5 trigger changing Solarized themes
 call togglebg#map("<F5>")
-colorscheme solarized
+syntax enable
+" ****************************************
 
 " <cr> should not only clear highlighted search, but flash the current
 " cursor location.
