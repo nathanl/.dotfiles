@@ -44,11 +44,15 @@
   v = ! gitx || gitg # visual
   # List branches by how recently they've been worked on
   recent = for-each-ref --sort='committerdate:iso8601' --format=' %(color:green)%(committerdate:iso8601)%09%(color:white)%(refname:short)' refs/heads
+
+  recent-remote = for-each-ref --sort='committerdate:iso8601' --format=' %(color:green)%(committerdate:iso8601)%09%(color:white)%(refname:short)' refs/remotes
   tagdates = log --tags --simplify-by-decoration --pretty='format:%ai %d'
   history = log -G
   contributors = shortlog -s -n
   commits = log --left-right --graph --cherry-pick --oneline
   praise = blame # for high fives!
+  find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+  show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
   submodules-please = submodule update --init --recursive
 [color]
   ui = always
