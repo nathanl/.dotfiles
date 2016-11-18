@@ -225,10 +225,6 @@ syntax enable
 " cursor location.
 :nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
-" Wrap text at column 78 in text files.  
-" In code files this will only apply to comments.
-set textwidth=78
-
 "** When indenting in visual mode, return to visual mode **
 " indent with > or tab
 vmap > >gv
