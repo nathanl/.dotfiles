@@ -1,2 +1,2 @@
 " Use soft wrapping
-set wrap textwidth=0 linebreak spell
+setlocal wrap textwidth=0 linebreak spell
