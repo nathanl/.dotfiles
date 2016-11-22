@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby 
+# Output datestamps for recording activity on workdays
+
+require "date"
+
+today = Date.today
+(today..today + 30).each do |date|
+  puts date.strftime("%Y-%m-%d (%a)")
+end
