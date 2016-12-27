@@ -23,3 +23,6 @@ export PATH="$HOME/.dotfiles/scripts:$PATH"
 # characters.
 # https://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
+# `less` should show colorized output by default - see `man less`
+export LESS="-R"
