@@ -126,10 +126,6 @@ inoremap kj <Esc>
 " (For discussion, see http://superuser.com/questions/514615)
 imap <C-BS> <C-o>vBd
 
-" Swap order of two comma-separated arguments (mnemonic: 'swap')
-" TODO: this really doesn't work well. Maybe try writing it in Ruby?
-map <leader>s t,Bdt,wea, pBBdF,
-
 " Change single quoted string to double quotes, keep position using t register
 map <leader>" mtcs'"`t
 
