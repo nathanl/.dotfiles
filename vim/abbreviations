@@ -2,7 +2,7 @@
 
 :ab ymd "%Y-%m-%d-%H:%M:%S"
 
-:ab asciishrug ¯\_(ツ)_/¯
+:ab asciishrug `¯\_(ツ)_/¯`
 
 :ab rubyshebang #!/usr/bin/env ruby
 :ab ucv ✓
