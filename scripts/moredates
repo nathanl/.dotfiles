@@ -4,6 +4,6 @@
 require "date"
 
 today = Date.today
-(today..today + 30).each do |date|
-  puts date.strftime("%Y-%m-%d (%a)")
+(today..today + 30).to_a.reverse.each do |date|
+  puts "#{date.strftime("%Y-%m-%d (%a)")} - "
 end
