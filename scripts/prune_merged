@@ -11,6 +11,8 @@ merged_branches = merged_branches.lines.map(
   branch_name.gsub("\e", "")
 }.reject {|branch_name|
   branch_name.match("staging") || branch_name.match("master")
+}.reject {|branch_name|
+  branch_name.start_with?("*") # current branch
 }
 
 if merged_branches.any?
@@ -27,5 +29,3 @@ if merged_branches.any?
 else
   puts "no merged branches found"
 end
-
-
