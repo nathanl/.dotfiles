@@ -19,6 +19,9 @@ export ZDOTDIR=$HOME
 # Add custom scripts folder to the path
 export PATH="$HOME/.dotfiles/scripts:$PATH"
 
+# Add my weird Homebrew path `¯\_(ツ)_/¯`
+export PATH="$PATH:/usr/local/homebrew/sbin"
+
 # display manfiles in Vim in readonly mode, after throwing out extra backspace
 # characters.
 # https://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
