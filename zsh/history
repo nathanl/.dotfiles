@@ -6,7 +6,6 @@ HISTSIZE=10000
 HISTFILE=~/.zsh_history
 
 setopt HIST_VERIFY
-setopt SHARE_HISTORY # share history between sessions ???
 setopt EXTENDED_HISTORY # add timestamps to history
 
 setopt APPEND_HISTORY # adds history
