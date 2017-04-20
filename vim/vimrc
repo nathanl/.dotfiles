@@ -67,8 +67,8 @@ autocmd BufReadPost *
 " When creating new files, use a template if we have one in templates/
 autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
-" put custom scripts on the path
-let $PATH = expand("~/.dotfiles/scripts") . ":" . $PATH
+" put custom executables on the path
+let $PATH = expand("~/.dotfiles/bin") . ":" . $PATH
 
 " ****************** SCROLLING *********************  
 

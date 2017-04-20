@@ -16,8 +16,8 @@
 # (see `man zsh` and search for ZDOTDIR)
 export ZDOTDIR=$HOME
 
-# Add custom scripts folder to the path
-export PATH="$HOME/.dotfiles/scripts:$PATH"
+# Add custom bin folder to the path
+export PATH="$HOME/.dotfiles/bin:$PATH"
 
 # Add my weird Homebrew path `¯\_(ツ)_/¯`
 export PATH="$PATH:/usr/local/homebrew/sbin"
