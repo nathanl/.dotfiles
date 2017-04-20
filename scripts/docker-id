@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Output the id(s) of running Docker containers with the given name.
+# eg: `docker-id my_app`
+docker ps |grep $1 |cut -d' ' -f 1
