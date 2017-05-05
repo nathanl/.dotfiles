@@ -30,4 +30,6 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 # `less` should show colorized output by default - see `man less`
 export LESS="-R"
 
+export MY_IP=$(ipconfig getifaddr en0)
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
