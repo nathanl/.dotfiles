@@ -2,7 +2,7 @@
 # Convert a file from markdown to html and (optionally) open in a browser.
 # The resulting html is inserted into a simple custom HTML template.
 
-template_file=~/.dotfiles/scripts/md_preview_template.html
+template_file=~/.dotfiles/bin/md_preview_template.html
 initial_output_file=/tmp/bare_markdown_output.html
 output_file=/tmp/markdown_output.html
 
