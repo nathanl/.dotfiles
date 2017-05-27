@@ -291,9 +291,9 @@ let g:syntastic_javascript_checkers=['jsl']
 let g:syntastic_enable_elixir_checker = 0
 
 " Render the current markdown file as HTML
-map <leader>md :!md_preview %<cr>
+map <leader>md :!md_preview '%'<cr>
 " Also open the HTML file
-map <leader>mo :!md_preview % open<cr>
+map <leader>mo :!md_preview '%' open<cr>
 
 " Copy/paste to system clipboard by default
 set clipboard=unnamed
