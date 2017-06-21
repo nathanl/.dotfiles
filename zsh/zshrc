@@ -32,4 +32,7 @@ export LESS="-R"
 
 export MY_IP=$(ipconfig getifaddr en0)
 
+# get shell history out of the box with Erlang/OTP 20
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
