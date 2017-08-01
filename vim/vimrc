@@ -100,6 +100,8 @@ let mapleader = ","
 " reload .vimrc
 map <leader>rc :source ~/.vimrc<cr>
 
+map <leader>fn :let @+ = expand("%")<cr>
+
 " nice mapping for switching tabs
 map <leader>[ :tabp<CR>
 map <leader>] :tabn<CR>
@@ -294,6 +296,9 @@ let g:syntastic_enable_elixir_checker = 0
 map <leader>md :!md_preview '%'<cr>
 " Also open the HTML file
 map <leader>mo :!md_preview '%' open<cr>
+
+map <leader>ds :read !datestamp<cr>
+map <leader>ts :read !timestamp<cr>
 
 " Copy/paste to system clipboard by default
 set clipboard=unnamed
