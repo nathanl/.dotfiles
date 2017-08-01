@@ -13,7 +13,7 @@
   # See https://git-scm.com/docs/pretty-formats
   l = log --pretty='format:%C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr - %cd)%Creset'
   # "log graph-style"
-  lg = log --graph --decorate --pretty=oneline --abbrev-commit
+  gl = log --graph --decorate --pretty='format:%C(yellow) %h%C(blue)%d%Creset %s%C(yellow) %m %an %m%C(red) (%cr)%Creset'
   # "full log"
   fl = log --pretty=full
   g = grep -i -n
@@ -34,6 +34,7 @@
   m = merge
   pl = pull
   ps = push
+  psoh = push origin HEAD
   ss = stash save
   sl = stash list
   sa = stash apply
