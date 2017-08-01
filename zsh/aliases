@@ -59,7 +59,7 @@ function define() { curl dict://dict.org/d:$1 }
 # Recursively find in files
 function grepfiles(){ grep -Ri $1 *}
 
-alias work='cd ~/work; vim -p billable_hours.csv general_todo.md poms.md sharpening.md slowness.md team_dynamics.md misc_notes.md'
+alias work='cd ~/work; vim -p billable_hours.csv general_todo.md sharpening.md team_dynamics.md misc_notes.md'
 alias family_log='vi ~/SpiderOak\ Hive/elijah/family_log.markdown'
 
 # Usage:
