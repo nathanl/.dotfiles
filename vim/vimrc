@@ -301,6 +301,15 @@ map <leader>mo :!md_preview '%' open<cr>
 map <leader>ds :read !datestamp<cr>
 map <leader>ts :read !timestamp<cr>
 
+" <crazytown>
+" Trust me, this is fine. 😂
+" All this is so that ,ak will set up a repeatable macro at @a, which will
+" convert elixir string keys to atoms if you start on the opening quotation
+map <leader>yy :nohlsearch<CR>/<BS>
+map <leader>zz :s/-/_/ge<cr>
+map <leader>ak :let @a = 'lvi",zz^xf"r:ldt j^,yy'<cr>
+" </crazytown>
+
 " Copy/paste to system clipboard by default
 set clipboard=unnamed
 
