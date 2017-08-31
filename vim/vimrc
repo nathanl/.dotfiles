@@ -100,7 +100,8 @@ let mapleader = ","
 " reload .vimrc
 map <leader>rc :source ~/.vimrc<cr>
 
-map <leader>fn :let @+ = expand("%")<cr>
+" copy current filename into clipboard
+map <leader>n :let @+ = expand("%")<cr>
 
 " nice mapping for switching tabs
 map <leader>[ :tabp<CR>
