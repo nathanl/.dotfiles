@@ -1,4 +1,4 @@
 #!ruby -w
 
-characters = ('a'..'z').to_a + ('A'..'Z').to_a
+characters = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
 puts (0..24).map{characters.sample}.join
