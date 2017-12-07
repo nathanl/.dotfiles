@@ -1,0 +1,35 @@
+#!/bin/bash
+DIR=$1
+HANDBRAKE_CLI=/Applications/HandBrakeCLI
+PRESET="Normal"
+
+function list_unoptimized_files () {
+  ls "$DIR" | grep '.mp4' | grep -v 'optimized.mp4'
+}
+
+for FILE in `list_unoptimized_files`; do
+  FILENAME=$(basename $FILE)
+  extension=${FILENAME##*.}
+  OPTIMIZED_FILENAME="$DIR/$FILENAME-optimized.mp4"
+  if [ -f $OPTIMIZED_FILENAME ]; then
+    echo "already exists: $OPTIMIZED_FILENAME for $FILENAME"
+  else
+    # echo "no optimized file $OPTIMIZED_FILENAME for $FILENAME"
+    # TODO - make a tmp file, then when done making, move to final filename
+    HandBrakeCLI -i "$DIR/$FILE" -o $OPTIMIZED_FILENAME --preset="$PRESET"
+  fi
+done
+echo "----"
+echo "done - '$DIR' now contains these .mp4 files:"
+echo "----"
+ls -lah "$DIR" | grep '.mp4'
+read -p "Delete all unoptimized .mp4 files (if any)? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+TIMESTAMP=`date +"%Y-%m-%dT%H:%M"`
+TMP_DIRNAME="/tmp/unoptimized-videos-$TIMESTAMP"
+for FILE in `list_unoptimized_files`; do
+    mv $DIR/$FILE $TMP_DIRNAME
+  done
+fi
