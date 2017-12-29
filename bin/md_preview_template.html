@@ -16,6 +16,7 @@
       font-family: Georgia, Garamond, Palatino, serif;
     }
     poem p { white-space: pre; }
+    blockquote { background: #eee; }
 
     /* Print style taken from */
     /* https://designshack.net/articles/css/6-thinks-i-learned-about-print-stylesheets-from-html5-boilerplate/ */
@@ -25,7 +26,7 @@
       a[href]:after { content: " (" attr(href) ")"; }
       abbr[title]:after { content: " (" attr(title) ")"; }
       .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
-      pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+      pre, blockquote { background: #eee; page-break-inside: avoid; }
       poem { white-space: pre; }
       thead { display: table-header-group; } /* h5bp.com/t */
       tr, img { page-break-inside: avoid; }
