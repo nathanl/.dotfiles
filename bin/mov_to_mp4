@@ -16,7 +16,7 @@ done
 echo "----"
 echo "done - '$DIR' now contains these .MOV and .mp4 files:"
 echo "----"
-ls "$DIR" | grep '.MOV\|.mp4'
+ls -lah "$DIR" | grep '.MOV\|.mp4'
 read -p "Delete all .MOV files (if any)? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
