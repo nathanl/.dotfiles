@@ -67,6 +67,9 @@ autocmd BufReadPost *
 " When creating new files, use a template if we have one in templates/
 autocmd BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
+" If I don't set this, it gets set to inside bundle/ctrlp somehow
+set spellfile=~/.dotfiles/vim/spell/en.utf-8.add
+
 " put custom executables on the path
 let $PATH = expand("~/.dotfiles/bin") . ":" . $PATH
 
