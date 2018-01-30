@@ -301,8 +301,11 @@ map <leader>md :!md_preview '%'<cr>
 " Also open the HTML file
 map <leader>mo :!md_preview '%' open<cr>
 
+" add a datestamp or timestamp
 map <leader>ds :read !datestamp<cr>
 map <leader>ts :read !timestamp<cr>
+
+map <leader>ca :read ~/.dotfiles/git/co-author-template.txt<cr>
 
 " <crazytown>
 " Trust me, this is fine. 😂
