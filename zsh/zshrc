@@ -7,7 +7,7 @@
 . ~/.dotfiles/zsh/bindings
 . ~/.dotfiles/zsh/prompt
 . ~/.dotfiles/zsh/lion
-. ~/.dotfiles/zsh/chruby
+# . ~/.dotfiles/zsh/chruby
 
 # use .zshrc_machine_specific for settings specific to one machine
 [[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
