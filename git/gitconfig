@@ -102,3 +102,12 @@
 [submodule]
   # fetch submodules in parallel
 	fetchJobs = 4
+[pager]
+  # don't pipe 'git branch' to 'less' - started happening by default in 2.16
+	branch = false
+[rerere]
+  # "reuse recorded resolution" - after fixing a conflict, it's OK to
+  # revert the merge; Git will be ready to fix the same conflict the same way.
+  # https://git-scm.com/book/en/v2/Git-Tools-Rerere
+  # https://hackernoon.com/fix-conflicts-only-once-with-git-rerere-7d116b2cec67
+	enabled = true
