@@ -5,9 +5,9 @@
 . ~/.dotfiles/zsh/colors
 . ~/.dotfiles/zsh/history
 . ~/.dotfiles/zsh/bindings
-. ~/.dotfiles/zsh/prompt
 . ~/.dotfiles/zsh/lion
 # . ~/.dotfiles/zsh/chruby
+. ~/.dotfiles/zsh/prompt # may print warnings unless chruby sets proper version
 
 # use .zshrc_machine_specific for settings specific to one machine
 [[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
