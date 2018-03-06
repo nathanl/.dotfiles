@@ -105,6 +105,8 @@
 [pager]
   # don't pipe 'git branch' to 'less' - started happening by default in 2.16
 	branch = false
+  # same for 'git log'
+  log = false
 [rerere]
   # "reuse recorded resolution" - after fixing a conflict, it's OK to
   # revert the merge; Git will be ready to fix the same conflict the same way.
