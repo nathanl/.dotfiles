@@ -252,8 +252,8 @@ imap <C-h> <Space>=><Space>
 set number
 
 " Move lines up and down
-nmap <C-J> :m +1 <CR>
-nmap <C-K> :m -2 <CR>
+nmap <leader>j :m +1 <CR>
+nmap <leader>k :m -2 <CR>
 
 " move vertically by visual line, not actual line (eg if wrapped)
 nnoremap j gj
