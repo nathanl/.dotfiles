@@ -307,6 +307,9 @@ map <leader>ts :read !timestamp<cr>
 
 map <leader>ca :read ~/.dotfiles/git/co-author-template.txt<cr>
 
+" Format Blue Letter Bible quotations as blockquotes with reference at end
+map <leader>blb ^"rda[i>V:s/\%V\d\{1,\}\s//g<cr>A ("rpds[A)^
+
 " <crazytown>
 " Trust me, this is fine. 😂
 " All this is so that ,ak will set up a repeatable macro at @a, which will
