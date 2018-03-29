@@ -1,2 +1,6 @@
 #!/bin/bash
+# I use this like `some_command && yay || boom`. Exiting with an successful code means
+# I can chain another similar call:
+# (some_command && yay || boom) && (some_command && yay || boom)
 afplay ~/.dotfiles/other_files/sounds/yay.mp3 -v -0.2 & # Return immediately
+exit 0

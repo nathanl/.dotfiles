@@ -81,11 +81,6 @@ function judge() {
   else
     # No args given means no command to run, so check the exit status of the
     # last command and notify accordingly
-    if [ $last_exit_status -eq 0 ]
-    then
-      yay
-    else
-      boom
-    fi
+    [ $last_exit_status -eq 0 ] && yay || boom
   fi
 }
