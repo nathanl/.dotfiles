@@ -32,9 +32,13 @@ endtry
 " help says to do if you use autocommands, so I'm doing it.
 autocmd!
 
-" Automatically re-read files that have been changed by another program
+" Automatically reload files that have been changed by another program
 " (unless there are unsaved changes). Handy when changing branches.
+" https://github.com/tmux-plugins/vim-tmux-focus-events makes this work
+" in terminal Vim + Tmux
 set autoread
+" Also re-read a file if we change buffers within Vim
+au FocusGained,BufEnter * :checktime
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
