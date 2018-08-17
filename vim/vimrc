@@ -296,6 +296,8 @@ let g:syntastic_javascript_checkers=['jsl']
 " Elixir file checker executes the code. Unsafe and slow. Disable.
 let g:syntastic_enable_elixir_checker = 0
 
+map <leader>mf :MixFormat<cr>
+
 " Render the current markdown file as HTML
 map <leader>md :!md_preview '%'<cr>
 " Also open the HTML file
@@ -321,6 +323,12 @@ map <leader>ak :let @a = 'lvi",zz^xf"r:ldt j^,yy'<cr>
 
 " Copy/paste to system clipboard by default
 set clipboard=unnamed
+
+" if editing a crontab file, eg `VIM_CRONTAB=true crontab`
+if $VIM_CRONTAB == "true"
+  set nobackup
+  set nowritebackup
+endif
 
 " If there are any machine-specific tweaks for Vim, load them from the following file.
 try 
