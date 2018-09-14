@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html" />
     <style>
+    :root {
+      --quote-bg-color: lightgray;
+    }
     body {
       width: 800px;
       margin: 1em auto 5em auto;
@@ -16,11 +19,13 @@
       font-family: Georgia, Garamond, Palatino, serif;
     }
     poem p { white-space: pre; }
-    blockquote { background: #f6f8fa; }
-    pre { overflow: auto; background: #f6f8fa; }
+    blockquote { border-left: 3px solid var(--quote-bg-color); margin: 0; padding-left: 1em; }
+    pre { overflow: auto; background-color: var(--quote-bg-color); }
     code {
       font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
-      background: #f6f8fa;
+      background-color: var(--quote-bg-color);
+      padding-left: 0.1em;
+      padding-right: 0.1em;
      }
     pre > code { background: transparent; }
 
