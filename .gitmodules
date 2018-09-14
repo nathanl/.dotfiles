@@ -73,3 +73,6 @@
 [submodule "vim/bundle/vim-mix-format"]
 	path = vim/bundle/vim-mix-format
 	url = git@github.com:mhinz/vim-mix-format.git
+[submodule "vim/bundle/vim-tmux-focus-events"]
+	path = vim/bundle/vim-tmux-focus-events
+	url = git@github.com:tmux-plugins/vim-tmux-focus-events.git
