@@ -93,9 +93,32 @@ set ignorecase    " do case-insensitive searches
 set smartcase     " ... unless the search contains upper-case characters
 set hlsearch      " highlight all matched terms
 " Pressing return clears highlighted search
-:nnoremap <CR> :nohlsearch<CR>/<BS>
+" :nnoremap <CR> :nohlsearch<CR>/<BS>
 " Pressing control + return also clears (for use in NERDTree)
-:nnoremap <c-CR> :nohlsearch<CR>/<BS>
+" :nnoremap <c-CR> :nohlsearch<CR>/<BS>
+" Searching for the word under the cursor (forward with * or backward with #)
+" doesn't move the cursor initially, only highlights other occurences. The cursor
+"doesn't move until you press n or N.
+
+" Pressing enter toggles highlighting of the word under the cursor as if
+" you had searched for it and puts it in the search buffer.
+" After that, N or n can be used to move through matches.
+" From http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches
+let g:highlighting = 0
+function! Highlighting()
+  if g:highlighting == 1 && @/ =~ '^\\<'.expand('<cword>').'\\>$'
+    let g:highlighting = 0
+    return ":silent nohlsearch\<CR>"
+  endif
+  let @/ = '\<'.expand('<cword>').'\>'
+  let g:highlighting = 1
+  return ":silent set hlsearch\<CR>"
+endfunction
+nnoremap <silent> <expr> <CR> Highlighting()
+
+" <cr> should not only clear highlighted search, but flash the current
+" cursor location.
+" :nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
@@ -231,9 +254,6 @@ call togglebg#map("<F5>")
 syntax enable
 " ****************************************
 
-" <cr> should not only clear highlighted search, but flash the current
-" cursor location.
-:nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
 "** When indenting in visual mode, return to visual mode **
 " indent with > or tab
