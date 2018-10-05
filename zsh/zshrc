@@ -6,6 +6,8 @@
 . ~/.dotfiles/zsh/history
 . ~/.dotfiles/zsh/bindings
 . ~/.dotfiles/zsh/lion
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 # if chruby isn't enabled, enable it
 if ! type chruby > /dev/null 2>&1; then
   . ~/.dotfiles/zsh/chruby
