@@ -298,27 +298,9 @@ nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" Toggle automatic syntax checking.
-command! AutoCheck SyntasticToggleMode
-" Trigger it manually. `:lclose` closes the location list
-command! Check SyntasticCheck
-
-" get jslint from http://javascriptlint.com/
-" When writing a file, if there are errors, have Syntastic plugin mark them
-" In order to check Javascript files, you must have the `jsl` executable from here
-" in your path:
-" http://www.javascriptlint.com/download.htm
-let g:syntastic_enable_signs=1
-let g:syntastic_ruby_exec = '~/.rubies/default/bin/ruby'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_javascript_checkers=['jsl']
-" let g:syntastic_javascript_checkers = ['jslint']
-" TODO: eeeeh?? This conf file doesn't exist?
-" let g:syntastic_javascript_jsl_args="-conf ~/.vim/bundle/syntastic/syntax_checkers/javascript/jsl.conf -process" " filename will be inserted next
-" let g:syntastic_javascript_jsl_args=" " filename will be inserted next
-
-" Elixir file checker executes the code. Unsafe and slow. Disable.
-let g:syntastic_enable_elixir_checker = 0
+" Syntax checking, etc
+" https://github.com/w0rp/ale
+let g:ale_elixir_elixir_ls_release = '~/.elixir-ls/rel'
 
 map <leader>mf :MixFormat<cr>
 
