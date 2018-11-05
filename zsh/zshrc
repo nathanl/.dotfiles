@@ -8,11 +8,7 @@
 . ~/.dotfiles/zsh/lion
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
-# if chruby isn't enabled, enable it
-if ! type chruby > /dev/null 2>&1; then
-  . ~/.dotfiles/zsh/chruby
-fi
-. ~/.dotfiles/zsh/prompt # may print warnings unless chruby sets proper version
+. ~/.dotfiles/zsh/prompt # may print warnings unless proper Ruby version is set
 
 # use .zshrc_machine_specific for settings specific to one machine
 [[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
