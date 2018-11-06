@@ -34,8 +34,8 @@ alias rake='noglob rake'
 alias gemdocs='gem rdoc --all --ri --no-rdoc'
 
 # Postgres convenience commands
-alias dbstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log start'
-alias dbstop='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres.log stop -m fast'
+alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'
+alias dbstop='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log stop -m fast'
 
 # Ways to use Vim with minimal or no config
 alias simplevim="vi -u ~/.vimrc_simple"
