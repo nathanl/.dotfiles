@@ -1,3 +1,6 @@
+# Docs at:
+# http://zsh.sourceforge.net/Doc/Release/Options.html#History
+
 # Remember about a year's worth of history
 SAVEHIST=10000
 HISTSIZE=10000
@@ -5,13 +8,12 @@ HISTSIZE=10000
 # Save history here
 HISTFILE=~/.zsh_history
 
-setopt HIST_VERIFY
+setopt HIST_VERIFY # When re-running a command from history, expand in-place first to confirm
 setopt EXTENDED_HISTORY # add timestamps to history
 
-setopt APPEND_HISTORY # adds history
-setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
-setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
-setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY # adds commands to history file when they're run (not when this shell exits)
+setopt HIST_IGNORE_DUPS  # if a command is run more than once in a row, just record the first time
+setopt HIST_REDUCE_BLANKS # remove superflous blanks from commands entered in history
 setopt HIST_IGNORE_SPACE # commands starting with a space don't go in history
 
 # Command patterns to that history should ignore
