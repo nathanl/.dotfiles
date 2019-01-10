@@ -11,10 +11,10 @@ require 'optparse'
 # 2017-07-06T14:00, 2017-07-06T16:00
 #
 # Usage:
-# cat my_hours.csv | calculate_hours
-# cat my_hours.csv | calculate_hours --between 2018-01-01,2018-01-30
-# cat my_hours.csv | calculate_hours --current week
-# cat my_hours.csv | calculate_hours --current month
+# cat my_hours.csv | hours
+# cat my_hours.csv | hours --between 2018-01-01,2018-01-30
+# cat my_hours.csv | hours --current week
+# cat my_hours.csv | hours --current month
 
 options = {}
 option_parser = OptionParser.new do |opts|
