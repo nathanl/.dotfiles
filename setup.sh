@@ -15,6 +15,9 @@ echo 'ln -s ~/.dotfiles/vim/vimrc_simple ~/.vimrc_simple'
 echo 'ln -s ~/.dotfiles/vim/gvimrc ~/.gvimrc'
 echo "you'll need to go into .vim and run 'git submodule update --init --recursive'"
 
+# For NeoVim
+echo 'ln -s ~/.dotfiles/config ~/.config'
+
 echo 'ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig'
 echo 'ln -s ~/.dotfiles/git/gitignore ~/.gitignore'
 echo ''
