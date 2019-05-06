@@ -13,7 +13,7 @@ echo 'ln -s ~/.dotfiles/vim ~/.vim'
 echo 'ln -s ~/.dotfiles/vim/vimrc ~/.vimrc'
 echo 'ln -s ~/.dotfiles/vim/vimrc_simple ~/.vimrc_simple'
 echo 'ln -s ~/.dotfiles/vim/gvimrc ~/.gvimrc'
-echo ''
+echo "you'll need to go into .vim and run 'git submodule update --init --recursive'"
 
 echo 'ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig'
 echo 'ln -s ~/.dotfiles/git/gitignore ~/.gitignore'
