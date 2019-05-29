@@ -9,6 +9,9 @@ set nocompatible
 nnoremap Q <nop>
 
 set encoding=utf-8
+" Always use unix line breaks. Set to `unix,dos` when desiring to use whatever
+" the file uses.
+set fileformats=unix
 
 " Make Y behave like other capitals - to end of line
 map Y y$
