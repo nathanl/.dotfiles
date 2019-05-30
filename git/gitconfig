@@ -3,7 +3,7 @@
   excludesfile = ~/.gitignore
 
   # If I run 'git commit', open vim with simplified config.
-  editor = vi -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
+  editor = vim -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
   pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [alias]
