@@ -3,4 +3,10 @@
 IEx.configure(colors: [ eval_result: [:red, :bright] ])
 IEx.configure(inspect: [limit: 10])
 
-import_file "~/.dotfiles/elixir/custom.exs"
+# TODO - to enable an alias, I could:
+# - create a shell alias for iex
+# - have my alias first run the elixirc command
+# - have my alias start iex with the flag `-pz` and give the path of the beam file produced
+# {_, 0} = System.cmd("elixirc", [Path.expand("~/.dotfiles/elixir/custom.ex"), "--ignore-module-conflict"])
+# iex -pz ~/.dotfiles
+# import Custom, only: [hi: 0]
