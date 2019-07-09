@@ -7,3 +7,5 @@
 :ab rubyshebang #!/usr/bin/env ruby
 :ab ucv ✓
 :ab ucx ✗
+
+:ab uus μs
