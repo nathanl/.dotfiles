@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# From Paul Schoenfelder
+
+killall ZoomOpener
+osascript -e 'tell application "System Events" to delete login item "ZoomOpener"'
+rm -rf ~/.zoomus/*
+chmod 000 ~/.zoomus
