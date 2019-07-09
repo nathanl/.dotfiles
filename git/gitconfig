@@ -12,6 +12,7 @@
   s = status
   # See https://git-scm.com/docs/pretty-formats
   l = log --pretty='format:%C(yellow)%h %m %C(yellow)%an %Creset%s%C(blue)%d %C(red)(%cr - %cd)%Creset'
+  lmh = l master..HEAD
   # "log graph-style"
   gl = log --graph --decorate --pretty='format:%C(yellow) %h%C(blue)%d%Creset %s%C(yellow) %m %an %m%C(red) (%cr)%Creset'
   # "full log"
@@ -26,6 +27,7 @@
   bl = blame
   a = add
   d = diff
+  dmh = diff master..HEAD
   wd = diff --word-diff
   dc = diff --cached
   c = commit -v
