@@ -1,3 +1,6 @@
 #!/bin/bash
-# Depends on mogrify tool that comes with imagemagick
-mogrify -strip $1
+
+# From http://www.linux-magazine.com/Online/Blogs/Productivity-Sauce/Remove-EXIF-Metadata-from-Photos-with-exiftool
+# Removes geotag EXIF metadata from a photo
+# or /s/geotag/all
+exiftool -geotag= $1
