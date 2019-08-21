@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # From http://www.linux-magazine.com/Online/Blogs/Productivity-Sauce/Remove-EXIF-Metadata-from-Photos-with-exiftool
-# Removes geotag EXIF metadata from a photo
-# or /s/geotag/all
-exiftool -geotag= $1
+# Removes geotag and other EXIF metadata from a photo
+# exiftool $filename to confirm
+# see https://owl.phy.queensu.ca/~phil/exiftool/examples.html
+exiftool -all= $1
