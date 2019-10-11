@@ -36,4 +36,12 @@ export MY_IP=$(ipconfig getifaddr en0)
 # get shell history out of the box with Erlang/OTP 20
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# https://github.com/asdf-vm/asdf-erlang#asdf-erlang uses
+# https://github.com/kerl/kerl to install Erlang. Configure it so it doesn't
+# want Java for compiling docs
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Needed for using GPG to sign Git commits
+export GPG_TTY=$(tty)
