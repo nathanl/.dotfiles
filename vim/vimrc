@@ -313,6 +313,7 @@ cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 let g:ale_elixir_elixir_ls_release = '~/.elixir-ls/rel'
 
 let g:mix_format_elixir_path = '/Users/nathanl/.asdf/shims/mix'
+" let g:mix_format_on_save = 1
 map <leader>mf :MixFormat<cr>
 
 " Render the current markdown file as HTML
