@@ -72,14 +72,14 @@
   new = green
   whitespace = red reverse
 [help]
-  autocorrect = 1
+	autocorrect = 0
 [status]
   submodule = 1
 [apply]
  whitespace = nowarn
 [push]
   # `git push origin` does current branch only
-	default = simple
+	default = current
 [merge]
   # In conflicts, show both changes AND their common ancestor
 	conflictstyle = diff3
