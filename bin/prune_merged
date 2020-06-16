@@ -1,31 +1,25 @@
 #!/usr/bin/env ruby 
 # Ruby script to interactively prune branches that have been merged
-merged_branches = %x{git branch --merged}
-merged_branches = merged_branches.lines.map(
-  &:chomp
-).map(
-  &:strip
-).map {|branch_name| 
-  branch_name.gsub("[m", "")
-}.map {|branch_name| 
-  branch_name.gsub("\e", "")
-}.reject {|branch_name|
-  branch_name.match("staging") || branch_name.match("master")
-}.reject {|branch_name|
-  branch_name.start_with?("*") # current branch
-}
 
-if merged_branches.any?
-  merged_branches.each do |branch_name|
+PERMANENT_BRANCHES = %w[develop main master staging release]
+
+current_branch = %x{git rev-parse --abbrev-ref HEAD}.strip
+merged_branches = %x{git for-each-ref --format='%(refname:short)' refs/heads/* --merged}.lines.map(&:strip)
+
+prunable = merged_branches - PERMANENT_BRANCHES
+prunable = prunable - current_branch.lines
+
+if prunable.any?
+  prunable.each do |branch_name|
     puts "delete merged branch '#{branch_name}' ? [Y/n]"
     answer = gets
     if answer.strip == "Y"
       %x{git branch -d #{branch_name}}
     else
-      puts "skipping #{branch_name}"
+      puts "skipping '#{branch_name}'"
     end
     puts
   end
 else
-  puts "no merged branches found"
+  puts "no temporary branch has been merged to '#{current_branch}'"
 end
