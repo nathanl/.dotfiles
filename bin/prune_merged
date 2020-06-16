@@ -4,6 +4,11 @@
 PERMANENT_BRANCHES = %w[develop main master staging release]
 
 current_branch = %x{git rev-parse --abbrev-ref HEAD}.strip
+unless PERMANENT_BRANCHES.include?(current_branch)
+  puts "To run this, please check out one of #{PERMANENT_BRANCHES.inspect}"
+  exit(1)
+end
+
 merged_branches = %x{git for-each-ref --format='%(refname:short)' refs/heads/* --merged}.lines.map(&:strip)
 
 prunable = merged_branches - PERMANENT_BRANCHES
