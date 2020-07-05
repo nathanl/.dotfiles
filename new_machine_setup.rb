@@ -37,4 +37,12 @@ FILES.each do |original_file, symlink_location|
   end
 end
 
+# Install Git submodules (vim plugins)
+system("cd ~/.dotfiles && git submodules-please")
+
+# Install asdf version manager
+system("git clone https://github.com/asdf-vm/asdf.git ~/.asdf")
+system("cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\"")
+
 puts "don't forget to do the stuff in ~/.dotfiles/ssh_config"
+puts "use zsh: 1) brew install zsh 2) add to /etc/shells 3) chsh -s $(which zsh)"
