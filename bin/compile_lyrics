@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo '' > all_lyrics.txt
+for i in $(ls -tr lyrics*.txt); do cat $i >> all_lyrics.txt; done
