@@ -1,7 +1,7 @@
 # Elixir interactive shell configuration
 # Symlink to ~/.iex.exs
-IEx.configure(colors: [ eval_result: [:red, :bright] ])
-IEx.configure(inspect: [limit: 10])
+# IEx.configure(colors: [ eval_result: [:red, :bright] ])
+# IEx.configure(inspect: [limit: 10])
 
 # TODO - to enable an alias, I could:
 # - create a shell alias for iex

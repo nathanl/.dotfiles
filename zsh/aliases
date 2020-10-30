@@ -21,17 +21,11 @@ alias %=' '
 alias be='bundle exec'
 alias berk='bundle exec rake'
 
-# 'rake test' - run all tests and give audible results
-alias rt='berk && yay || boom'
-
-# For readable rspec test output
-alias docspec='rspec --format doc --order default'
+# x = extract, v = verbose, f = force (overwrite files), z = gzip
+alias untar='tar xvfz'
 
 # Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
 alias rake='noglob rake'
-
-# Install command-line rdocs for all gems
-alias gemdocs='gem rdoc --all --ri --no-rdoc'
 
 # Postgres convenience commands
 alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'
