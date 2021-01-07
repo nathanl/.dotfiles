@@ -75,6 +75,7 @@
 	autocorrect = 0
 [status]
   submodule = 1
+	submodulesummary = 1
 [apply]
  whitespace = nowarn
 [push]
@@ -117,3 +118,5 @@
 	enabled = false
 [init]
 	defaultBranch = main
+[diff "sopsdiffer"]
+	textconv = sops -d
