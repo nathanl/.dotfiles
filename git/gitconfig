@@ -36,7 +36,7 @@
   m = merge
   pl = pull
   ps = push
-  psoh = push origin HEAD
+  pso = push origin # HEAD is not necessary anymore
   ss = stash save
   sl = stash list
   sa = stash apply
