@@ -3,7 +3,7 @@
   excludesfile = ~/.gitignore
 
   # If I run 'git commit', open vim with simplified config.
-  editor = vim -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
+  editor = nvim -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
   pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [alias]
@@ -85,17 +85,17 @@
   # In conflicts, show both changes AND their common ancestor
 	conflictstyle = diff3
 [user]
+	name = Nathan Long
+	email = him@nathanmlong.com
   # Name and email used for commits
-  name = Nathan Long
-  email = him@nathanmlong.com
+  # name = Nathan Long
+  # email = him@nathanmlong.com
 [github]
   # Some tools connect to GitHub without SSH. To use these tools properly you
   # need to set these.
   # On the GitHub site Click “Account Settings” > Click “Account Admin.”
   # user = some_user
   # token = some_token
-[hub]
-	host = gh.fromatob.com
 [rebase]
   # If I try to rebase and have uncommitted changes, stash them, rebase, and
   # pop the stash automatically

@@ -18,14 +18,18 @@ alias .f="cd ~/.dotfiles"
 # commands starting with % for pasting from web
 alias %=' '
 
+# Ruby stuff
 alias be='bundle exec'
 alias berk='bundle exec rake'
+# Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
+alias rake='noglob rake'
+
+# Elixir stuff
+alias mt='mix test'
+alias mf='mix format'
 
 # x = extract, v = verbose, f = force (overwrite files), z = gzip
 alias untar='tar xvfz'
-
-# Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
-alias rake='noglob rake'
 
 # Postgres convenience commands
 alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'

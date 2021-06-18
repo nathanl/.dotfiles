@@ -4,17 +4,28 @@
 -- If results are too wide, use multiple lines
 \x auto
 
+-- Mainly useful if running a `.sql` file with `\i some.sql`
+\set ON_ERROR_STOP on
+-- Little savepoints within a transaction let you keep going if you make a mistake
+\set ON_ERROR_ROLLBACK interactive
+
 -- Display a NULL as this to distinguish from empty strings
 \pset null '[NULL]'
 
 -- Autocomplete any keywords in upper case (eg sel<tab> makes SELECT)
 \set COMP_KEYWORD_CASE upper
 
--- Fancy prompt with info
-\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+/*
+Prompt 1 is the normal prompt that is issued when psql requests a new command.
+See "Prompting" on https://www.postgresql.org/docs/current/app-psql.html
+*/
+\set PROMPT1 '%[%033[1m%]%M %n@%/:%>%x%R%[%033[0m%]%# '
 
--- Helpful prompt for when psql is waiting for more input
--- (eg, forgot to close a quote)
+/*
+Prompt 2 is issued when more input is expected during command entry, for
+example because the command was not terminated with a semicolon or a quote was
+not closed.
+*/
 \set PROMPT2 '[more] %R > '
 
 -- Verbose error reports.
@@ -25,3 +36,6 @@
 
 -- If a command is run more than once in a row, only store it once in the history.
 \set HISTCONTROL ignoredups
+
+-- Running \e will drop you into this editor
+\setenv EDITOR 'nvim'

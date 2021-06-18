@@ -324,6 +324,10 @@ map <leader>md :!md_preview '%'<cr>
 " Also open the HTML file
 map <leader>mo :!md_preview '%' open<cr>
 
+" SQL format the current file
+" (requires `pip install sqlparse` and `asdf reshim`)
+map <leader>sql :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+
 " add a datestamp or timestamp
 map <leader>ds :read !datestamp<cr>
 map <leader>ts :read !timestamp<cr>
