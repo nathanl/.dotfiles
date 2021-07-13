@@ -1,6 +1,6 @@
 " Relies on https://github.com/junegunn/vim-plug
-" Run :PlugInstall after updating
-
+" Reload config and run :PlugInstall or :PlugClean after updating
+" Plugins get installed in ~/.local/share/nvim/plugged
 call plug#begin(stdpath('data') . '/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " Plug 'junegunn/vim-easy-align'
@@ -58,5 +58,17 @@ Plug 'elixir-editors/vim-elixir'
 
 " **** Mix Format ****
 Plug 'mhinz/vim-mix-format'
+
+" **** Elixir LS Fanciness ****
+" language server configurations
+" Plug 'neovim/nvim-lspconfig'
+" autocomplete and snippets
+" Plug 'hrsh7th/nvim-compe'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'
+" Install language server with `:LspInstall <language>`
+" into Neovim's default data directory (see :h stdpath)
+" eg `:LspIntall elixir`
+" Plug 'kabouzeid/nvim-lspinstall'
 
 call plug#end()
