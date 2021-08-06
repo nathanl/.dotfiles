@@ -1,4 +1,5 @@
 " Relies on https://github.com/junegunn/vim-plug
+" :PlugInstall! to install whatever you add
 " Reload config and run :PlugInstall or :PlugClean after updating
 " Plugins get installed in ~/.local/share/nvim/plugged
 call plug#begin(stdpath('data') . '/plugged')
@@ -41,6 +42,10 @@ Plug 'tomtom/tcomment_vim'
 Plug 'godlygeek/tabular'
 
 Plug 'tpope/vim-surround'
+
+Plug 'tpope/vim-markdown'
+
+let g:markdown_fenced_languages = ['html', 'python', 'elixir', 'ruby', 'bash=sh']
 
 " *** Solarized ***
 Plug 'overcache/NeoSolarized'
