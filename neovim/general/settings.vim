@@ -10,9 +10,13 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set mouse=a                             " Enable your mouse
 set cmdheight=1                         " Increase for more space for displaying messages
 set iskeyword+=-                     	 " treat dash separated words as a word text object"
+set noswapfile                          " Don't use swap files
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set termguicolors
+
+" Captial Q does nothing (instead of entering Ex mode)
+nnoremap Q <nop>
 
 " put custom executables on the path
 let $PATH = expand("~/.dotfiles/bin") . ":" . $PATH

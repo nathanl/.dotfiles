@@ -1,6 +1,7 @@
 " Relies on https://github.com/junegunn/vim-plug
 " :PlugInstall! to install whatever you add
-" Reload config and run :PlugInstall or :PlugClean after updating
+" :PlugUpdate [name] to update a plugin
+" Reload config and run :PlugInstall or :PlugClean after modifying this fall
 " Plugins get installed in ~/.local/share/nvim/plugged
 call plug#begin(stdpath('data') . '/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align

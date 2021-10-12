@@ -27,6 +27,7 @@ alias rake='noglob rake'
 # Elixir stuff
 alias mt='mix test'
 alias mf='mix format'
+alias mcf='mix compile --force --warnings-as-errors'
 
 # x = extract, v = verbose, f = force (overwrite files), z = gzip
 alias untar='tar xvfz'
