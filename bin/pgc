@@ -1,0 +1,25 @@
+# Control postgres
+# This might be totally bonkers - `pg_ctl start` might be the way to go.
+# See https://github.com/smashedtoatoms/asdf-postgres#run
+
+# grab the version from asdf, throwing away repeated spaces and taking the
+# second space-delimited column of output
+version=$(asdf current postgres | tr -s ' ' | cut -d ' ' -f 2)
+
+case $1 in
+
+  "start")
+  echo "pgc is starting asdf-installed postgres $version"
+  /Users/nathanlong/.asdf/installs/postgres/$version/bin/pg_ctl -D /Users/nathanlong/.asdf/installs/postgres/$version/data -l logfile start
+    ;;
+
+  "stop")
+  echo "pgc is stopping asdf-installed postgres $version"
+    /Users/nathanlong/.asdf/installs/postgres/$version/bin/pg_ctl -D /Users/nathanlong/.asdf/installs/postgres/$version/data -l logfile stop
+    ;;
+
+  # catch-all
+  *)
+    echo "Invalid command - must be 'start' or 'stop'"
+    ;;
+esac
