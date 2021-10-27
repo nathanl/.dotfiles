@@ -2,4 +2,5 @@ export PATH="~/bin:~/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/local/sbin
 export PATH="/usr/local/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/usr/local/homebrew/opt/gnu-getopt/bin:$PATH"
 export PATH="~/.asdf/installs/rust/1.52.1/bin:$PATH"
+export PATH="$HOME/cmus/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
