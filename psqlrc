@@ -39,3 +39,6 @@ not closed.
 
 -- Running \e will drop you into this editor
 \setenv EDITOR 'nvim'
+
+-- Keep a separate history file per database
+\set HISTFILE ~/.psql_history- :DBNAME
