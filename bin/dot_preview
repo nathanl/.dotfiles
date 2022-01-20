@@ -1,0 +1,13 @@
+#!/bin/bash
+# Convert a file from .dot notation to SVG and (optionally) open in a browser.
+# Requires GraphViz
+
+output_file=/tmp/dot_preview.svg
+
+dot -T svg "$1" -o $output_file
+
+# If we were told to open the rendered file
+if [ "$2" = "open" ]; then
+  # Open the html in a browser
+  open $output_file &
+fi

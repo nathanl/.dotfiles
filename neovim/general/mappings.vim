@@ -18,6 +18,10 @@ map <leader>md :!md_preview '%'<cr>
 " Also open the HTML file
 map <leader>mo :!md_preview '%' open<cr>
 
+map <leader>dt :!dot_preview '%'<cr>
+
+map <leader>do :!dot_preview '%' open<cr>
+
 " Run `mix format` on the current file via the plugin vim-mix-format
 map <Leader>mf :MixFormat<CR>
 
