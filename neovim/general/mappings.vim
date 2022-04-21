@@ -53,5 +53,13 @@ inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
 " `leader w` in normal mode saves file.
 nmap <leader>w :w <CR>
 
+" leader v and x in normal mode will write a Unicode check or X mark; leader
+" space will clear it.
+" :nmap <leader>v r✓<ESC>
+:nmap <leader>v r✅<ESC>
+" :nmap <leader>x r✗<ESC>
+:nmap <leader>x r❌<ESC>
+:nmap <leader><space> r<space><ESC>
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
