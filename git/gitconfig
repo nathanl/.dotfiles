@@ -57,6 +57,43 @@
   find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
   show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
   submodules-please = submodule update --init --recursive
+
+  # Fetch a GitHub pull request
+  # (from Paul Schoenfelder)
+  # Use like `git fetchpr 99`
+  fetchpr = "!f() { \n\
+    if [ -z \"$2\" ]; then \n\
+        repo=\"origin\" \n\
+        pr=\"$1\" \n\
+    else \n\
+        repo=\"$1\" \n\
+        pr=\"$2\" \n\
+    fi \n\
+    if [ $(printf \"%s\" \"$pr\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \n\
+      git fetch $repo refs/pull/$pr/head:pr/$pr \n\
+    else \n\
+      printf \"Invalid PR (%s)\" \"$pr\"; return 1 \n\
+    fi \n\
+  }; f"
+
+  # Merge GitHub pull request on top of the current branch
+  # (from Paul Schoenfelder)
+  mergepr = "!f() { \n\
+    if [ -z \"$2\" ]; then \n\
+        repo=\"origin\" \n\
+        pr=\"$1\" \n\
+    else \n\
+        repo=\"$1\" \n\
+        pr=\"$2\" \n\
+    fi \n\
+    if git fetchpr $repo $pr ; then \n\
+        subject='Merge and close #' \n\
+        msg=$(git fmt-merge-msg --log -m \"$subject$pr\" --file .git/FETCH_HEAD) \n\
+        git merge --log -m \"$msg\" pr/$pr && \
+        git branch -D pr/$pr \n\
+    fi \n\
+  }; f"
+
 [color]
   ui = always
 [color "diff-highlight"]
@@ -120,3 +157,7 @@
 	defaultBranch = main
 [diff "sopsdiffer"]
 	textconv = sops -d
+
+[includeIf "gitdir:~/code/client/"]
+  # refers to ~/.gitconfig_client
+  path = .gitconfig_client
