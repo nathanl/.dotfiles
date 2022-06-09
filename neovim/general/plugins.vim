@@ -46,7 +46,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'tpope/vim-markdown'
 
-let g:markdown_fenced_languages = ['html', 'python', 'elixir', 'ruby', 'sh', 'bash=sh', 'zsh=sh', 'sql']
+let g:markdown_fenced_languages = ['html', 'elixir', 'ex=elixir', 'ruby', 'sh', 'bash=sh', 'zsh=sh', 'sql', 'yaml']
 
 " *** Solarized ***
 Plug 'overcache/NeoSolarized'
