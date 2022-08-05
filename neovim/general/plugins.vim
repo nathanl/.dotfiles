@@ -1,4 +1,4 @@
-" Relies on https://github.com/junegunn/vim-plug
+" Relies on https://github.com/junegunn/vim-plug - has its own installation steps.
 " :PlugInstall! to install whatever you add
 " :PlugUpdate [name] to update a plugin
 " Reload config and run :PlugInstall or :PlugClean after modifying this fall

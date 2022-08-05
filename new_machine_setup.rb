@@ -2,6 +2,9 @@
 
 %x{mkdir ~/.bundle} unless File.exist?(File.expand_path("~/.bundle"))
 
+# For the neovim config to go in
+%x{mkdir ~/.config}
+
 FILES = {
   "zsh"                   => ".zsh",
   "zsh/zshrc"             => ".zshrc",
@@ -14,6 +17,8 @@ FILES = {
   "vim/vimrc_simple"      => ".vimrc_simple",
   "vim/vimrc_barebones"   => ".vimrc_barebones",
   "vim/gvimrc"            => ".gvimrc",
+
+  "neovim"                => ".config/nvim",
 
   "git/gitconfig"         => ".gitconfig",
   "git/gitignore"         => ".gitignore",
@@ -44,5 +49,14 @@ system("cd ~/.dotfiles && git submodules-please")
 system("git clone https://github.com/asdf-vm/asdf.git ~/.asdf")
 system("cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\"")
 
-puts "don't forget to do the stuff in ~/.dotfiles/ssh_config"
-puts "use zsh: 1) brew install zsh 2) add to /etc/shells 3) chsh -s $(which zsh)"
+puts """
+Other stuff to install:
+- homebrew
+- brew install neovim (and go run PlugInstall! in the plugins file)
+- brew install reattach-to-user-namespace (for tmux)
+- brew install tmux
+- brew install diffr (for git diffs)
+- brew install ripgrep
+- brew install git (if you want the latest)
+- maybe do the stuff in ~/.dotfiles/ssh_config
+"""

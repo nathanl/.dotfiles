@@ -5,7 +5,13 @@
   # If I run 'git commit', open vim with simplified config.
   editor = nvim -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
-  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  # No pager, so commands like `git diff` just output to the terminal and piping to `less` is optional.
+  # See https://medium.com/pragmatic-programmers/git-config-core-pager-807e17d64243
+  pager = ""
+  # Requires `brew install diffr` - https://github.com/mookid/diffr
+  pager = diffr | less -R
+[interactive]
+    diffFilter = diffr
 [alias]
   # list all aliases :)
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | less

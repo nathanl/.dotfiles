@@ -20,8 +20,9 @@ export ZDOTDIR=$HOME
 # Add custom bin folder to the path
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
-# Add my weird Homebrew path `¯\_(ツ)_/¯`
-export PATH="$PATH:/usr/local/homebrew/sbin"
+# Add Homebrew path
+# export PATH="$PATH:/usr/local/homebrew/sbin" # nonstandard one from past usage
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # display manfiles in Vim in readonly mode, after throwing out extra backspace
 # characters.
