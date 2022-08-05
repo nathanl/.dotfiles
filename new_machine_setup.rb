@@ -58,5 +58,6 @@ Other stuff to install:
 - brew install diffr (for git diffs)
 - brew install ripgrep
 - brew install git (if you want the latest)
+- brew install asdf (and get plugins)
 - maybe do the stuff in ~/.dotfiles/ssh_config
 """
