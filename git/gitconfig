@@ -27,7 +27,7 @@
   bl = blame
   a = add
   d = diff
-  dmh = diff master..HEAD
+  dm = diff --diff-algorithm=minimal
   wd = diff --word-diff
   dc = diff --cached
   c = commit -v
@@ -118,15 +118,15 @@
 [push]
   # `git push origin` does current branch only
 	default = current
+  # `git push` will push a new branch - no need to `--set upstream origin`. (v2.37.0)
+	autoSetupRemote = true
 [merge]
   # In conflicts, show both changes AND their common ancestor
 	conflictstyle = diff3
 [user]
+  # Name and email used for commits
 	name = Nathan Long
 	email = him@nathanmlong.com
-  # Name and email used for commits
-  # name = Nathan Long
-  # email = him@nathanmlong.com
 [github]
   # Some tools connect to GitHub without SSH. To use these tools properly you
   # need to set these.
