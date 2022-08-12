@@ -59,5 +59,6 @@ Other stuff to install:
 - brew install ripgrep
 - brew install git (if you want the latest)
 - brew install asdf (and get plugins)
+- brew install cmark (for markdown previews)
 - maybe do the stuff in ~/.dotfiles/ssh_config
 """
