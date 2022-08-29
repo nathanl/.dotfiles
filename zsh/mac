@@ -1,3 +1,10 @@
+# https://ss64.com/osx/ulimit.html
+# Allow this many file descriptors (eg sockets)
+# ulimit -a to see all possible flags
+# Don't forget to add `/Library/LaunchDaemons/limit.maxfiles.plist` with a matching limit - see notes
+ulimit -n 524288
+
+# This may be Lion-specific?
 # Set Apple Terminal.app resume directory (OS X Lion feature)
 if [[ $TERM_PROGRAM == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]] {
   # function must be named chpwd so when new tab is opened it will go to the

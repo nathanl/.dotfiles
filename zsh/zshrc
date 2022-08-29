@@ -5,7 +5,7 @@
 . ~/.dotfiles/zsh/colors
 . ~/.dotfiles/zsh/history
 . ~/.dotfiles/zsh/bindings
-. ~/.dotfiles/zsh/lion
+. ~/.dotfiles/zsh/mac
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 . ~/.dotfiles/zsh/prompt # may print warnings unless proper Ruby version is set

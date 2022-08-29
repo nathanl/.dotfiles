@@ -3,11 +3,6 @@ alias history="history 0"
 
 alias g='git'
 
-# OSX system vi is outdated and crashes in tmux, so use
-# updated vim install
-alias vi='vim'
-alias v='vim'
-
 # ls
 alias ls="ls -FG"
 alias plainls="unalias ls" # Temporarily remove the alias above
@@ -25,9 +20,13 @@ alias berk='bundle exec rake'
 alias rake='noglob rake'
 
 # Elixir stuff
+alias m='mix'
 alias mt='mix test'
 alias mf='mix format'
-alias mcf='mix compile --force --warnings-as-errors'
+alias mc='mix check' # define per-project to run CI checks
+
+# tmux
+alias tma='tmux attach-session -t'
 
 # x = extract, v = verbose, f = force (overwrite files), z = gzip
 alias untar='tar xvfz'

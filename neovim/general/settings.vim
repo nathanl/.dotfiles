@@ -14,6 +14,7 @@ set noswapfile                          " Don't use swap files
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set termguicolors
+set undoreload=0                        " Reloading a file (eg with `:e! %` clears undo history
 
 " Captial Q does nothing (instead of entering Ex mode)
 nnoremap Q <nop>
