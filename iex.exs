@@ -2,6 +2,9 @@
 # Symlink to ~/.iex.exs
 # IEx.configure(colors: [ eval_result: [:red, :bright] ])
 # IEx.configure(inspect: [limit: 10])
+#
+# [97, 98, 99] is inspected as a list of integers by default
+IEx.configure(inspect: [charlists: :as_lists])
 
 # TODO - to enable an alias, I could:
 # - create a shell alias for iex

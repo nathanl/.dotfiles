@@ -17,6 +17,14 @@
 # (see `man zsh` and search for ZDOTDIR)
 export ZDOTDIR=$HOME
 
+export EDITOR=nvim
+# According to https://jasonaxelson.com/talks/elixirconf2022/#/18
+# setting this env var should allow `open Enum.map` in `iex` to open
+# an editor to that file and line. I'm having trouble getting it to work
+# with nvim, though. Maybe a non-terminal editor is needed?
+export ELIXIR_EDITOR="nvim +'__LINE__|norm! zt' __FILE__"
+# export ELIXIR_EDITOR="nvim +__LINE__ __FILE__ -c 'normal zt'"
+
 # Add custom bin folder to the path
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
