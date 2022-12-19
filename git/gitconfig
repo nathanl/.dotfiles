@@ -43,6 +43,7 @@
   pl = pull
   ps = push
   pso = push origin # HEAD is not necessary anymore
+  psof = push origin --force-with-lease
   ss = stash save
   sl = stash list
   sa = stash apply
@@ -167,3 +168,8 @@
 [includeIf "gitdir:~/code/client/"]
   # refers to ~/.gitconfig_client
   path = .gitconfig_client
+[blame]
+  # https://www.dairon.org/2022/09/02/formatting-a-large-erlang-codebase.html
+  # https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revltrevgt
+  # https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view
+	ignoreRevsFile = .git-blame-ignore-revs
