@@ -172,4 +172,4 @@
   # https://www.dairon.org/2022/09/02/formatting-a-large-erlang-codebase.html
   # https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revltrevgt
   # https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view
-	ignoreRevsFile = .git-blame-ignore-revs
+	# ignoreRevsFile = .git-blame-ignore-revs

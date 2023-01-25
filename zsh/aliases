@@ -24,6 +24,7 @@ alias m='mix'
 alias mt='mix test'
 alias mf='mix format'
 alias mc='mix check' # define per-project to run CI checks
+alias hdo='mix hex.docs online' # follow with PACKAGENAME
 
 # tmux
 alias tma='tmux attach-session -t'
@@ -32,8 +33,9 @@ alias tma='tmux attach-session -t'
 alias untar='tar xvfz'
 
 # Postgres convenience commands
-alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'
-alias dbstop='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log stop -m fast'
+# use `brew services start postgresql@14` or similar
+# alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'
+# alias dbstop='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log stop -m fast'
 
 # Ways to use Vim with minimal or no config
 alias simplevim="vi -u ~/.vimrc_simple"
