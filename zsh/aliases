@@ -87,3 +87,15 @@ function judge() {
     [ $last_exit_status -eq 0 ] && (echo $s && yay) || (echo $f && boom)
   fi
 }
+
+# Run a command after printing it out. Useful for aliases.
+# Usage:
+#   announce_run ls
+#   alias mt='announce_run mix test'
+#   mt # prints 'mix test' then runs it
+function announce_run() {
+  echo $@
+  "$@"
+}
+
+alias mt='announce_run mix test'

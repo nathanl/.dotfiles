@@ -7,11 +7,13 @@
   autocrlf = input
   # No pager, so commands like `git diff` just output to the terminal and piping to `less` is optional.
   # See https://medium.com/pragmatic-programmers/git-config-core-pager-807e17d64243
-  pager = ""
+  # pager = ""
   # Requires `brew install diffr` - https://github.com/mookid/diffr
-  pager = diffr | less -R
+  # pager = diffr | less -R
+  # https://github.com/so-fancy/diff-so-fancy
+  pager = "diff-so-fancy | less --tabs=4 -RFX"
 [interactive]
-    diffFilter = diffr
+	diffFilter = diff-so-fancy --patch
 [alias]
   # list all aliases :)
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | less
