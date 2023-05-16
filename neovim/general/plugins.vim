@@ -30,7 +30,8 @@ let g:ctrlp_open_multiple_files = 'tj'
 " See `:help ctrlp-options`
 let g:ctrlp_user_command = {
   \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
+    \ 1: ["seeded_controllers.csv", "rg --files -g '!priv/schemas' -g \'!docs/schemas\' -g '!**/*.svg'"],
+    \ 2: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
     \ },
   \ 'fallback': 'find %s -type f'
   \ }
