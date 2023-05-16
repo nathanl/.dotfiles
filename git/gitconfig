@@ -11,9 +11,9 @@
   # Requires `brew install diffr` - https://github.com/mookid/diffr
   # pager = diffr | less -R
   # https://github.com/so-fancy/diff-so-fancy
-  pager = "diff-so-fancy | less --tabs=4 -RFX"
+  # pager = "diff-so-fancy | less --tabs=4 -RFX"
 [interactive]
-	diffFilter = diff-so-fancy --patch
+	# diffFilter = diff-so-fancy --patch
 [alias]
   # list all aliases :)
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | less

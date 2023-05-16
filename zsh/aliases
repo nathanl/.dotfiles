@@ -1,67 +1,3 @@
-# Make zsh behave like bash for this command
-alias history="history 0"
-
-alias g='git'
-
-# ls
-alias ls="ls -FG"
-alias plainls="unalias ls" # Temporarily remove the alias above
-alias ll="ls -lAh"
-
-alias .f="cd ~/.dotfiles"
-
-# commands starting with % for pasting from web
-alias %=' '
-
-# Ruby stuff
-alias be='bundle exec'
-alias berk='bundle exec rake'
-# Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
-alias rake='noglob rake'
-
-# Elixir stuff
-alias m='mix'
-alias mt='mix test'
-alias mf='mix format'
-alias mc='mix check' # define per-project to run CI checks
-alias hdo='mix hex.docs online' # follow with PACKAGENAME
-
-# tmux
-alias tma='tmux attach-session -t'
-
-# x = extract, v = verbose, f = force (overwrite files), z = gzip
-alias untar='tar xvfz'
-
-# Postgres convenience commands
-# use `brew services start postgresql@14` or similar
-# alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'
-# alias dbstop='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log stop -m fast'
-
-# Ways to use Vim with minimal or no config
-alias simplevim="vi -u ~/.vimrc_simple"
-alias plainvim="vi -u NONE"
-
-alias gs='echo "if you really want ghostscript, \"where gs\" to find it"'
-
-# See what is listening on a given port: `whoport 80`
-function whoport(){ lsof -i :$1 } # may need sudo
-
-# Grep processes and show headers.
-# See http://unix.stackexchange.com/a/47923/8514
-function psgrep(){ ps -ef | sed -e '1p' -e "/$1/!d" }
-
-# See system calls of the process with a given PID
-function diagnose() { sudo dtruss -cade -p "$1" 2>&1 | tee /tmp/ruby_diagnosis }
-
-# Define a word
-function define() { curl dict://dict.org/d:$1 }
-
-# Recursively find in files
-function grepfiles(){ grep -Ri $1 *}
-
-alias work='cd ~/work; vim -p billable_hours.csv general_todo.md sharpening.md team_dynamics.md misc_notes.md'
-alias family_log='vi ~/SpiderOak\ Hive/elijah/family_log.markdown'
-
 # Usage:
 # - with args, `judge mix test`; runs `yay` or `boom` depending on exit status
 # of given command
@@ -97,5 +33,68 @@ function announce_run() {
   echo $@
   "$@"
 }
+#
+# Make zsh behave like bash for this command
+alias history="history 0"
 
+alias g='git'
+
+# ls
+alias ls="ls -FG"
+alias plainls="unalias ls" # Temporarily remove the alias above
+alias ll="ls -lAh"
+
+alias .f="cd ~/.dotfiles"
+
+# commands starting with % for pasting from web
+alias %=' '
+
+# Ruby stuff
+alias be='bundle exec'
+alias berk='bundle exec rake'
+# Don't freak out when running rake with args, like `rake somecommand[arg1, arg2]`
+alias rake='noglob rake'
+
+# Elixir stuff
+alias m='announce_run mix'
 alias mt='announce_run mix test'
+alias mf='announce_run mix format'
+alias mcf='announce_run mix compile --force --warnings-as-errors'
+alias mc='announce_run mix check' # define per-project to run CI checks
+alias hdo='announce_run mix hex.docs online' # follow with PACKAGENAME
+
+# tmux
+alias tma='announce_run tmux attach-session -t'
+
+# x = extract, v = verbose, f = force (overwrite files), z = gzip
+alias untar='announce_run tar xvfz'
+
+# Postgres convenience commands
+# use `brew services start postgresql@14` or similar
+# alias dbstart='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log start'
+# alias dbstop='/usr/local/homebrew/opt/postgresql/bin/pg_ctl -D /usr/local/homebrew/var/postgres -l /usr/local/homebrew/var/postgres.log stop -m fast'
+
+# Ways to use Vim with minimal or no config
+alias simplevim="vi -u ~/.vimrc_simple"
+alias plainvim="vi -u NONE"
+
+alias gs='echo "if you really want ghostscript, \"where gs\" to find it"'
+
+# See what is listening on a given port: `whoport 80`
+function whoport(){ lsof -i :$1 } # may need sudo
+
+# Grep processes and show headers.
+# See http://unix.stackexchange.com/a/47923/8514
+function psgrep(){ ps -ef | sed -e '1p' -e "/$1/!d" }
+
+# See system calls of the process with a given PID
+function diagnose() { sudo dtruss -cade -p "$1" 2>&1 | tee /tmp/ruby_diagnosis }
+
+# Define a word
+function define() { curl dict://dict.org/d:$1 }
+
+# Recursively find in files
+function grepfiles(){ grep -Ri $1 *}
+
+alias work='cd ~/work; vim -p billable_hours.csv general_todo.md sharpening.md team_dynamics.md misc_notes.md'
+alias family_log='announce_run vi ~/SpiderOak\ Hive/elijah/family_log.markdown'
