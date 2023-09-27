@@ -10,6 +10,12 @@ map <leader>an :let @+ = expand("%:p")<cr>
 " Enter in normal mode clears highlighted search terms
 nnoremap <silent> <CR> :noh
 
+" 'leader *' highlights occurrences of the word under the cursor without
+" jumping to the next occurrence. It does this by sticking
+" it in the search register and letting hlsearch highlight it
+" See https://stackoverflow.com/a/31722469/4376
+nnoremap <leader>* :<C-u>let @/ = expand('<cword>')<cr>
+
 " Make Y behave like other capitals - to end of line
 map Y y$
 

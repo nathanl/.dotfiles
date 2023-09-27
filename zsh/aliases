@@ -58,7 +58,9 @@ alias rake='noglob rake'
 # Elixir stuff
 alias m='announce_run mix'
 alias mt='announce_run mix test'
+alias mtf='announce_run mix test || announce_run mix test --failed --max-cases=1'
 alias mf='announce_run mix format'
+alias md='announce_run mix dialyzer'
 alias mcf='announce_run mix compile --force --warnings-as-errors'
 alias mc='announce_run mix check' # define per-project to run CI checks
 alias hdo='announce_run mix hex.docs online' # follow with PACKAGENAME
