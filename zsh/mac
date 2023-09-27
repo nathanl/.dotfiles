@@ -1,7 +1,3 @@
-# When I `brew install something`, don't upgrade PostgreSQL
-# and every other thing you can find.
-export HOMEBREW_NO_AUTO_UPDATE=1
-
 # https://ss64.com/osx/ulimit.html
 # Allow this many file descriptors (eg sockets)
 # ulimit -a to see all possible flags
