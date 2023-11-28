@@ -42,6 +42,8 @@
   co = checkout
   f = fetch --prune
   m = merge
+  # merge upstring fast forward
+  muf = merge @{u} --ff-only
   pl = pull
   ps = push
   pso = push origin # HEAD is not necessary anymore
@@ -52,6 +54,7 @@
   sd = stash drop
   sp = stash pop
   sh = show --pretty=medium
+  sw = switch
   cl = clone
   v = ! gitx || gitg # visual
   # List branches by how recently they've been worked on

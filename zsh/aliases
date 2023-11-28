@@ -38,6 +38,8 @@ function announce_run() {
 alias history="history 0"
 
 alias g='git'
+# switch_branches is a custom script
+alias sb='switch_branches'
 
 # ls
 alias ls="ls -FG"
