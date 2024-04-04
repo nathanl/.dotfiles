@@ -1,0 +1,12 @@
+<base>
+[rctr]>[rwin]
+[rwin]>[rctr]
+[lctr]>[rwin]
+
+<keypad>
+
+<function1>
+
+<function2>
+
+<function3>
