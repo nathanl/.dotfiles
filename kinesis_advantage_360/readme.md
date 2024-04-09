@@ -10,3 +10,7 @@ I have remapped it to use the older layout to which I'm accustomed and physicall
 ## Tmux
 
 I've mappped "command + m" to send "control + b" for Tmux.
+
+## Comments
+
+Support says: "You can annotate with text *in between asterisks* it will be ignored!"
