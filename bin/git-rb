@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# List remote branches in Git, each with the last commit date and author
+
+git for-each-ref --sort='-committerdate:iso8601' --format='%(committerdate:relative) | %(refname:short) | %(committername)' refs/remotes/
