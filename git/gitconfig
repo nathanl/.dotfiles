@@ -133,8 +133,8 @@
   # `git push` will push a new branch - no need to `--set upstream origin`. (v2.37.0)
 	autoSetupRemote = true
 [merge]
-  # In conflicts, show both changes AND their common ancestor
-	conflictstyle = diff3
+  # Default way of showing conflicts
+	conflictstyle = merge # other options are diff3 and zdiff3
 [user]
   # Name and email used for commits
 	name = Nathan Long
