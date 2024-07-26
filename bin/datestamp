@@ -1,1 +1,1 @@
-date +"%Y-%m-%d"
+date -j +"## %Y-%m-%d (%a)"
