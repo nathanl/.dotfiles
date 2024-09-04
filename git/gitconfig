@@ -5,15 +5,16 @@
   # If I run 'git commit', open vim with simplified config.
   editor = nvim -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
-  # No pager, so commands like `git diff` just output to the terminal and piping to `less` is optional.
-  # See https://medium.com/pragmatic-programmers/git-config-core-pager-807e17d64243
-  # pager = ""
-  # Requires `brew install diffr` - https://github.com/mookid/diffr
-  # pager = diffr | less -R
-  # https://github.com/so-fancy/diff-so-fancy
-  # pager = "diff-so-fancy | less --tabs=4 -RFX"
+  pager = delta
 [interactive]
-	# diffFilter = diff-so-fancy --patch
+  diffFilter = delta --color-only
+[delta]
+  # using https://github.com/dandavison/delta
+  navigate = true    # use n and N to move between diff sections
+
+  # delta detects terminal colors automatically; set one of these to disable auto-detection
+  # dark = true
+  light = true
 [alias]
   # list all aliases :)
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | less
@@ -134,7 +135,10 @@
 	autoSetupRemote = true
 [merge]
   # Default way of showing conflicts
-	conflictstyle = merge # other options are diff3 and zdiff3
+	; conflictstyle = merge # other options are diff3 and zdiff3
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [user]
   # Name and email used for commits
 	name = Nathan Long
@@ -157,8 +161,6 @@
 [pager]
   # don't pipe 'git branch' to 'less' - started happening by default in 2.16
 	branch = false
-  # same for 'git log'
-  log = false
 	diff = less +/diff\\ --git
 [rerere]
   # "reuse recorded resolution" - after fixing a conflict, it's OK to
