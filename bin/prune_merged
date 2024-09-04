@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby 
 # Ruby script to interactively prune branches that have been merged
 
-PERMANENT_BRANCHES = %w[develop main master staging release]
+PERMANENT_BRANCHES = %w[develop main master staging release dos]
 
 current_branch = %x{git rev-parse --abbrev-ref HEAD}.strip
 unless PERMANENT_BRANCHES.include?(current_branch)
