@@ -1,1 +1,1 @@
-export ANTHROPIC_API_KEY="abc123"
+export CLAUDE_API_KEY="abc123"
