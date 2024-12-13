@@ -1,0 +1,44 @@
+# So that that shelling out from Vim with `zsh -i` will load .zshrc
+# (see `man zsh` and search for ZDOTDIR)
+export ZDOTDIR=$HOME
+
+export EDITOR=nvim
+# According to https://jasonaxelson.com/talks/elixirconf2022/#/18
+# setting this env var should allow `open Enum.map` in `iex` to open
+# an editor to that file and line. I'm having trouble getting it to work
+# with nvim, though. Maybe a non-terminal editor is needed?
+export ELIXIR_EDITOR="nvim +'__LINE__|norm! zt' __FILE__"
+# export ELIXIR_EDITOR="nvim +__LINE__ __FILE__ -c 'normal zt'"
+
+# Add custom bin folder to the path
+export PATH="$HOME/.dotfiles/bin:$PATH"
+
+# Add Homebrew path
+# export PATH="$PATH:/usr/local/homebrew/sbin" # nonstandard one from past usage
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# display manfiles in Vim in readonly mode, after throwing out extra backspace
+# characters.
+# https://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
+# `less` should show colorized output by default - see `man less`
+export LESS="-R"
+
+export MY_IP=$(ipconfig getifaddr en0)
+
+# get shell history out of the box with Erlang/OTP 20
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# https://github.com/asdf-vm/asdf-erlang#asdf-erlang uses
+# https://github.com/kerl/kerl to install Erlang. Configure it so it doesn't
+# want Java for compiling docs
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+export KERL_BUILD_DOCS=no
+export KERL_INSTALL_HTMLDOCS=no
+export KERL_INSTALL_MANPAGES=no
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Needed for using GPG to sign Git commits
+export GPG_TTY=$(tty)
