@@ -108,6 +108,7 @@
         git branch -D pr/$pr \n\
     fi \n\
   }; f"
+	backport-branch = !git checkout -b \"backport-release-to-main-$(date -u +\"%Y-%m-%dT%H%M%SZ\")\"
 
 [color]
   ui = always
