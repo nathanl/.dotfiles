@@ -1,15 +1,40 @@
 #!/bin/bash
 
 echo "Find and replace in current directory!"
-echo "File pattern to look for? (eg '*.txt')"
+echo "File pattern(s) to look for? (comma-separated, default: *.ex,*.exs,*.html.heex)"
 read filepattern
+
+# Use default if no input is provided
+if [ -z "$filepattern" ]; then
+    filepattern="*.ex,*.exs,*.html.heex"
+fi
+
 echo "Existing string?"
 read existing
 echo "Replacement string?"
 read replacement
-echo "Replacing all occurences of $existing with $replacement in files matching $filepattern"
+echo "Replacing all occurrences of '$existing' with '$replacement' in files matching '$filepattern'"
 
-# Could do multiple file patterns in one shot like this
-# find . -type f \( -name "*.java" -o -name "*.xml" -o -name "*.html" \)
+# Split the comma-separated patterns into an array.
+IFS=',' read -ra patterns <<< "$filepattern"
 
-find . -type f -name "$filepattern" -print0 | xargs -0 sed -i '' -e "s/$existing/$replacement/g"
+# Build the find command parameters.
+# We want to generate:
+# find . -type f \( -name "pattern1" -o -name "pattern2" -o ... \) -print0
+find_args=(.)
+find_args+=("-type" "f")
+find_args+=("(")
+for i in "${!patterns[@]}"; do
+    # Trim any surrounding whitespace from each pattern.
+    pattern=$(echo "${patterns[i]}" | sed 's/^ *//;s/ *$//')
+    if [ $i -eq 0 ]; then
+        find_args+=("-name" "$pattern")
+    else
+        find_args+=("-o" "-name" "$pattern")
+    fi
+done
+find_args+=(")")
+find_args+=("-print0")
+
+# Execute the find command and pipe results to sed.
+find "${find_args[@]}" | xargs -0 sed -i '' -e "s/$existing/$replacement/g"
