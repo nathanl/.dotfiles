@@ -1,3 +1,6 @@
+# Disable terminal flow control (Ctrl+S/Ctrl+Q) to allow Ctrl+S to be used in applications like vim
+stty -ixon
+
 # NOTE that this is run after ~/.zshenv, and only for interactive shells
 # Put together all these files
 . ~/.dotfiles/zsh/paths
