@@ -7,6 +7,9 @@ map <leader>n :let @+ = expand("%")<cr>
 " copy current absolute filename into clipboard
 map <leader>an :let @+ = expand("%:p")<cr>
 
+" copy current file and line number to the system clipboard
+map <leader>l :let @+ = expand('%') . ':' . line('.')<cr>
+
 " Enter in normal mode clears highlighted search terms
 nnoremap <silent> <CR> :noh
 
