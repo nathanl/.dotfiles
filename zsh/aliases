@@ -64,6 +64,7 @@ alias md='announce_run mix dialyzer'
 alias mcf='announce_run mix compile --force --warnings-as-errors'
 alias mc='announce_run mix check' # define per-project to run CI checks
 alias hdo='announce_run mix hex.docs online' # follow with PACKAGENAME
+alias ip='announce_run ipconfig getifaddr en0'
 
 # tmux
 alias tma='announce_run tmux attach-session -t'
