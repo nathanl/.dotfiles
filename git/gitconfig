@@ -125,7 +125,7 @@
   new = green
   whitespace = red reverse
 [help]
-	autocorrect = 0
+	autocorrect = prompt
 [status]
   submodule = 1
 	submodulesummary = 1
