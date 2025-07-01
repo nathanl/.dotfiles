@@ -9,7 +9,7 @@ unless PERMANENT_BRANCHES.include?(current_branch)
   exit(1)
 end
 
-merged_branches = %x{git for-each-ref --format='%(refname:short)' refs/heads/* --merged}.lines.map(&:strip)
+merged_branches = %x{git for-each-ref --format='%(refname:short)' refs/heads/** --merged}.lines.map(&:strip)
 
 prunable = merged_branches - PERMANENT_BRANCHES
 prunable = prunable - current_branch.lines
