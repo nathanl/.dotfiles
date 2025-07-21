@@ -2,7 +2,6 @@
 [rctr]>[rwin]
 [rwin]>[rctr]
 [lctr]>[rwin]
-{rwin}{m}>{x1}{-rctr}{b}{+rctr}
 
 <keypad>
 
