@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Usage: cmdnotif <command>
+#
+# Arguments:
+#	<command>    Command to run
+#
+# Executes a command, then displays a macOS system notification indicating
+# success or failure.
+#
+
+set -euo pipefail
+
+usage() {
+	cat <<-"EOF"
+		Usage: cmdnotif <command>
+
+		Arguments:
+		  <command>    Command to run
+
+		Executes a command, then displays a macOS system notification indicating
+		success or failure.
+	EOF
+}
+
+CMD="$*"
+
+if eval "$CMD"; then
+	title="🟢 Command finished"
+else
+	title="🔴 Command failed"
+fi
+
+osascript -e "display notification \"$CMD\" with title \"$title\""

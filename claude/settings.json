@@ -1,0 +1,48 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(git ls:*)",
+      "Bash(git show:*)",
+      "Bash(grep:*)",
+      "Bash(mix compile:*)",
+      "Bash(mix credo:*)",
+      "Bash(mix dialyzer:*)",
+      "Bash(mix test:*)",
+      "Bash(rg:*)",
+      "Bash(sed:*)",
+      "Bash(source .envrc)",
+      "mcp__tidewave__get_ecto_schemas",
+      "mcp__tidewave__get_source_location",
+      "mcp__tidewave__project_eval",
+      "Bash(mix check:*)",
+      "Bash(mix format:*)",
+      "mcp__tidewave__get_docs"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'if [ -f mix.exs ]; then mix format; fi'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send 'Claude Code' 'Awaiting your input'"
+          }
+        ]
+      }
+    ]
+  }
+}

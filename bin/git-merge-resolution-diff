@@ -1,0 +1,98 @@
+#!/bin/zsh
+
+# Find the Git directory to ensure we're in a Git repository
+find_git_dir() {
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.git" ]]; then
+      echo "$dir/.git"
+      return 0
+    elif [[ -f "$dir/.git" ]]; then
+      # We are in a worktree
+      local git_dir=$(grep "gitdir:" "$dir/.git" | sed "s/gitdir: //")
+      if [[ "$git_dir" == /* ]]; then
+        # Absolute path
+        echo "$git_dir"
+      else
+        # Relative path
+        echo "$dir/$git_dir"
+      fi
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+if ! GIT_DIR=$(find_git_dir); then
+  echo "Error: Not in a Git repository" >&2
+  exit 1
+fi
+
+# Ensure a merge commit SHA is provided
+if [[ -z "$1" ]]; then
+  echo "Usage: $0 <merge-commit-sha>" >&2
+  exit 1
+fi
+
+MERGE_COMMIT="$1"
+
+# Ensure the commit exists
+if ! git cat-file -e "$MERGE_COMMIT" 2>/dev/null; then
+  echo "Error: Commit $MERGE_COMMIT does not exist" >&2
+  exit 1
+fi
+
+# Ensure it's a merge commit (has more than one parent)
+PARENT_COUNT=$(git cat-file -p "$MERGE_COMMIT" | grep -c "^parent ")
+if [[ "$PARENT_COUNT" -lt 2 ]]; then
+  echo "Error: Commit $MERGE_COMMIT is not a merge commit" >&2
+  exit 1
+fi
+
+# Get parents of the merge commit
+PARENT1=$(git rev-parse "$MERGE_COMMIT^1")
+PARENT2=$(git rev-parse "$MERGE_COMMIT^2")
+
+echo "Analyzing merge commit: $MERGE_COMMIT"
+echo "Parent 1: $PARENT1"
+echo "Parent 2: $PARENT2"
+
+# Create a virtual merge to see what Git would have done automatically
+VIRTUAL_MERGE=$(git merge-tree "$PARENT1" "$PARENT2")
+
+# Check if there were conflicts that needed resolution
+if ! echo "$VIRTUAL_MERGE" | grep -q "<<<<<<<"; then
+  echo "No conflicts detected that needed manual resolution."
+  exit 0
+fi
+
+echo "Conflicts detected that needed manual resolution."
+
+# Extract the diff that shows only conflict resolutions
+# This shows the actual resolution diff by comparing:
+# 1. What Git would have done automatically (recreated merge between parents)
+# 2. What was actually committed (the real merge with manual conflict resolution)
+
+# First create a temporary index with the merge-tree result
+git read-tree --reset -u "$PARENT1"
+GIT_INDEX_FILE="$(mktemp)" 
+export GIT_INDEX_FILE
+git read-tree "$PARENT1"
+git merge-index -o git-merge-one-file "$PARENT2" || true
+
+# Now get the actual merge result tree
+ACTUAL_TREE=$(git rev-parse "$MERGE_COMMIT^{tree}")
+# Get the expected tree from our temporary merge
+EXPECTED_TREE=$(git write-tree)
+
+echo "Comparing expected automatic merge with actual merge resolution:"
+if [[ "$ACTUAL_TREE" == "$EXPECTED_TREE" ]]; then
+  echo "No manual edits detected. Conflicts were likely resolved by choosing one side or the other."
+else
+  echo "Manual edits detected during conflict resolution:"
+  git diff "$EXPECTED_TREE" "$ACTUAL_TREE"
+fi
+
+# Cleanup
+rm -f "$GIT_INDEX_FILE"
