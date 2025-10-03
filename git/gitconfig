@@ -6,6 +6,7 @@
   editor = nvim -u "~/.vimrc_simple" # TODO maybe use --noplugin instead?
   autocrlf = input
   pager = delta
+  commentChar = ';'
 [interactive]
   diffFilter = delta --color-only
 [delta]
