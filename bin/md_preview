@@ -6,8 +6,8 @@ template_file=~/.dotfiles/bin/md_preview_template.html
 initial_output_file=/tmp/bare_markdown_output.html
 output_file=/tmp/markdown_output.html
 
-# cmark is from https://github.com/jgm/cmark
-cmark "$1" --unsafe > $initial_output_file
+# cmark-gfm is from https://github.com/github/cmark-gfm
+cmark-gfm "$1" --unsafe --extension table --extension strikethrough --extension autolink > $initial_output_file
 
 # If markdown rendering worked
 if [ $? -eq 0 ]; then
