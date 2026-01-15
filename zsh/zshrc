@@ -9,12 +9,14 @@ stty -ixon
 . ~/.dotfiles/zsh/history
 . ~/.dotfiles/zsh/bindings
 . ~/.dotfiles/zsh/mac
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# source if exists
+[[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]] && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+[[ -f $HOME/.asdf/asdf.sh ]] && . $HOME/.asdf/asdf.sh
 . ~/.dotfiles/zsh/prompt # may print warnings unless proper Ruby version is set
 
 # use .zshrc_machine_specific for settings specific to one machine
 [[ -f ~/.zshrc_machine_specific ]] && .  ~/.zshrc_machine_specific
 
 . ~/.dotfiles/zsh/env_vars
-. ~/.dotfiles/zsh/api_keys
+# source if exists
+[[ -f ~/.dotfiles/zsh/api_keys ]] && . ~/.dotfiles/zsh/api_keys
