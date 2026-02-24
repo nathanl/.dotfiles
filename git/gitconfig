@@ -57,6 +57,7 @@
   sd = stash drop
   sp = stash pop
   sh = show --pretty=medium
+  shn = show --pretty=medium --name-only
   sw = switch
   cl = clone
   v = ! gitx || gitg # visual
