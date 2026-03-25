@@ -33,7 +33,18 @@ function announce_run() {
   echo $@
   "$@"
 }
-#
+
+# Run a command, showing the output (stdout and stderr) in the terminal while
+# also capturing both to a file.
+# Usage:
+#   runtee output.log curl -s https://example.com
+runtee() {
+  local logfile="$1"
+  shift
+  "$@" 2>&1 | tee "$logfile"
+  return $pipestatus[1]
+}
+
 # Make zsh behave like bash for this command
 alias history="history 0"
 
